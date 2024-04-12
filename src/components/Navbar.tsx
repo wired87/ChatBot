@@ -1,25 +1,36 @@
 import { FunctionComponent, useState, useCallback } from "react";
 import MenuDrower from "./MenuDrower";
 import PortalDrawer from "./PortalDrawer";
-
+import {useNavigate} from "react-router-dom";
+import {NavbarHook} from "../interfaces/navbarHook";
 export type NavbarType = {
   vector?: string;
-
-  /** Action props */
-  onItemClick?: () => void;
-  onItem1Click?: () => void;
-  onItem2Click?: () => void;
-  onItem3Click?: () => void;
-  onItem4Click?: () => void;
 };
+
+const buttonValueArray: NavbarHook[] = [
+  {
+    title: "Home",
+    screen: "/",
+  },
+  {
+    title: "Demo",
+    screen: "/demo",
+  },
+  {
+    title: "Contact",
+    screen: "/contact-us",
+  },
+  {
+    title: "Pricing",
+    screen: "/pricing",
+  }
+]
+
+
+
 
 const Navbar: FunctionComponent<NavbarType> = ({
   vector,
-  onItemClick,
-  onItem1Click,
-  onItem2Click,
-  onItem3Click,
-  onItem4Click,
 }) => {
   const [isMenuDrowerOpen, setMenuDrowerOpen] = useState(false);
 
@@ -31,6 +42,23 @@ const Navbar: FunctionComponent<NavbarType> = ({
     setMenuDrowerOpen(false);
   }, []);
 
+  const navigate = useNavigate();
+
+  const buttonLine = () => {
+    return buttonValueArray.map((item: any) => (
+      <button
+        className="cursor-pointer [border:none] p-0 bg-[transparent] flex flex-col items-center justify-start"
+        onClick={() => navigate(item.screen)}>
+        <div className="relative text-base leading-[150%] uppercase font-medium font-body-regular-paragraph-small text-main-colour text-center">
+          {
+            item.title
+          }
+        </div>
+      </button>
+    ))
+  }
+
+
   return (
     <>
       <div className="self-stretch flex flex-col items-start justify-start text-center text-12xl text-main-colour font-body-regular-paragraph-small">
@@ -39,51 +67,9 @@ const Navbar: FunctionComponent<NavbarType> = ({
             <div className="relative leading-[120%] font-black">botWorld</div>
           </div>
           <div className="flex flex-row items-start justify-center py-3 px-0 gap-[40px] md:hidden">
-            <button
-              className="cursor-pointer [border:none] p-0 bg-[transparent] flex flex-col items-center justify-start"
-              onClick={onItemClick}
-            >
-              <div className="relative text-base leading-[150%] uppercase font-medium font-body-regular-paragraph-small text-main-colour text-center">
-                Home
-              </div>
-              <img
-                className="w-[81.1px] relative h-px hidden"
-                alt=""
-                src="/line-2.svg"
-              />
-            </button>
-            <button
-              className="cursor-pointer [border:none] p-0 bg-[transparent] flex flex-row items-start justify-center"
-              onClick={onItem1Click}
-            >
-              <b className="relative text-base leading-[150%] uppercase font-body-regular-paragraph-small text-main-colour text-center">
-                Shop
-              </b>
-            </button>
-            <button
-              className="cursor-pointer [border:none] p-0 bg-[transparent] flex flex-row items-start justify-center"
-              onClick={onItem2Click}
-            >
-              <b className="relative text-base leading-[150%] uppercase font-body-regular-paragraph-small text-main-colour text-center">
-                Demo
-              </b>
-            </button>
-            <button
-              className="cursor-pointer [border:none] p-0 bg-[transparent] flex flex-row items-start justify-center"
-              onClick={onItem3Click}
-            >
-              <b className="relative text-base leading-[150%] uppercase font-body-regular-paragraph-small text-main-colour text-center">
-                Contact
-              </b>
-            </button>
-            <button
-              className="cursor-pointer [border:none] p-0 bg-[transparent] flex flex-row items-start justify-center"
-              onClick={onItem4Click}
-            >
-              <b className="relative text-base leading-[150%] uppercase font-body-regular-paragraph-small text-main-colour text-center">
-                Pricing
-              </b>
-            </button>
+            {
+              buttonLine()
+            }
           </div>
           <div className="flex flex-row items-center justify-start gap-[16px] md:hidden">
             <button className="cursor-pointer [border:none] p-0 bg-[transparent] flex flex-row items-start justify-start gap-[10px]">
@@ -132,3 +118,10 @@ const Navbar: FunctionComponent<NavbarType> = ({
 };
 
 export default Navbar;
+/*
+ <img
+                className="w-[81.1px] relative h-px hidden"
+                alt=""
+                src="/line-2.svg"
+              />
+ */

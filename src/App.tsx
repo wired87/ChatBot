@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import {useContext, useEffect} from "react";
 import {
   Routes,
   Route,
@@ -12,11 +12,18 @@ import PurchasePage from "./pages/PurchasePage";
 import ContactUs from "./pages/ContactUs";
 import DemoPage from "./pages/DemoPage";
 import Pricing from "./pages/Pricing";
+import MainContextProvider from "./hooks/useMainContext";
+import {MainContext} from "./Context";
+import Navbar from "./components/Navbar";
+import {Footer} from "./components/Footer";
 
 function App() {
   const action = useNavigationType();
   const location = useLocation();
   const pathname = location.pathname;
+
+
+  const { checkSessionData } = useContext(MainContext)
 
   useEffect(() => {
     if (action !== "POP") {
@@ -73,16 +80,26 @@ function App() {
     }
   }, [pathname]);
 
+
+  useEffect(() => {
+    checkSessionData();
+  }, []);
+
+
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/shop-page" element={<ShopPage />} />
-      <Route path="/shoping-cart" element={<ShopingCart />} />
-      <Route path="/purchase-page" element={<PurchasePage />} />
-      <Route path="/contact-us" element={<ContactUs />} />
-      <Route path="/demo-page" element={<DemoPage />} />
-      <Route path="/pricing" element={<Pricing />} />
-    </Routes>
+    <MainContextProvider>
+      <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/shop-page" element={<ShopPage />} />
+          <Route path="/shoping-cart" element={<ShopingCart />} />
+          <Route path="/purchase-page" element={<PurchasePage />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/demo" element={<DemoPage />} />
+          <Route path="/pricing" element={<Pricing />} />
+        </Routes>
+      <Footer />
+    </MainContextProvider>
   );
 }
 export default App;

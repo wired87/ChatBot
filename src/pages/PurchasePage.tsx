@@ -6,23 +6,6 @@ import Navbar from "../components/Navbar";
 
 const PurchasePage: FunctionComponent = () => {
   const [isChotbotPopupOpen, setChotbotPopupOpen] = useState(false);
-  const navigate = useNavigate();
-
-  const onItem1Click = useCallback(() => {
-    navigate("/shop-page");
-  }, [navigate]);
-
-  const onItem2Click = useCallback(() => {
-    navigate("/demo-page");
-  }, [navigate]);
-
-  const onItem3Click = useCallback(() => {
-    navigate("/contact-us");
-  }, [navigate]);
-
-  const onItem4Click = useCallback(() => {
-    navigate("/pricing");
-  }, [navigate]);
 
   const openChotbotPopup = useCallback(() => {
     setChotbotPopupOpen(true);
@@ -35,13 +18,6 @@ const PurchasePage: FunctionComponent = () => {
   return (
     <>
       <div className="w-full relative bg-reply-bg overflow-hidden flex flex-col items-start justify-start text-left text-base text-black font-h5">
-        <Navbar
-          vector="/vector1.svg"
-          onItem1Click={onItem1Click}
-          onItem2Click={onItem2Click}
-          onItem3Click={onItem3Click}
-          onItem4Click={onItem4Click}
-        />
         <div className="self-stretch flex flex-row items-center justify-center py-[50px] px-0 bg-[url('/public/hero-section2@3x.png')] bg-cover bg-no-repeat bg-[top] text-center text-reply-bg">
           <div className="self-stretch flex-1 flex flex-col items-center justify-center py-6 px-[60px] gap-[32px] md:pl-8 md:pr-8 md:box-border sm:pl-4 sm:pr-4 sm:box-border">
             <b className="self-stretch relative">

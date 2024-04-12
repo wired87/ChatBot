@@ -1,27 +1,8 @@
 import { FunctionComponent, useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import PortalPopup from "../components/PortalPopup";
 import Chotbot from "../components/Chotbot";
 
 const ShopPage: FunctionComponent = () => {
-  const navigate = useNavigate();
-
-  const onItem1Click = useCallback(() => {
-    navigate("/shop-page");
-  }, [navigate]);
-
-  const onItem2Click = useCallback(() => {
-    navigate("/demo-page");
-  }, [navigate]);
-
-  const onItem3Click = useCallback(() => {
-    navigate("/contact-us");
-  }, [navigate]);
-
-  const onItem4Click = useCallback(() => {
-    navigate("/pricing");
-  }, [navigate]);
 
   const [isChotbotPopupOpen, setChotbotPopupOpen] = useState(false);
 
@@ -36,13 +17,6 @@ const ShopPage: FunctionComponent = () => {
 
   return (
     <div className="w-full relative bg-reply-bg overflow-hidden flex flex-col items-start justify-start text-center text-15xl text-black font-h5">
-      <Navbar
-        vector="/vector1.svg"
-        onItem1Click={onItem1Click}
-        onItem2Click={onItem2Click}
-        onItem3Click={onItem3Click}
-        onItem4Click={onItem4Click}
-      />
       <section className="self-stretch flex flex-row items-center justify-center py-[150px] px-0 bg-[url('/public/hero-section@3x.png')] bg-cover bg-no-repeat bg-[top] text-center text-19xl text-reply-bg font-h5">
         <div className="self-stretch flex-1 flex flex-col items-center justify-center py-6 px-[60px] gap-[32px] md:pl-8 md:pr-8 md:box-border sm:pl-4 sm:pr-4 sm:box-border">
           <b className="self-stretch relative">
