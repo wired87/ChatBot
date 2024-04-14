@@ -7,6 +7,7 @@ import PriceContainer from "../components/pricing/PriceContainer";
 import {PricingSenderObject} from "../interfaces/PricingInterface";
 import {MainContext} from "../Context";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 // TODO BACKEND = IF 0 DAYS -> KILL ALL CHATS LEFT
 
 export interface PriceDataInterface {
@@ -73,17 +74,10 @@ const Pricing: FunctionComponent = () => {
   }
   const getUrl = async () => {
     console.log("sendObject:", purchaseObject)
-    const res = await fetch(checkEndpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(purchaseObject),
-    });
-    const response = await res.json();
+    const response = await axios.post(checkEndpoint, JSON.stringify(purchaseObject))
 
-    console.log("Check Token Response", response);
-    return response
+    console.log("Check Token Response", response.data);
+    return response.data
   }
 
   const responseProcess = async() => {
