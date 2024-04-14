@@ -16,8 +16,6 @@ export const getCurrentTime = () => {
   return(timeHoursNow + ":" + timeMinutesNow);
 }
 
-
-
 export const postMessageObject = async (
   jwtToken: string,
   senderObject: any,

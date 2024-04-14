@@ -1,5 +1,4 @@
 
-import { Buffer } from 'buffer';
 import {JwtToken} from "../../hooks/useJwt";
 
 
@@ -59,7 +58,7 @@ export const checkExistingToken = async (
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({"refresh": token.refresh, "user_id": userID}),
+    body: JSON.stringify({"refresh": token?.refresh, "user_id": userID}),
   });
   const response = await res.json();
 

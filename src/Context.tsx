@@ -5,5 +5,11 @@ export const MainContext = createContext(
   {
     user: null as UserInterface | null,
     updateUser: ((value:UserInterface | null) => {}),
-    checkSessionData: () => {}
+    checkSessionData: () => {},
+
+    upperLinkBarVisible: true,
+    updateLinkBarVisible: (value:boolean) => {},
+
+    show: false,
+    updateShow: (value:boolean) => {}
   });

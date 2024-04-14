@@ -67,7 +67,7 @@ const Pricing: FunctionComponent = () => {
       }
     )
   }
-
+/*
   const purchaseRequest = () => {
     try {
       const res = await fetch(checkEndpoint, {
@@ -80,7 +80,7 @@ const Pricing: FunctionComponent = () => {
     }
   }
 
-
+*/
   useEffect(() => {
     if ( purchaseObject?.planType && purchaseObject.name && purchaseObject.duration ) {
       // REQUEST STRIPE SESSION

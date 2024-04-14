@@ -10,32 +10,31 @@ import {ToolIconComp} from "./ToolIconContainer";
 const textArray: WhyWe[] = [
   {
     title: "Easy setup",
-    text: "Just give your bot a name, give him the URL of your\n" +
-      "              Website and you will receive after 15 min an E-Mail from us\n" +
-      "              that your personal support assistant has been ready trained.",
+    text: "Easye then filling out the shipping address! \n -> Just give your Bot a name, \n -> Tell him the url or your Website ... \n ... and e after 15 min of training, your bot is ready for the Game! ",
     btnText: "Check out our Demo",
     rightSideComp: "",
     navScreen: "/"
   },
   {
     title: "Easy integration",
-    text: "Our Nocode integrtion guide made it easy for you set everything up! Still have a question?\n" +
-      "              Feel free to contact us witch your issues.",
-    btnText: "Read the guide!",
+    text: "Our no code integration guide made it easy for you set everything up! Still have a questions?\n" +
+      "              Contact us witch your issue!",
+    btnText: "info@botworld.cloud",
     rightSideComp: "",
     navScreen: "/"
   },
   {
     title: "Supported by various platforms",
-    text: "Be not limited! You can use our Bot on various Platforms as e.g. WIX and Shopify.",
-    btnText: "Get informed",
+    text: "Be not limited! Include your Bot on our partner platforms as e.g. WIX and Shopify by " +
+      "following our easy guide.",
+    btnText: "Read the guide!",
     rightSideComp: <ToolIconComp />,
     navScreen: "/"
   },
   {
-    title: "Fair priced",
-    text: "Even if our service and performance shoot through the roof,\n" +
-      "              our prices remain low.",
+    title: "Best priced!",
+    text: "Although our prices are the lowest our Quality standard is Germany*s best. We want to give every, " +
+      "also even small businesses to explore and integrate the force of AI on their Platforms!",
     btnText: "Check if out!",
     rightSideComp: "",
     navScreen: "/"
@@ -49,8 +48,8 @@ const WhyWeComp: React.FC = () => {
 
   const Content = useMemo(() => {
     return textArray.map((item: WhyWe) => (
-        <div className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[40px]">
-          <div className="[border:none] p-2.5 bg-gray-200 flex-1 rounded-xl flex flex-row items-start justify-start box-border min-w-[580px]">
+        <div className="[border:none] p-2.5 bg-gray-200 flex-1 rounded-xl flex flex-row items-start justify-start box-border gap-[10px] min-w-[580px] sm:flex-1 sm:flex-row sm:min-w-[400px]">
+          <div className="border-amber-800 p-2.5 bg-gray-200 flex-1 rounded-xl flex flex-row items-start justify-start box-border min-w-[600px]">
             <div className="self-stretch w-[820px] flex flex-col items-start justify-center py-0 px-2.5 box-border gap-[18px]">
               <div className="w-20 rounded-81xl shadow-[0px_0px_14px_rgba(0,_0,_0,_0.12)] box-border h-20 flex flex-row items-center justify-center border-[1px] border-solid border-main-colour">
                 <div className="flex flex-row items-center justify-center p-[5px]">
@@ -100,7 +99,7 @@ const WhyWeComp: React.FC = () => {
       </b>
     </div>
     <div className="self-stretch flex flex-col items-start justify-start">
-      <div className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[40px]">
+      <div className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[40px] w-[100%]">
         {
           Content
         }

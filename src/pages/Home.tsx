@@ -1,14 +1,14 @@
 import {FunctionComponent, useCallback, useContext, useState} from "react";
 
 import { useNavigate } from "react-router-dom";
-import Chotbot from "../components/Chotbot";
-import PortalPopup from "../components/PortalPopup";
+
 import WhyWeComp from "../components/home/WhyWe/WhyWeComp";
 import Reviews from "../components/home/Reviews";
 import FAQ from "../components/home/FAQ";
 import Contact from "../components/home/Contact";
 import { RiOpenaiFill } from "react-icons/ri";
 import {MainContext} from "../Context";
+
 const Home: FunctionComponent = () => {
 
   const { user, updateUser } = useContext(MainContext)

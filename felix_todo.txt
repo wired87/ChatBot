@@ -1,0 +1,40 @@
+1. code ts - request
+2.
+# todo django conversation bot model extend for message counter. -->
+# todo if the first message comes in, it will be checked ( exactly like in the u Mother check conv process )
+# todo Messages and answers will be saved, also a counter for every message. if there are more then 50, chats_left will be
+# todo also decreased by 1 -> dont forget to update the time every toime so the conversation keeps upddated
+
+3.
+Post request implement
+
+PROCESS of sending messages
+
+User opens the Chat bot window .
+-> post request to the backend
+sendObject: includes the value if the data attr from the script tag
+-> response will be e.g. value: int
+
+You will store this value local in the frontend
+
+If the received value is "0" You will display an error message + disable the availability to send messages
+else:
+
+
+If the user sents a mesaage you will use the code that i shared to you. for it and rendr then the response as the answer
+form the chat bot.
+If it comes to an error ( handle pls in try catch block ) you will show a small error message instead of the response.
+
+ 2. Post request, which will be triggered instant after a successfully response from the "bot", includes the following fields:
+ the user message and the response ( form the message field )
+ You will receive a updated int value ( as in the first post request ) which you will save again.
+
+
+
+ Please also: When the user close the chat window while a conversation and recieves the message while its closed,
+ Pls render a message Icon on the round "Open Chat window" button, so the user gets informed about it.
+
+
+
+
+

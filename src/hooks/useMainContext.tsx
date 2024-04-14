@@ -4,8 +4,10 @@ import {MainContextProviderInterface} from "../interfaces/HookInterface";
 import { MainContext } from "../Context";
 import {useLoading} from "./useLoading";
 import {useJwt} from "./useJwt";
-import {connectionAlert, getToken} from "../functions/requests/JwtFunctions";
+import { getToken} from "../functions/requests/JwtFunctions";
 import {sendObject} from "../functions/requests/SendProcess";
+import {useShowModal, useUpperLinkBarVisible} from "./useUpperLinkBar";
+import {errorCodes} from "../errorCodes";
 
 const MainContextProvider: React.FC<MainContextProviderInterface> = (
   {
@@ -14,6 +16,9 @@ const MainContextProvider: React.FC<MainContextProviderInterface> = (
 ) => {
   const {jwtToken, setJwtToken,updateJwtToken} = useJwt();
   const {loading, setLoading} = useLoading();
+
+  const {upperLinkBarVisible, setUpperLinkBarVisible, updateLinkBarVisible} = useUpperLinkBarVisible();
+  const {show, setShow, updateShow} = useShowModal();
 
 
   const {
@@ -25,9 +30,10 @@ const MainContextProvider: React.FC<MainContextProviderInterface> = (
   const elements = {
     checkSessionData,
     user,
-    updateUser
+    updateUser,
+    upperLinkBarVisible, updateLinkBarVisible,
+    show, updateShow
   }
-
 
 
 
@@ -45,10 +51,6 @@ const MainContextProvider: React.FC<MainContextProviderInterface> = (
 
     if (!jwtToken) {
       setError("No Jwt Token Provided...")
-      connectionAlert(
-        "Unexpected authorisation error.",
-        "Please refresh the app."
-      )
       return;
     }
 
@@ -119,24 +121,6 @@ const MainContextProvider: React.FC<MainContextProviderInterface> = (
       setLoading(false);
     }
   }, [jwtToken, user]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
