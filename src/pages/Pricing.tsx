@@ -88,21 +88,22 @@ const Pricing: FunctionComponent = () => {
 
   const responseProcess = async() => {
     try {
-      if (purchaseObject) {
+
         const response = await getUrl()
 
-        navigate(response.checkout_session_url)
-      }
+        //navigate(response.checkout_session_url)
+        console.log("RESPONSE ",response)
     }catch(e){
-      console.log(e)
+      console.log("Error:",e)
     }
-
   }
 
   useEffect(() => {
-    responseProcess().then(() => {
-      console.log("Fetching...");
-    })
+    if (purchaseObject) {
+      responseProcess().then(() => {
+        console.log("Fetching...");
+      })
+    }
   }, [purchaseObject]);
 
 /*
