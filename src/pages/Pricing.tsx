@@ -91,7 +91,7 @@ const Pricing: FunctionComponent = () => {
 
         const response = await getUrl()
 
-        //navigate(response.checkout_session_url)
+        navigate(response.checkout_session_url)
         console.log("RESPONSE ",response)
     }catch(e){
       console.log("Error:",e)
