@@ -27,17 +27,6 @@ const MainContextProvider: React.FC<MainContextProviderInterface> = (
     updateUser
   } = useUser();
 
-  const elements = {
-    checkSessionData,
-    user,
-    updateUser,
-    upperLinkBarVisible, updateLinkBarVisible,
-    show, updateShow
-  }
-
-
-
-
   const defaultPostRequest = useCallback(async (
     postUrl: string,
     postObject: any,
@@ -123,6 +112,15 @@ const MainContextProvider: React.FC<MainContextProviderInterface> = (
   }, [jwtToken, user]);
 
 
+
+
+  const elements = {
+    checkSessionData,
+    user,
+    updateUser,
+    upperLinkBarVisible, updateLinkBarVisible,
+    show, updateShow,defaultPostRequest
+  }
 
 
 
