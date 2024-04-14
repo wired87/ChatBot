@@ -72,6 +72,7 @@ const Pricing: FunctionComponent = () => {
     )
   }
   const getUrl = async () => {
+    console.log("sendObject:", purchaseObject)
     const res = await fetch(checkEndpoint, {
       method: 'POST',
       headers: {
