@@ -146,7 +146,11 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
 
       </div>
       <button
-        onClick={handlePurchaseSubmit}
+        onClick={() => updatePurchaseObject(
+          "Pq2QiSzcjJ", // test uid: Pq2QiSzcjJ
+          annual? "annual" : "monthly",
+          item.title
+        )}
         disabled={buttonDisabled}
         style={disablesButtonStyle()}
         className="[border:none] p-0 bg-gray-100 self-stretch rounded-[5.58px] h-[45px] flex flex-row items-center justify-center">
