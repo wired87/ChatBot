@@ -1,10 +1,12 @@
-import {FunctionComponent, useState, useRef, useCallback, useEffect, ReactNode} from "react";
+import {FunctionComponent, useState, useRef, useCallback, useEffect, ReactNode, useContext} from "react";
 import "antd/dist/antd.min.css";
 import Chotbot from "../components/Chotbot";
 import PortalPopup from "../components/PortalPopup";
 import {PriceSwitch} from "../components/Switch";
 import PriceContainer from "../components/pricing/PriceContainer";
 import {PricingSenderObject} from "../interfaces/PricingInterface";
+import {MainContext} from "../Context";
+import {useNavigate} from "react-router-dom";
 // TODO BACKEND = IF 0 DAYS -> KILL ALL CHATS LEFT
 
 export interface PriceDataInterface {
@@ -49,7 +51,7 @@ const priceData: PriceDataInterface[] = [
     helpText: "Sent us an E-mail at info@botworld.cloud."
   },
 ]
-
+const checkEndpoint = "https://wired66.pythonanywhere.com/payment/checkout"
 const Pricing: FunctionComponent = () => {
   const intercomRef = useRef<HTMLButtonElement>(null);
   const [isChotbotPopupOpen, setChotbotPopupOpen] = useState(false);
@@ -57,6 +59,8 @@ const Pricing: FunctionComponent = () => {
   const [purchaseObject, setPurchaseObject] = useState<PricingSenderObject | null>(null);
 
   const [annual, setAnnual] = useState<boolean>(false);
+
+  const navigate = useNavigate();
 
   const updatePurchaseObject = (name: string, duration: string, planType: string) => {
     setPurchaseObject(
@@ -67,6 +71,39 @@ const Pricing: FunctionComponent = () => {
       }
     )
   }
+  const getUrl = async () => {
+    const res = await fetch(checkEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(purchaseObject),
+    });
+    const response = await res.json();
+
+    console.log("Check Token Response", response);
+    return response
+  }
+
+  const responseProcess = async() => {
+    try {
+      if (purchaseObject) {
+        const response = await getUrl()
+
+        navigate(response.checkout_session_url)
+      }
+    }catch(e){
+      console.log(e)
+    }
+
+  }
+
+  useEffect(() => {
+    responseProcess().then(() => {
+      console.log("Fetching...");
+    })
+  }, [purchaseObject]);
+
 /*
   const purchaseRequest = () => {
     try {
@@ -86,7 +123,6 @@ const Pricing: FunctionComponent = () => {
       // REQUEST STRIPE SESSION
     }
   }, [purchaseObject]);
-
 
 
 
@@ -192,32 +228,12 @@ const Pricing: FunctionComponent = () => {
               <div className="flex-1 h-[175px] flex flex-col items-start justify-start gap-[24px] min-w-[220px]">
                 <b className="self-stretch relative leading-[120%]">About</b>
                 <div className="self-stretch flex flex-col items-start justify-start gap-[16px]">
-                  <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                    Our Story
-                  </button>
-                  <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                    Benefits
-                  </button>
-                  <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                    Team
-                  </button>
-                  <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                    Career
-                  </button>
+
                 </div>
               </div>
               <div className="flex-1 h-[175px] flex flex-col items-start justify-start gap-[24px] min-w-[220px]">
                 <b className="self-stretch relative leading-[120%]">Contact</b>
                 <div className="self-stretch flex flex-col items-start justify-start gap-[16px]">
-                  <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                    Facebook
-                  </button>
-                  <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                    Twitter
-                  </button>
-                  <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                    Instagram
-                  </button>
                   <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
                     LinkedIn
                   </button>
