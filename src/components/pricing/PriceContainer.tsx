@@ -7,13 +7,15 @@ interface PriceContainerInterface {
   item: PriceDataInterface;
   annual: boolean;
   updatePurchaseObject: (name: string, duration: string, planType: string) => void;
+  loading: boolean;
 }
 
 const PriceContainer: React.FC<PriceContainerInterface> = (
   {
     item,
     annual,
-    updatePurchaseObject
+    updatePurchaseObject,
+    loading
   }
 ) => {
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
@@ -53,7 +55,7 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
     }
     return {
       price: item.annualPrice,
-      text: "annual "
+      text: "annual"
     }
   }
 
@@ -71,9 +73,9 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
     }
     return(
       <div className="self-stretch relative leading-[22.31px] text-center">
-          <span className="font-medium">
-            <span className="text-18xl-2">Contact us!</span> <br/>
-          </span>
+        <span className="font-medium">
+          <span className="text-18xl-2">Contact us!</span> <br/>
+        </span>
       </div>
     )
   }
@@ -125,11 +127,16 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
   }
 
 
-
+  const loadingContainerStyles = () => {
+    if (loading) {
+      return {opacity: .5}
+    }
+    return undefined
+  }
 
 
   return(
-    <div className="flex-1 rounded-[9.29px] [background:linear-gradient(144.59deg,_#edc4ff,_#c1f7ff)] h-[500px] flex flex-col items-center justify-start p-[30px] box-border gap-[26px] min-w-[390px] max-w-[420px]">
+    <div style={loadingContainerStyles()} className="flex-1 rounded-[9.29px] [background:linear-gradient(144.59deg,_#edc4ff,_#c1f7ff)] h-[500px] flex flex-col items-center justify-start p-[30px] box-border gap-[26px] min-w-[390px] max-w-[420px]">
       <div className="w-[159px] rounded-[27.88px] bg-gray-100 h-[45px] flex flex-row items-center justify-center text-center text-base-7 text-gray-700">
         <div className="flex-1 relative uppercase font-medium">
           {

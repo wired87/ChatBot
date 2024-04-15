@@ -7,6 +7,7 @@ import PriceContainer from "../components/pricing/PriceContainer";
 import {PricingSenderObject} from "../interfaces/PricingInterface";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import {useLoading} from "../hooks/useLoading";
 // TODO BACKEND = IF 0 DAYS -> KILL ALL CHATS LEFT
 
 export interface PriceDataInterface {
@@ -61,6 +62,7 @@ const Pricing: FunctionComponent = () => {
   const [annual, setAnnual] = useState<boolean>(false);
 
   const navigate = useNavigate();
+  const { loading, updateLoading } = useLoading();
 
   const updatePurchaseObject = (name: string, duration: string, planType: string) => {
     setPurchaseObject(
@@ -84,6 +86,7 @@ const Pricing: FunctionComponent = () => {
   }
 
   const responseProcess = async() => {
+    updateLoading();
     try {
 
         const response = await getUrl()
@@ -93,6 +96,8 @@ const Pricing: FunctionComponent = () => {
         console.log("RESPONSE ",response)
     }catch(e){
       console.log("Error:",e)
+    } finally {
+      updateLoading();
     }
   }
 
@@ -140,7 +145,7 @@ const Pricing: FunctionComponent = () => {
 
   const priceContainer = (updatePurchaseObject: (name: string, duration: string, planType: string) => void): ReactNode => {
     return priceData.map((item: PriceDataInterface) => (
-        <PriceContainer item={item} annual={annual} updatePurchaseObject={updatePurchaseObject}/>
+        <PriceContainer item={item} annual={annual} updatePurchaseObject={updatePurchaseObject} loading={loading}/>
     ))
   }
 
