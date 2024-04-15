@@ -37,7 +37,7 @@ const textArray: WhyWe[] = [
       "also even small businesses to explore and integrate the force of AI on their Platforms!",
     btnText: "Check if out!",
     rightSideComp: "",
-    navScreen: "/"
+    navScreen: "/pricing"
   },
 
 ]
