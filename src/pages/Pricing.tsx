@@ -1,4 +1,4 @@
-import {FunctionComponent, useState, useRef, useCallback, useEffect, ReactNode, useContext} from "react";
+import {FunctionComponent, useState, useRef, useCallback, useEffect, ReactNode} from "react";
 import "antd/dist/antd.min.css";
 import Chotbot from "../components/Chotbot";
 import PortalPopup from "../components/PortalPopup";
@@ -8,6 +8,7 @@ import {PricingSenderObject} from "../interfaces/PricingInterface";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useLoading} from "../hooks/useLoading";
+
 // TODO BACKEND = IF 0 DAYS -> KILL ALL CHATS LEFT
 
 export interface PriceDataInterface {

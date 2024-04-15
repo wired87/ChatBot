@@ -2,6 +2,7 @@ import React, {memo, ReactNode, useContext, useEffect, useState} from "react";
 import {MainContext} from "../../Context";
 import {PriceDataInterface} from "../../pages/Pricing";
 import {useNavigate} from "react-router-dom";
+import LoadingIndicator from "../LoadingIndicator";
 
 interface PriceContainerInterface {
   item: PriceDataInterface;
@@ -108,7 +109,7 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
   }
 
   const disablesButtonStyle = () => {
-    if (buttonDisabled) {
+    if (buttonDisabled || loading) {
       return {opacity: .4, color: "rgb(0,0,0)"}
     }
     return {cursor: "pointer"}
@@ -135,6 +136,8 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
   }
 
 
+
+
   return(
     <div style={loadingContainerStyles()} className="flex-1 rounded-[9.29px] [background:linear-gradient(144.59deg,_#edc4ff,_#c1f7ff)] h-[500px] flex flex-col items-center justify-start p-[30px] box-border gap-[26px] min-w-[390px] max-w-[420px]">
       <div className="w-[159px] rounded-[27.88px] bg-gray-100 h-[45px] flex flex-row items-center justify-center text-center text-base-7 text-gray-700">
@@ -158,13 +161,14 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
           annual? "annual" : "monthly",
           item.title
         )}
-        disabled={buttonDisabled}
+        disabled={buttonDisabled || loading}
         style={disablesButtonStyle()}
         className="[border:none] p-0 bg-gray-100 self-stretch rounded-[5.58px] h-[45px] flex flex-row items-center justify-center">
-        <div className="self-stretch flex-1 relative text-mini-9 leading-[22.31px] font-medium font-work-sans text-operator-message-text text-center flex items-center justify-center">
+        <div className="self-stretch flex-1 relative text-mini-9 leading-[22.31px] font-medium font-work-sans text-operator-message-text flex-row text-center flex items-center justify-center">
           {
             getPurchaseButtonText()
           }
+          <LoadingIndicator loading={loading} />
         </div>
       </button>
       {
