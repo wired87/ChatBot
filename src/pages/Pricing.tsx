@@ -23,7 +23,7 @@ const priceData: PriceDataInterface[] = [
     title: "Starter",
     pros: [
       "1 Bot",
-      "750 monthly Chats",
+      "750 monthly Chats*",
     ],
     monthlyPrice: "9€",
     annualPrice: "99€"
@@ -32,7 +32,7 @@ const priceData: PriceDataInterface[] = [
     title: "Basic",
     pros: [
       "2 Bot's",
-      "2000 monthly Chats",
+      "2000 monthly Chats*",
 
     ],
     monthlyPrice: "26€",
@@ -42,7 +42,7 @@ const priceData: PriceDataInterface[] = [
     title: "Premium",
     pros: [
       "5 Bot's",
-      "5000 monthly Chats",
+      "5000 monthly Chats*",
     ],
     monthlyPrice: "54€",
     annualPrice: "549€"
@@ -184,6 +184,7 @@ const Pricing: FunctionComponent = () => {
               )
             }
           </div>
+          <p>* = 1 Chat begins at the first recieved response over a period of 30 minutes till 20 messages.</p>
         </div>
         <div className="self-stretch flex flex-col items-start justify-start text-base text-black font-body-regular-paragraph-small">
           <div className="self-stretch bg-reply-bg overflow-hidden flex flex-row items-center justify-start py-[60px] px-[100px]">
