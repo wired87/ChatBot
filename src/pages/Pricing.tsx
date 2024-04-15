@@ -166,8 +166,8 @@ const Pricing: FunctionComponent = () => {
           </div>
         </section>
         <div className="self-stretch bg-reply-bg flex flex-col items-start justify-start py-[50px] px-[50px] lg:p-16 lg:box-border md:p-8 md:box-border sm:pl-4 sm:pr-4 sm:box-border">
-          <div className="self-stretch flex flex-col items-center justify-start py-[50px] px-0">
-            <div className="rounded-31xl flex flex-row items-center justify-start py-[5px] px-0 gap-[15px]">
+          <div className="self-stretch flex flex-col items-center justify-start px-0">
+            <div className="rounded-31xl flex flex-row items-center justify-start px-0 gap-[15px]">
               <div className="relative leading-[62px] font-medium">Monthly</div>
               <PriceSwitch  enabled={annual} updateEnabled={updatePriceType}/>
               <div className="relative leading-[62px] font-medium">Annual</div>
