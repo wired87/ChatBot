@@ -64,7 +64,7 @@ const Navbar: FunctionComponent<NavbarType> = ({
       <div className="self-stretch flex flex-col items-start justify-start text-center text-12xl text-main-colour font-body-regular-paragraph-small">
         <div className="self-stretch rounded-2xl bg-reply-bg h-[85px] flex flex-row items-center justify-between py-6 px-[60px] box-border md:pl-8 md:pr-8 md:box-border sm:pl-4 sm:pr-4 sm:box-border">
           <div className="flex flex-row items-center justify-start">
-            <div className="relative leading-[120%] font-black">BotWorld</div>
+            <div className="relative [cursor:pointer] leading-[120%] font-black" onClick={() => navigate("/")}>BotWorld</div>
           </div>
           <div className="flex flex-row items-start justify-center py-3 px-0 gap-[40px] md:hidden">
             {
