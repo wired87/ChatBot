@@ -1,11 +1,9 @@
-import {FunctionComponent, useState, useRef, useCallback, useEffect, ReactNode} from "react";
+import {FunctionComponent, useState, ReactNode} from "react";
 import "antd/dist/antd.min.css";
-import Chotbot from "../components/Chotbot";
-import PortalPopup from "../components/PortalPopup";
+
 import {PriceSwitch} from "../components/Switch";
 import PriceContainer from "../components/pricing/PriceContainer";
-import {PricingSenderObject} from "../interfaces/PricingInterface";
-import axios from "axios";
+
 import {useLoading} from "../hooks/useLoading";
 
 // TODO BACKEND = IF 0 DAYS -> KILL ALL CHATS LEFT
@@ -52,61 +50,13 @@ const priceData: PriceDataInterface[] = [
     helpText: "Sent us an E-mail at info@botworld.cloud."
   },
 ]
-const checkEndpoint = "https://wired66.pythonanywhere.com/payment/checkout/"
 const Pricing: FunctionComponent = () => {
-  const intercomRef = useRef<HTMLButtonElement>(null);
-  const [isChotbotPopupOpen, setChotbotPopupOpen] = useState(false);
-
-  const [purchaseObject, setPurchaseObject] = useState<PricingSenderObject | null>(null);
 
   const [annual, setAnnual] = useState<boolean>(false);
 
   const { loading, updateLoading } = useLoading();
 
-  const updatePurchaseObject = (name: string, duration: string, planType: string) => {
-    setPurchaseObject(
-      {
-        name: name,
-        duration: duration,
-        planType: planType,
-      }
-    )
-  }
-  const getUrl = async () => {
-    console.log("sendObject:", purchaseObject)
-    const response = await axios.post(checkEndpoint, JSON.stringify(purchaseObject), {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
 
-    console.log("Check Token Response", response.data);
-    return response.data
-  }
-
-  const responseProcess = async() => {
-    updateLoading(true);
-    try {
-
-        const response = await getUrl()
-        if (response && response.checkout_session_url) {
-          window.open(response.checkout_session_url, /*'_blank'*/);
-        }
-        console.log("RESPONSE ",response)
-    }catch(e){
-      console.log("Error:",e)
-    } finally {
-      updateLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    if (purchaseObject) {
-      responseProcess().then(() => {
-        console.log("Fetching...");
-      })
-    }
-  }, [purchaseObject]);
 
 /*
   const purchaseRequest = () => {
@@ -122,11 +72,7 @@ const Pricing: FunctionComponent = () => {
   }
 
 */
-  useEffect(() => {
-    if ( purchaseObject?.planType && purchaseObject.name && purchaseObject.duration ) {
-      // REQUEST STRIPE SESSION
-    }
-  }, [purchaseObject]);
+
 
 
 
@@ -134,17 +80,10 @@ const Pricing: FunctionComponent = () => {
     setAnnual(!annual);
   }
 
-  const openChotbotPopup = useCallback(() => {
-    setChotbotPopupOpen(true);
-  }, []);
 
-  const closeChotbotPopup = useCallback(() => {
-    setChotbotPopupOpen(false);
-  }, []);
-
-  const priceContainer = (updatePurchaseObject: (name: string, duration: string, planType: string) => void): ReactNode => {
+  const priceContainer = (): ReactNode => {
     return priceData.map((item: PriceDataInterface) => (
-        <PriceContainer item={item} annual={annual} updatePurchaseObject={updatePurchaseObject} loading={loading}/>
+        <PriceContainer item={item} annual={annual} />
     ))
   }
 
@@ -180,123 +119,12 @@ const Pricing: FunctionComponent = () => {
           <div className="self-stretch flex flex-row flex-wrap items-center justify-center gap-[50px] text-mini-9 text-operator-message-text">
             {
               priceContainer(
-                updatePurchaseObject
               )
             }
           </div>
           <p style={{marginTop: 50, opacity: .5, color: "rgb(0,0,0)", fontSize: 16}}>* = 1 Chat begins at the first recieved response over a period of 30 minutes till 20 messages.</p>
         </div>
-        <div className="self-stretch flex flex-col items-start justify-start text-base text-black font-body-regular-paragraph-small">
-          <div className="self-stretch bg-reply-bg overflow-hidden flex flex-row items-center justify-start py-[60px] px-[100px]">
-            <div className="flex-1 flex flex-row flex-wrap items-start justify-start py-5 px-0 gap-[20px_10px]">
-              <div className="flex-1 h-[175px] flex flex-col items-start justify-start gap-[24px] min-w-[220px] text-4xl font-h5">
-                <b className="relative leading-[30px]">Newsletter</b>
-                <div className="self-stretch flex-1 flex flex-col items-start justify-start gap-[36px] text-mini text-dimgray-500 font-body-regular-paragraph-small">
-                  <div className="flex flex-col items-start justify-start">
-                    <div className="w-60 relative leading-[30px] inline-block">
-                      Get timely updates from your favorite products
-                    </div>
-                  </div>
-                  <div className="flex flex-col items-start justify-start text-sm text-black">
-                    <div className="flex flex-row items-center justify-start gap-[12px]">
-                      <img
-                        className="w-6 relative h-6 overflow-hidden shrink-0"
-                        alt=""
-                        src="/mail.svg"
-                      />
-                      <div className="relative leading-[150%]">
-                        ilyas.traikia@yahoo.com
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex-1 h-[175px] flex flex-col items-start justify-start gap-[24px] min-w-[220px]">
-                <b className="self-stretch relative leading-[120%]">Services</b>
-                <div className="self-stretch flex-1 flex flex-col items-start justify-start gap-[16px]">
-                  <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                    Email Marketing
-                  </button>
-                  <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                    Brandings
-                  </button>
-                  <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                    Campaign
-                  </button>
-                  <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                    Offline
-                  </button>
-                </div>
-              </div>
-              <div className="flex-1 h-[175px] flex flex-col items-start justify-start gap-[24px] min-w-[220px]">
-                <b className="self-stretch relative leading-[120%]">About</b>
-                <div className="self-stretch flex flex-col items-start justify-start gap-[16px]">
-
-                </div>
-              </div>
-              <div className="flex-1 h-[175px] flex flex-col items-start justify-start gap-[24px] min-w-[220px]">
-                <b className="self-stretch relative leading-[120%]">Contact</b>
-                <div className="self-stretch flex flex-col items-start justify-start gap-[16px]">
-                  <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                    LinkedIn
-                  </button>
-                </div>
-              </div>
-              <div className="flex-1 h-[175px] flex flex-col items-start justify-start gap-[24px] min-w-[220px]">
-                <b className="self-stretch relative leading-[120%]">Help</b>
-                <div className="self-stretch flex flex-col items-start justify-start gap-[16px]">
-                  <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                    FAQ
-                  </button>
-                  <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                    Contact us
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <button
-            className="cursor-pointer [border:none] p-0 bg-main-colour w-12 rounded-81xl h-12 flex flex-row items-center justify-center" style={{ zIndex: "100", bottom: "60px", right:"20px",position: "fixed",
-          }}
-            onClick={openChotbotPopup}
-          >
-            <img
-              className="w-8 relative h-8 shrink-0 object-cover"
-              alt=""
-              src="/iconlylightoutlinechat@2x.png"
-            />
-          </button>
-          {isChotbotPopupOpen && (
-            <PortalPopup
-              overlayColor="rgba(113, 113, 113, 0.3)"
-              placement="Top right"
-              onOutsideClick={closeChotbotPopup}
-            >
-              <Chotbot onClose={closeChotbotPopup} />
-            </PortalPopup>
-          )}
-          <div className="self-stretch bg-reply-bg overflow-hidden flex flex-row flex-wrap items-center justify-start py-5 px-[100px] gap-[60px] text-sm text-black-75-300">
-            <div className="flex-1 relative leading-[150%] inline-block min-w-[420px]">
-              Copyright© 2024. Stitch Construction. All Right Reserved.
-            </div>
-            <div className="flex flex-row items-center justify-end gap-[36px]">
-              <div className="relative leading-[150%]">Terms of Service</div>
-              <div className="relative leading-[150%]">Privacy Policy</div>
-            </div>
-          </div>
-        </div>
       </div>
-      {isChotbotPopupOpen && (
-        <PortalPopup
-          overlayColor="rgba(113, 113, 113, 0.3)"
-          placement="Top right"
-          relativeLayerRef={intercomRef}
-          onOutsideClick={closeChotbotPopup}
-        >
-          <Chotbot onClose={closeChotbotPopup} />
-        </PortalPopup>
-      )}
     </>
   );
 };
