@@ -48,12 +48,12 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
     if (!annual) {
       return {
         price: item.monthlyPrice,
-        text: "( per month )"
+        text: "monthly"
       }
     }
     return {
       price: item.annualPrice,
-      text: "( annual )"
+      text: "annual "
     }
   }
 
