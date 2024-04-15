@@ -184,7 +184,7 @@ const Pricing: FunctionComponent = () => {
               )
             }
           </div>
-          <p style={{opacity: .5, color: "rgb(0,0,0)", fontSize: 12}}>* = 1 Chat begins at the first recieved response over a period of 30 minutes till 20 messages.</p>
+          <p style={{marginTop: 50, opacity: .5, color: "rgb(0,0,0)", fontSize: 16}}>* = 1 Chat begins at the first recieved response over a period of 30 minutes till 20 messages.</p>
         </div>
         <div className="self-stretch flex flex-col items-start justify-start text-base text-black font-body-regular-paragraph-small">
           <div className="self-stretch bg-reply-bg overflow-hidden flex flex-row items-center justify-start py-[60px] px-[100px]">
