@@ -62,7 +62,6 @@ const Pricing: FunctionComponent = () => {
 
   const [annual, setAnnual] = useState<boolean>(false);
 
-  const navigate = useNavigate();
   const { loading, updateLoading } = useLoading();
 
   const updatePurchaseObject = (name: string, duration: string, planType: string) => {

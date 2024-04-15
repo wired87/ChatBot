@@ -9,10 +9,11 @@ const LoadingIndicator: React.FC<LoadingComp> = (
     loading
   }
 ) => {
-  if (loading) {
-    return <Spinner />
-  }
-  return <></>;
+  return <Spinner
+    color={"rgb(0,0,0)"}
+    size={20}
+    animating={loading}
+  />
 }
 
 export default memo(LoadingIndicator);
