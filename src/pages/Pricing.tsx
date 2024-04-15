@@ -87,8 +87,9 @@ const Pricing: FunctionComponent = () => {
     try {
 
         const response = await getUrl()
-
-        navigate(response.checkout_session_url)
+        if (response && response.checkout_session_url) {
+          window.open(response.checkout_session_url, '_blank');
+        }
         console.log("RESPONSE ",response)
     }catch(e){
       console.log("Error:",e)
