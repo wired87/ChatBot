@@ -92,7 +92,7 @@ const Pricing: FunctionComponent = () => {
 
         const response = await getUrl()
         if (response && response.checkout_session_url) {
-          window.open(response.checkout_session_url, '_blank');
+          window.open(response.checkout_session_url, /*'_blank'*/);
         }
         console.log("RESPONSE ",response)
     }catch(e){
