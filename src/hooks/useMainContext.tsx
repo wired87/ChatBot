@@ -15,7 +15,7 @@ const MainContextProvider: React.FC<MainContextProviderInterface> = (
   }
 ) => {
   const {jwtToken, setJwtToken,updateJwtToken} = useJwt();
-  const {loading, setLoading} = useLoading();
+  const {loading, updateLoading} = useLoading();
 
   const {upperLinkBarVisible, setUpperLinkBarVisible, updateLinkBarVisible} = useUpperLinkBarVisible();
   const {show, setShow, updateShow} = useShowModal();
@@ -43,7 +43,7 @@ const MainContextProvider: React.FC<MainContextProviderInterface> = (
       return;
     }
 
-    setLoading(true);
+    updateLoading(true);
     setError("");
 
     let response;
@@ -107,7 +107,7 @@ const MainContextProvider: React.FC<MainContextProviderInterface> = (
       }
     } finally {
       console.log("Application request finished...");
-      setLoading(false);
+      updateLoading(false);
     }
   }, [jwtToken, user]);
 
@@ -119,7 +119,8 @@ const MainContextProvider: React.FC<MainContextProviderInterface> = (
     user,
     updateUser,
     upperLinkBarVisible, updateLinkBarVisible,
-    show, updateShow,defaultPostRequest
+    show, updateShow,defaultPostRequest,
+    loading, updateLoading
   }
 
 

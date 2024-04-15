@@ -1,5 +1,5 @@
 import { Spinner } from "react-activity";
-import React, {memo, ReactNode} from "react";
+import React, {memo} from "react";
 
 interface LoadingComp {
   loading: boolean

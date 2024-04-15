@@ -5,7 +5,6 @@ import PortalPopup from "../components/PortalPopup";
 import {PriceSwitch} from "../components/Switch";
 import PriceContainer from "../components/pricing/PriceContainer";
 import {PricingSenderObject} from "../interfaces/PricingInterface";
-import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useLoading} from "../hooks/useLoading";
 
@@ -86,7 +85,7 @@ const Pricing: FunctionComponent = () => {
   }
 
   const responseProcess = async() => {
-    updateLoading();
+    updateLoading(true);
     try {
 
         const response = await getUrl()
@@ -97,7 +96,7 @@ const Pricing: FunctionComponent = () => {
     }catch(e){
       console.log("Error:",e)
     } finally {
-      updateLoading();
+      updateLoading(false);
     }
   }
 

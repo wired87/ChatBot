@@ -7,6 +7,9 @@ export const MainContext = createContext(
     updateUser: ((value:UserInterface | null) => {}),
     checkSessionData: () => {},
 
+    loading: false,
+    updateLoading: (value:boolean) => {},
+
     upperLinkBarVisible: true,
     updateLinkBarVisible: (value:boolean) => {},
 

@@ -164,12 +164,12 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
         disabled={buttonDisabled || loading}
         style={disablesButtonStyle()}
         className="[border:none] p-0 bg-gray-100 self-stretch rounded-[5.58px] h-[45px] flex flex-row items-center justify-center">
-        <div className="self-stretch flex-1 relative text-mini-9 leading-[22.31px] font-medium font-work-sans text-operator-message-text flex-row text-center flex items-center justify-center">
+        <div className="self-stretch flex-1 relative text-mini-9 leading-[22.31px] font-medium font-work-sans text-operator-message-text text-center flex items-center justify-center">
           {
             getPurchaseButtonText()
           }
-          <LoadingIndicator loading={loading} />
         </div>
+        <LoadingIndicator loading={loading} />
       </button>
       {
         listElements ?
