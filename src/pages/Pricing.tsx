@@ -152,14 +152,12 @@ const Pricing: FunctionComponent = () => {
           <div className="flex-1 h-[412px] flex flex-col items-start justify-center py-6 px-[60px] box-border md:pl-8 md:pr-8 md:box-border sm:pl-4 sm:pr-4 sm:box-border">
             <div className="self-stretch flex-1 flex flex-col items-start justify-center py-6 px-[60px]">
               <div className="self-stretch flex flex-col items-center justify-end py-5 px-0 gap-[30px]">
-                <div className="self-stretch relative leading-[62px] font-medium">
-                  Professional Plans
-                </div>
+
                 <div className="self-stretch flex flex-row flex-wrap items-end justify-center text-21xl">
                   <div className="flex-1 flex flex-row items-end justify-center min-w-[380px]">
                     <div className="flex-1 relative leading-[50px] font-medium">
                       <p className="m-0">Choose the</p>
-                      <p className="m-0">best plan for you.</p>
+                      <p className="m-0">best plan for you and your business.</p>
                     </div>
                   </div>
                 </div>
@@ -167,7 +165,7 @@ const Pricing: FunctionComponent = () => {
             </div>
           </div>
         </section>
-        <div className="self-stretch bg-reply-bg flex flex-col items-start justify-start py-[100px] px-[50px] lg:p-16 lg:box-border md:p-8 md:box-border sm:pl-4 sm:pr-4 sm:box-border">
+        <div className="self-stretch bg-reply-bg flex flex-col items-start justify-start py-[50px] px-[50px] lg:p-16 lg:box-border md:p-8 md:box-border sm:pl-4 sm:pr-4 sm:box-border">
           <div className="self-stretch flex flex-col items-center justify-start py-[50px] px-0">
             <div className="rounded-31xl flex flex-row items-center justify-start py-[5px] px-0 gap-[15px]">
               <div className="relative leading-[62px] font-medium">Monthly</div>
