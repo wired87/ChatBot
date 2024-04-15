@@ -51,7 +51,7 @@ const priceData: PriceDataInterface[] = [
     helpText: "Sent us an E-mail at info@botworld.cloud."
   },
 ]
-const checkEndpoint = "https://wired66.pythonanywhere.com/payment/checkout"
+const checkEndpoint = "https://wired66.pythonanywhere.com/payment/checkout/"
 const Pricing: FunctionComponent = () => {
   const intercomRef = useRef<HTMLButtonElement>(null);
   const [isChotbotPopupOpen, setChotbotPopupOpen] = useState(false);
