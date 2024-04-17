@@ -1,8 +1,10 @@
-import { FunctionComponent, useState, useCallback } from "react";
+import {FunctionComponent, useState, useCallback, useContext, Dispatch, SetStateAction} from "react";
 import MenuDrower from "./MenuDrower";
 import PortalDrawer from "./PortalDrawer";
 import {useNavigate} from "react-router-dom";
 import {NavbarHook} from "../interfaces/navbarHook";
+import {MainContext} from "../Context";
+
 export type NavbarType = {
   vector?: string;
 };
@@ -27,8 +29,6 @@ const buttonValueArray: NavbarHook[] = [
 ]
 
 
-
-
 const Navbar: FunctionComponent<NavbarType> = ({
   vector,
 }) => {
@@ -42,8 +42,9 @@ const Navbar: FunctionComponent<NavbarType> = ({
     setMenuDrowerOpen(false);
   }, []);
 
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
+  const { user } = useContext(MainContext);
   const buttonLine = () => {
     return buttonValueArray.map((item: any) => (
       <button
@@ -59,6 +60,12 @@ const Navbar: FunctionComponent<NavbarType> = ({
   }
 
 
+  const getStartedRedirect = () => {
+    if (user && user?.auth?.uid) {
+      return "/dashboard"
+    }
+    return "/login"
+  }
   return (
     <>
       <div className="self-stretch flex flex-col items-start justify-start text-center text-12xl text-main-colour font-body-regular-paragraph-small">
@@ -71,30 +78,16 @@ const Navbar: FunctionComponent<NavbarType> = ({
               buttonLine()
             }
           </div>
-          <div className="flex flex-row items-center justify-start gap-[16px] md:hidden">
-            <button className="cursor-pointer [border:none] p-0 bg-[transparent] flex flex-row items-start justify-start gap-[10px]">
-              <img className="w-[21px] relative h-[21px]" alt="" src={vector} />
-              <b className="w-2.5 relative text-base leading-[150%] uppercase hidden font-body-regular-paragraph-small text-operator-message-text text-center">
-                T
-              </b>
+
+          <div className="flex flex-row items-center justify-start gap-[16px] md:hidden" >
+            <button
+              className="cursor-pointer [border:none] p-0 bg-[transparent] flex flex-col items-center justify-start"
+              onClick={getStartedRedirect}>
+              <div className="relative text-base leading-[150%] uppercase font-medium font-body-regular-paragraph-small
+              text-main-colour text-center">
+                Get started!
+              </div>
             </button>
-            <button className="cursor-pointer [border:none] p-0 bg-[transparent] overflow-hidden hidden flex-row items-start justify-start gap-[10px]">
-              <b className="w-2.5 relative text-base leading-[150%] uppercase hidden font-body-regular-paragraph-small text-operator-message-text text-center">
-                T
-              </b>
-              <img
-                className="w-[21px] relative h-[21px]"
-                alt=""
-                src="/vector2.svg"
-              />
-            </button>
-            <div className="w-6 relative h-6">
-              <img
-                className="absolute h-[77.08%] w-[70.83%] top-[11.67%] right-[13.33%] bottom-[11.25%] left-[15.83%] max-w-full overflow-hidden max-h-full object-cover"
-                alt=""
-                src="/login@2x.png"
-              />
-            </div>
           </div>
           <div
             className="h-8 w-8 overflow-hidden shrink-0 hidden flex-row items-center justify-center cursor-pointer md:flex"
@@ -110,7 +103,10 @@ const Navbar: FunctionComponent<NavbarType> = ({
           placement="Right"
           onOutsideClick={closeMenuDrower}
         >
-          <MenuDrower onClose={closeMenuDrower} />
+          <MenuDrower
+            onClose={closeMenuDrower}
+            buttonLine={buttonLine}
+          />
         </PortalDrawer>
       )}
     </>

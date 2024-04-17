@@ -22,6 +22,5 @@ export const MainContext = createContext(
       setError: Dispatch<SetStateAction<string>>,
       setResponse: Dispatch<SetStateAction<any>>,
       setStatus?: Dispatch<SetStateAction<number>>,
-      toolAction?:boolean
     ) => Promise<any>,
   });

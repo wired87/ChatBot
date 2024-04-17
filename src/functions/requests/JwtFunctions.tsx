@@ -9,7 +9,7 @@ const getEndpoint: string = process.env.REACT_APP_JWT_REFRESH_ENDPOINT!;
 
 
 /////////////// CHECK GET SET JWT /////////////
-export const checkTokenAvailability = (): Promise<JwtToken | null> | void => { // TODO REWORK WITH LOCAL SESSION
+export const checkTokenAvailability = (): Promise<JwtToken | null> | void => {
   try {
     const jwtToken = localStorage.getItem('JwtData');
     if (jwtToken) {
@@ -130,34 +130,38 @@ export const getTokenInfoData = (jwtToken: JwtToken) => {
   const accessToken = jwtToken.access;
 
   // get th encoded data
-  const refreshPayload = refreshToken.split('.')[1];
-  const accessPayload = accessToken.split('.')[1];
-
-  // decode the token strings
-  const decodedRefreshPayload = Buffer.from(refreshPayload, 'base64').toString();
-  const decodedAccessPayload = Buffer.from(accessPayload, 'base64').toString();
+  const refreshPayload = refreshToken?.split('.')[1];
+  const accessPayload = accessToken?.split('.')[1];
 
 
-  // transform Token back to Json
-  const refreshTokenData = JSON.parse(decodedRefreshPayload);
-  const accessTokenData = JSON.parse(decodedAccessPayload);
+  if ( refreshPayload && accessPayload ) {
+    // decode the token strings
+    const decodedRefreshPayload = Buffer.from(refreshPayload, 'base64').toString();
+    const decodedAccessPayload = Buffer.from(accessPayload, 'base64').toString();
 
 
-  // check if Tokens are expired
-  const currentDate = new Date();
-  const refreshExpirationDate = new Date(refreshTokenData.exp * 1000);
-  const accessExpirationDate = new Date(accessTokenData.exp * 1000);
+    // transform Token back to Json
+    const refreshTokenData = JSON.parse(decodedRefreshPayload);
+    const accessTokenData = JSON.parse(decodedAccessPayload);
 
 
-  const refreshExpired= currentDate > refreshExpirationDate;
-  const accessExpired= currentDate > accessExpirationDate;
+    // check if Tokens are expired
+    const currentDate = new Date();
+    const refreshExpirationDate = new Date(refreshTokenData.exp * 1000);
+    const accessExpirationDate = new Date(accessTokenData.exp * 1000);
 
 
-  return {
-    "refreshTokenData": refreshTokenData,
-    "accessTokenData": accessTokenData,
-    "refreshExp": refreshExpired,
-    "accessExp": accessExpired,
+    const refreshExpired= currentDate > refreshExpirationDate;
+    const accessExpired= currentDate > accessExpirationDate;
+
+
+    return {
+      "refreshTokenData": refreshTokenData,
+      "accessTokenData": accessTokenData,
+      "refreshExp": refreshExpired,
+      "accessExp": accessExpired,
+    }
   }
+
 }
 

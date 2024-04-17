@@ -12,8 +12,14 @@ interface PlanInterface {
   chatsLeft?: string;
 }
 
-export interface UserInterface {
+export interface Auth {
+  access?: string;
+  refresh?: string;
   uid?: string;
+}
+
+export interface UserInterface {
   bots?: BotData[];
   plan?: PlanInterface;
+  auth?: Auth;
 }

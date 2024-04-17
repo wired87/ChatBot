@@ -48,10 +48,10 @@ const WhyWeComp: React.FC = () => {
 
   const Content = useMemo(() => {
     return textArray.map((item: WhyWe) => (
-        <div className="[border:none] p-2.5 bg-gray-200 flex-1 rounded-xl flex flex-row items-start justify-start box-border gap-[10px] min-w-[580px] sm:flex-1 sm:flex-row sm:min-w-[400px]">
-          <div className="border-amber-800 p-2.5 bg-gray-200 flex-1 rounded-xl flex flex-row items-start justify-start box-border min-w-[600px]">
+        <div style={{backgroundColor: "rgba(0,0,0,0.66)"}} className="[border:none] p-2.5 flex-1 rounded-xl flex flex-row items-start justify-start box-border gap-[10px] min-w-[580px] sm:flex-1 sm:flex-row sm:min-w-[400px]">
+          <div style={{backgroundColor: "rgba(0,0,0,0.66)"}} className="border-amber-800 p-2.5 bg-gray-200 flex-1 rounded-xl flex flex-row items-start justify-start box-border min-w-[600px]">
             <div className="self-stretch w-[820px] flex flex-col items-start justify-center py-0 px-2.5 box-border gap-[18px]">
-              <div className="w-20 rounded-81xl shadow-[0px_0px_14px_rgba(0,_0,_0,_0.12)] box-border h-20 flex flex-row items-center justify-center border-[1px] border-solid border-main-colour">
+              <div  style={{backgroundColor: "white"}} className="w-20 rounded-81xl shadow-[0px_0px_14px_rgba(0,_0,_0,_0.12)] box-border h-20 flex flex-row items-center justify-center border-[1px] border-solid border-main-colour">
                 <div className="flex flex-row items-center justify-center p-[5px]">
                   <img
                     className="w-[30px] relative h-[30px]"
@@ -61,13 +61,13 @@ const WhyWeComp: React.FC = () => {
                 </div>
               </div>
               <div className="flex flex-col items-start justify-start">
-                <div className="relative text-base uppercase font-semibold font-manrope text-gray-500 text-left">
+                <div className="relative text-base uppercase font-semibold font-manrope text-white text-left">
                   {
                     item.title
                   }
                 </div>
               </div>
-              <div className="self-stretch relative text-base leading-[26px] font-manrope text-gray-500 text-left">
+              <div className="self-stretch relative text-base leading-[26px] font-manrope text-white text-left">
                 {
                   item.text
                 }

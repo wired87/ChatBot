@@ -55,7 +55,7 @@ const getAnswer = async (chain: RetrievalQAChain, input: string) => {
     }
   }
 }
-export const prepareDatasetObject = async (datasetId: string, updateChainObject: (cain: RetrievalQAChain | null) => void) => {
+export const prepareDatasetObject = async (datasetId: string, updateChainObject: (chain: RetrievalQAChain | null) => void) => {
   try {
     console.log("Prepare DS ID...")
     const splitter = getSplitter();

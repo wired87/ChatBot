@@ -1,4 +1,4 @@
-import {FunctionComponent, useCallback, useContext, useState} from "react";
+import {FunctionComponent, useContext} from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -13,21 +13,10 @@ const Home: FunctionComponent = () => {
 
   const { user, updateUser } = useContext(MainContext)
 
-  const [isChotbotPopupOpen, setChotbotPopupOpen] = useState(false);
-
-  const openChotbotPopup = useCallback(() => {
-    setChotbotPopupOpen(true);
-  }, []);
-
-  const closeChotbotPopup = useCallback(() => {
-    setChotbotPopupOpen(false);
-  }, []);
-
-  
   const navigate = useNavigate();
 
   const getStartedRedirect = () => {
-    if (user && user.uid) {
+    if (user && user?.auth?.uid) {
       return "/dashboard"
     }
     return "/login"

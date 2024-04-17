@@ -22,7 +22,6 @@ function App() {
   const location = useLocation();
   const pathname = location.pathname;
 
-
   const { checkSessionData } = useContext(MainContext)
 
   useEffect(() => {
@@ -37,31 +36,19 @@ function App() {
 
     switch (pathname) {
       case "/":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/shop-page":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/shoping-cart":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/purchase-page":
-        title = "";
+        title = "Home";
         metaDescription = "";
         break;
       case "/contact-us":
-        title = "";
+        title = "Contact";
         metaDescription = "";
         break;
       case "/demo-page":
-        title = "";
+        title = "Demo";
         metaDescription = "";
         break;
       case "/pricing":
-        title = "";
+        title = "Prices";
         metaDescription = "";
         break;
     }

@@ -6,6 +6,10 @@ export const useUser = () => {
 
   const updateUser = (value: UserInterface | null) => setUser(value);
 
+
+
+
+
   const checkSessionData = () => {
     const userSessionData = sessionStorage.getItem('user');
     if (userSessionData) {

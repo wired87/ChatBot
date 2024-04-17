@@ -100,7 +100,8 @@ const Pricing: FunctionComponent = () => {
                   <div className="flex-1 flex flex-row items-end justify-center min-w-[380px]">
                     <div className="flex-1 relative leading-[50px] font-medium">
                       <p className="m-0">Choose the</p>
-                      <p className="m-0">best plan for you and your business.</p>
+                      <p className="m-0">best plan for you </p>
+                      <p className="m-0">and your business.</p>
                     </div>
                   </div>
                 </div>

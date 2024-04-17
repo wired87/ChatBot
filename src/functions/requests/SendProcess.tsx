@@ -1,6 +1,7 @@
 import {Dispatch, SetStateAction} from "react";
 import {JwtToken} from "../../hooks/useJwt";
 import {checkExistingToken, getNewTokenProcess, getTokenInfoData} from "./JwtFunctions";
+import {errorCodes} from "../../errorCodes";
 
 
 
@@ -17,7 +18,7 @@ export const getCurrentTime = () => {
 }
 
 export const postMessageObject = async (
-  jwtToken: string,
+  jwtToken: string | undefined,
   senderObject: any,
   postUrl: string,
   options: any
@@ -40,14 +41,11 @@ export const postMessageObject = async (
       signal: controller.signal
     });
     clearTimeout(id);
-    let data;
-    try {
-      data = await response?.json();
-      console.log("Data postMessageObject:", data);
-      return data;
-    }catch {
-      return null;
-    }
+
+    const data = await response?.json();
+    console.log("Data postMessageObject:", data);
+    return data;
+
   } catch (e: unknown) {
     clearTimeout(id);
     console.log("Error in postMessageObject:", e);
@@ -58,41 +56,14 @@ export const postMessageObject = async (
 export const sendObject = async (
   senderObject: any,
   jwtToken: JwtToken,
-  setJwtToken: Dispatch<SetStateAction<JwtToken | null>>,
-  userID:string,
   customPostUrl: string,
 ) => {
 
-  // CHECK TOKEN DATA FOR EXP
-  const jwtTokenData = getTokenInfoData(jwtToken)
-  if (jwtTokenData.refreshExp) {
-    console.log("REFRESH Token expired. Creating a new one...");
-    const newTokenObject = await getNewTokenProcess(setJwtToken);
-    if (!newTokenObject) {
-      console.log("Could not create a new Token Object..");
-      return null;
-    }
-    console.log("New Token Object created:", newTokenObject);
-    console.log("sendObject jwtToken.access old State:", jwtToken.access);
-    jwtToken.access = newTokenObject.access;
-
-  }else if(jwtTokenData.accessExp) {
-    console.log("ACCESS Token expired. Creating a new one...");
-    const newTokenObject = await checkExistingToken(jwtToken, setJwtToken, userID);
-    if (!newTokenObject) {
-      console.log("Could not create a new ACCESS Token..");
-      return null;
-    }
-    console.log("New Token Object created:", newTokenObject);
-    console.log("sendObject jwtToken.access old State:", jwtToken.access);
-    jwtToken.access = newTokenObject.access;
-  }
   // POST THE MESSAGE
   try {
     console.log("Create the post Object with accessToken:", jwtToken.access)
-    console.log("upload Type:", senderObject.type, senderObject.input_type);
     const response = await postMessageObject(
-        jwtToken.access,
+        jwtToken?.access,
         senderObject,
         customPostUrl,
         {
@@ -103,31 +74,14 @@ export const sendObject = async (
     console.log("sendObject res ===", response)
     if (!response) {
       return null;
-    }else if (response.detail){ // if something went wrong . . .
-      const checkTokenAgain = await checkExistingToken(jwtToken, setJwtToken, userID);
-      if (!checkTokenAgain) {
-        console.log("Could not receive a valid Token postMessageObject...")
-        return null;
-      }else {
-        console.log("TRY AGAIN TO SEND THE MESSAGE WITH UPDATED TOKEN:", checkTokenAgain);
-        const response = await postMessageObject(
-          checkTokenAgain.access,
-          senderObject,
-          customPostUrl,
-          {
-            timeout: 20000
-          }
-        );
-        if (!response || response.detail) {
-          return;
-        }else{
-          return response;
-        }
-      }
+    }else if (response.status_code == 200) {
+      // Success
+      console.log("Response", response);
+      return response;
+    } else if (errorCodes.includes(response.status_code)){
+      // ERROR HANDLING
+
     }
-    // Success
-    console.log("Response", response);
-    return response;
 
   }catch(e) {
     console.error('Error in "sendObject":', e)
@@ -135,27 +89,40 @@ export const sendObject = async (
   }
 }
 
+const errorHandling = (status_code: number) => {
+  if ( status_code == 401) {
+    // Authentication error
 
-export const createMessageObject = (
-  input: string,
-  type: string,
-  messageIndex: string | number,
-  user: string,
-  publisher: string,
-  className: string
-) => {
+  } else if ( status_code == 401) {
 
-  return(
-    {
-      "id": messageIndex ,
-      "message": input,
-      "timeToken": getCurrentTime(),
-      "publisher": publisher,
-      "class": className,
-      "user_id": user,
-      "type": type
-    }
-  );
+  }else if ( status_code == 401) {
+
+  }else if ( status_code == 401) {
+
+  }else if ( status_code == 401) {
+
+  }else if ( status_code == 401) {
+
+  }else if ( status_code == 401) {
+
+  }else if ( status_code == 401) {
+
+  }else if ( status_code == 401) {
+
+  }else if ( status_code == 401) {
+
+  }else if ( status_code == 401) {
+
+  }else if ( status_code == 401) {
+
+  }}
+
+
+const authErrorHandling = (status_code: number, navigate: any) => {
+  if ( status_code == 401) {
+    // Authentication error
+    navigate("/login") // todo
+  } else if ( status_code == 429) {
+    // Too many tries
+  }
 }
-
-
