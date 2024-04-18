@@ -6,6 +6,24 @@ export const useUser = () => {
 
   const updateUser = (value: UserInterface | null) => setUser(value);
 
+  const checkUserAvailability = (): Promise<UserInterface | null> | void => {
+    try {
+      const user = localStorage.getItem('user');
+      if (user) {
+        console.log("Token available:", user);
+        return JSON.parse(user);
+      }
+    }catch(e: unknown){
+      if (e instanceof Error)
+        console.error("Could not get the JwtToken from SecureStore:", e);
+    }
+  }
+
+  const saveUser = async (data: UserInterface) => {
+    const jsonData = JSON.stringify(data);
+    console.log("Data saved in Secure Store...");
+    sessionStorage.setItem('user', jsonData);
+  }
 
 
 
@@ -26,7 +44,9 @@ export const useUser = () => {
   return {
     checkSessionData,
     user,
-    updateUser
+    updateUser,
+    saveUser,
+    checkUserAvailability
   }
 
 }

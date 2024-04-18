@@ -1,4 +1,4 @@
-import {FunctionComponent, useState, useCallback, useContext, Dispatch, SetStateAction} from "react";
+import {FunctionComponent, useState, useCallback, useContext} from "react";
 import MenuDrower from "./MenuDrower";
 import PortalDrawer from "./PortalDrawer";
 import {useNavigate} from "react-router-dom";
@@ -19,8 +19,8 @@ const buttonValueArray: NavbarHook[] = [
     screen: "/demo",
   },
   {
-    title: "Contact",
-    screen: "/contact-us",
+    title: "Platforms",
+    screen: "/supported-platforms",
   },
   {
     title: "Pricing",
@@ -29,9 +29,7 @@ const buttonValueArray: NavbarHook[] = [
 ]
 
 
-const Navbar: FunctionComponent<NavbarType> = ({
-  vector,
-}) => {
+const Navbar: FunctionComponent<NavbarType> = () => {
   const [isMenuDrowerOpen, setMenuDrowerOpen] = useState(false);
 
   const openMenuDrower = useCallback(() => {

@@ -1,6 +1,5 @@
 import { FunctionComponent, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
 
 const ShopingCart: FunctionComponent = () => {
   const navigate = useNavigate();
@@ -291,7 +290,7 @@ const ShopingCart: FunctionComponent = () => {
                   Instagram
                 </button>
                 <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                  LinkedIn
+                  aedIn
                 </button>
               </div>
             </div>

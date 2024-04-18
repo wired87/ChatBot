@@ -9,13 +9,22 @@ import Home from "./pages/Home";
 import ShopPage from "./pages/ShopPage";
 import ShopingCart from "./pages/ShopingCart";
 import PurchasePage from "./pages/PurchasePage";
-import ContactUs from "./pages/ContactUs";
 import DemoPage from "./pages/DemoPage";
 import Pricing from "./pages/Pricing";
 import MainContextProvider from "./hooks/useMainContext";
 import {MainContext} from "./Context";
 import Navbar from "./components/Navbar";
 import {Footer} from "./components/Footer";
+import Platforms from "./pages/Platforms";
+import Guide from "./pages/guides/shopify";
+import {shopifyGuideList} from "./img_exports/shoipifyImg";
+import {wixGuideList} from "./img_exports/wixImg";
+import {wPGuideList} from "./img_exports/wPImg";
+import {sqSGuideList} from "./img_exports/squareImg";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Auth from "./pages/auth/Login";
+
+
 
 function App() {
   const action = useNavigationType();
@@ -78,12 +87,23 @@ function App() {
       <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+
+          <Route path="/register" element={<Auth login={false}/>} />
+          <Route path="/login" element={<Auth login={true} />} />
+
+
           <Route path="/shop-page" element={<ShopPage />} />
           <Route path="/shoping-cart" element={<ShopingCart />} />
           <Route path="/purchase-page" element={<PurchasePage />} />
-          <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/demo" element={<DemoPage />} />
           <Route path="/pricing" element={<Pricing />} />
+
+          <Route path="/supported-platforms" element={<Platforms />} />
+          <Route path="/supported-platforms/guides/shopify" element={<Guide title={"Shopify"} itemList={shopifyGuideList} />} />
+          <Route path="/supported-platforms/guides/wix" element={<Guide title={"Wix"} itemList={wixGuideList} />} />
+          <Route path="/supported-platforms/guides/wordpress" element={<Guide title={"WordPress"} itemList={wPGuideList} />} />
+          <Route path="/supported-platforms/guides/squarespace" element={<Guide title={"Squarespace"} itemList={sqSGuideList} />} />
         </Routes>
       <Footer />
     </MainContextProvider>

@@ -28,6 +28,11 @@ export const saveJwtToken = async (data: JwtToken) => {
   sessionStorage.setItem('JwtData', jsonData);
 }
 
+
+
+
+
+
 export const getToken = async (updateJwtToken: (value:JwtToken | null) => void, userID?:string) => {
   console.log("Try get Token...")
   const userJwtTokenExist = await checkTokenAvailability();

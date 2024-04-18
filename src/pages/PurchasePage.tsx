@@ -1,8 +1,7 @@
 import { FunctionComponent, useState, useCallback } from "react";
 import Chotbot from "../components/Chotbot";
 import PortalPopup from "../components/PortalPopup";
-import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
+
 
 const PurchasePage: FunctionComponent = () => {
   const [isChotbotPopupOpen, setChotbotPopupOpen] = useState(false);
@@ -403,7 +402,7 @@ const PurchasePage: FunctionComponent = () => {
                     Instagram
                   </button>
                   <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                    LinkedIn
+                    aedIn
                   </button>
                 </div>
               </div>
