@@ -21,7 +21,6 @@ import {wPGuideList} from "./img_exports/wPImg";
 import {sqSGuideList} from "./img_exports/squareImg";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Auth from "./pages/auth/Login";
-import ProtectedRoutes from "./routes/ProtectedRoutes";
 
 
 
@@ -86,11 +85,9 @@ function App() {
       <MainContextProvider>
         <Navbar />
           <Routes>
-            <Route path="/" element={<ProtectedRoutes />}>
-              <Route path="/dashboard" element={<Dashboard />} />
-            </Route>
-            <Route path="/" element={<Home />} />
 
+            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/register" element={<Auth login={false}/>} />
             <Route path="/login" element={<Auth login={true} />} />
 
@@ -98,10 +95,10 @@ function App() {
             <Route path="/pricing" element={<Pricing />} />
 
             <Route path="/supported-platforms" element={<Platforms />} >
-              <Route path="/shopify" element={<Guide title={"Shopify"} itemList={shopifyGuideList} />} />
-              <Route path="/wix" element={<Guide title={"Wix"} itemList={wixGuideList} />} />
-              <Route path="/wordpress" element={<Guide title={"WordPress"} itemList={wPGuideList} />} />
-              <Route path="/squarespace" element={<Guide title={"Squarespace"} itemList={sqSGuideList} />} />
+              <Route path="/supported-platforms/shopify" element={<Guide title={"Shopify"} itemList={shopifyGuideList} />} />
+              <Route path="/supported-platforms/wix" element={<Guide title={"Wix"} itemList={wixGuideList} />} />
+              <Route path="/supported-platforms/wordpress" element={<Guide title={"WordPress"} itemList={wPGuideList} />} />
+              <Route path="/supported-platforms/squarespace" element={<Guide title={"Squarespace"} itemList={sqSGuideList} />} />
             </Route>
           </Routes>
         <Footer />
