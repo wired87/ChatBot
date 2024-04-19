@@ -22,7 +22,7 @@ const Dashboard = () => {
     try {
       const localUser = checkUserAvailability();
       if ( localUser && localUser.auth && localUser.auth.uid ) {
-        await getDashboard(localUser?.auth?.uid, localUser)
+        await getDashboard(localUser)
       } else {
         navigate("/login");
       }
@@ -38,15 +38,15 @@ const Dashboard = () => {
 
 
 
-  const getDashboard = async (id: string, localUser: UserInterface) => {
+  const getDashboard = async (localUser: UserInterface) => {
     let newUser = localUser;
     console.log("Current user:", newUser);
 
     try {
       const res = await axios.post(
-        "http://wired66.pythonanywhere.com/dashboard/info/",
+        "https://wired66.pythonanywhere.com/dashboard/info/",
         {
-          user_id: id,
+          user_id: localUser?.auth?.uid
         }
       );
       console.log(res);
