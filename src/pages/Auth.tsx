@@ -107,7 +107,10 @@ const Auth: React.FC<AuthTypes> = (
   const Content = () => {
     if (loading) {
       return(
-        <LoadingIndicator size={50} loading={loading} />
+        <div className={"flex flex-1 justify-center items-center"}>
+          <LoadingIndicator size={50} loading={loading} />
+        </div>
+
       )
     }
     return(
