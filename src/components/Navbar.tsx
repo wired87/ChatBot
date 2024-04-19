@@ -80,7 +80,7 @@ const Navbar: FunctionComponent<NavbarType> = () => {
           <div className="flex flex-row items-center justify-start gap-[16px] md:hidden" >
             <button
               className="cursor-pointer [border:none] p-0 bg-[transparent] flex flex-col items-center justify-start"
-              onClick={getStartedRedirect}>
+              onClick={() => navigate(getStartedRedirect())}>
               <div className="relative text-base leading-[150%] uppercase font-medium font-body-regular-paragraph-small
               text-main-colour text-center">
                 Get started!

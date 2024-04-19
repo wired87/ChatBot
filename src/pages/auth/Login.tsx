@@ -45,9 +45,7 @@ const Auth: React.FC<AuthTypes> = (
           },
         }
         await saveUser(userModel)
-        sessionStorage.setItem("refresh_token", res.data.refresh);
-        sessionStorage.setItem("access_token", res.data.access);
-        console.log("Session info stored in sessionStorage");
+        console.log("Session info stored...");
         setError(res.data.message);
         navigate("/dashboard");
       }
@@ -62,7 +60,7 @@ const Auth: React.FC<AuthTypes> = (
   };
 
   return (
-    <>
+
       <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
@@ -156,7 +154,7 @@ const Auth: React.FC<AuthTypes> = (
           </p>
         </div>
       </div>
-    </>
+
   );
 }
 
