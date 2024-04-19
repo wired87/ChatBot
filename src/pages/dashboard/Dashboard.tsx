@@ -20,11 +20,11 @@ const Dashboard = () => {
   const setUserData = async (): Promise<void> => {
     setLoading(true);
     try {
-      const localUser = await checkUserAvailability();
+      const localUser = checkUserAvailability();
       if ( localUser && localUser.auth && localUser.auth.uid ) {
         await getDashboard(localUser?.auth?.uid, localUser)
       } else {
-        navigate("/login")
+        navigate("/login");
       }
     } catch(e:unknown) {
       if ( e instanceof Error) {
