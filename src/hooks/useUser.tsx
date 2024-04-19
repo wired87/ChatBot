@@ -10,9 +10,10 @@ export const useUser = () => {
     try {
       const user = localStorage.getItem('user');
       if (user) {
-        console.log("Token available:", user);
+        console.log("User available:", user);
         return JSON.parse(user);
       }
+      console.log("No user in local Storage found...")
     }catch(e: unknown){
       if (e instanceof Error)
         console.error("Could not get the JwtToken from SecureStore:", e);
