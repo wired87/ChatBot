@@ -1,4 +1,4 @@
-import React, {memo, useState} from "react";
+import React, {memo, useEffect, useState} from "react";
 import axios from "axios";
 //
 import { useNavigate } from "react-router-dom";
@@ -18,13 +18,22 @@ const Auth: React.FC<AuthTypes> = (
   }
 ) => {
   const navigate = useNavigate();
-  const { saveUser} = useUser();
+  const { saveUser, checkUserAvailability} = useUser();
   const [loading, setLoading] = useState(false);
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
   });
   const [error, setError] = useState("");
+
+
+  useEffect(() => {
+    const user = checkUserAvailability();
+    if ( user ) {
+      navigate("/dashboard")
+    }
+  }, []);
+
 
   const getEndpoint = () => {
     if ( login ) {
