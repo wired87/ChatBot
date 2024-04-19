@@ -6,9 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import Home from "./pages/Home";
-import ShopPage from "./pages/ShopPage";
-import ShopingCart from "./pages/ShopingCart";
-import PurchasePage from "./pages/PurchasePage";
+
 import DemoPage from "./pages/DemoPage";
 import Pricing from "./pages/Pricing";
 import MainContextProvider from "./hooks/useMainContext";
@@ -96,18 +94,15 @@ function App() {
             <Route path="/register" element={<Auth login={false}/>} />
             <Route path="/login" element={<Auth login={true} />} />
 
-
-            <Route path="/shop-page" element={<ShopPage />} />
-            <Route path="/shoping-cart" element={<ShopingCart />} />
-            <Route path="/purchase-page" element={<PurchasePage />} />
             <Route path="/demo" element={<DemoPage />} />
             <Route path="/pricing" element={<Pricing />} />
 
-            <Route path="/supported-platforms" element={<Platforms />} />
-            <Route path="/supported-platforms/guides/shopify" element={<Guide title={"Shopify"} itemList={shopifyGuideList} />} />
-            <Route path="/supported-platforms/guides/wix" element={<Guide title={"Wix"} itemList={wixGuideList} />} />
-            <Route path="/supported-platforms/guides/wordpress" element={<Guide title={"WordPress"} itemList={wPGuideList} />} />
-            <Route path="/supported-platforms/guides/squarespace" element={<Guide title={"Squarespace"} itemList={sqSGuideList} />} />
+            <Route path="/supported-platforms" element={<Platforms />} >
+              <Route path="/shopify" element={<Guide title={"Shopify"} itemList={shopifyGuideList} />} />
+              <Route path="/wix" element={<Guide title={"Wix"} itemList={wixGuideList} />} />
+              <Route path="/wordpress" element={<Guide title={"WordPress"} itemList={wPGuideList} />} />
+              <Route path="/squarespace" element={<Guide title={"Squarespace"} itemList={sqSGuideList} />} />
+            </Route>
           </Routes>
         <Footer />
       </MainContextProvider>

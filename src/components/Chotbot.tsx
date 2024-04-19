@@ -1,9 +1,8 @@
-import { FunctionComponent } from "react";
 
 export type ChotbotType = {
   onClose?: () => void;
 };
-
+/*
 const Chotbot: FunctionComponent<ChotbotType> = ({ onClose }) => {
   return (
     <div className="w-[420px] rounded-[18px] shadow-[10px_10px_40px_rgba(0,_0,_0,_0.08),_5px_14px_80px_rgba(26,_26,_26,_0.12)] h-[660px] overflow-hidden flex flex-col items-start justify-start max-w-full max-h-full text-center text-lg text-header-body-text font-body-regular-paragraph-small">
@@ -123,7 +122,7 @@ const Chotbot: FunctionComponent<ChotbotType> = ({ onClose }) => {
           />
           <button className="cursor-pointer [border:none] p-0 bg-[transparent] flex flex-row items-center justify-start gap-[12px]">
             <div className="w-1 relative text-base leading-[135%] font-abril-fatface text-reply-icons text-left hidden">
-              
+
             </div>
             <div className="overflow-hidden flex flex-row items-center justify-start relative gap-[10px]">
               <img className="w-5 relative h-5 z-[0]" alt="" />
@@ -140,4 +139,5 @@ const Chotbot: FunctionComponent<ChotbotType> = ({ onClose }) => {
   );
 };
 
-export default Chotbot;
+
+*/

@@ -21,7 +21,7 @@ const priceData: PriceDataInterface[] = [
     title: "Starter",
     pros: [
       "1 Bot",
-      "750 monthly Chats*",
+      "500 monthly Chats*",
     ],
     monthlyPrice: "9€",
     annualPrice: "99€"
