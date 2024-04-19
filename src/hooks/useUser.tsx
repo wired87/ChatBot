@@ -8,10 +8,11 @@ export const useUser = () => {
 
   const checkUserAvailability = (): UserInterface | null | void => {
     try {
-      const user = localStorage.getItem('user');
-      if (user) {
-        console.log("User available:", user);
-        return JSON.parse(user);
+      const userModel = localStorage.getItem('user');
+      console.log("USER IN LOCALSTORAGE:", userModel)
+      if (userModel) {
+        console.log("User available:", userModel);
+        return JSON.parse(userModel);
       }
       console.log("No user in local Storage found...")
     }catch(e: unknown){
@@ -20,7 +21,7 @@ export const useUser = () => {
     }
   }
 
-  const saveUser = async (data: UserInterface) => {
+  const saveUser = (data: UserInterface) => {
     const jsonData = JSON.stringify(data);
     console.log("Data saved in Secure Store...");
     localStorage.setItem('user', jsonData);
