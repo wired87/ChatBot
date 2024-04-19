@@ -23,7 +23,7 @@ export const useUser = () => {
   const saveUser = async (data: UserInterface) => {
     const jsonData = JSON.stringify(data);
     console.log("Data saved in Secure Store...");
-    sessionStorage.setItem('user', jsonData);
+    localStorage.setItem('user', jsonData);
   }
 
 
