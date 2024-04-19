@@ -1,21 +1,7 @@
-import { FunctionComponent, useState, useRef, useCallback } from "react";
-import Chotbot from "../components/Chotbot";
-import PortalPopup from "../components/PortalPopup";
-import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import { FunctionComponent } from "react";
 import Contact from "../components/home/Contact";
 
 const ContactUs: FunctionComponent = () => {
-  const intercomRef = useRef<HTMLButtonElement>(null);
-  const [isChotbotPopupOpen, setChotbotPopupOpen] = useState(false);
-
-  const openChotbotPopup = useCallback(() => {
-    setChotbotPopupOpen(true);
-  }, []);
-
-  const closeChotbotPopup = useCallback(() => {
-    setChotbotPopupOpen(false);
-  }, []);
 
   return (
     <>
