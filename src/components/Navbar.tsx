@@ -43,6 +43,8 @@ const Navbar: FunctionComponent<NavbarType> = () => {
 
   const navigate = useNavigate();
   const { user } = useContext(MainContext);
+
+
   const buttonLine = () => {
     return buttonValueArray.map((item: any) => (
       <button
@@ -121,10 +123,3 @@ const Navbar: FunctionComponent<NavbarType> = () => {
 };
 
 export default Navbar;
-/*
- <img
-                className="w-[81.1px] relative h-px hidden"
-                alt=""
-                src="/line-2.svg"
-              />
- */
