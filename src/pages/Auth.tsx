@@ -24,7 +24,7 @@ const Auth: React.FC<AuthTypes> = (
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string>("");
 
 
   useEffect(() => {
@@ -42,9 +42,9 @@ const Auth: React.FC<AuthTypes> = (
     return `${BASE_URL}auth/create/`
   }
 
-  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleAuth = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setError("")
     const postUrl = getEndpoint();
     const postObject = {
       email: userInfo.email,
@@ -123,7 +123,7 @@ const Auth: React.FC<AuthTypes> = (
     }
     return(
       <form
-        onSubmit={handleRegister}
+        onSubmit={handleAuth}
         className="space-y-6"
         action="#"
         method="POST"
@@ -209,7 +209,7 @@ const Auth: React.FC<AuthTypes> = (
           {
             Content()
           }
-          <p className="text-center text-bold text-red-700 text-xl mt-4">{error}</p>
+          <p className="text-center text-bold text-red-700 mt-4">{error}</p>
           {
             footerText()
           }
