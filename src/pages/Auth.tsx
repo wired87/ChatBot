@@ -2,8 +2,8 @@ import React, {memo, useState} from "react";
 import axios from "axios";
 //
 import { useNavigate } from "react-router-dom";
-import {useUser} from "../../hooks/useUser";
-import {UserInterface} from "../../interfaces/userInterface";
+import {useUser} from "../hooks/useUser";
+import {UserInterface} from "../interfaces/userInterface";
 
 const BASE_URL = "https://wired66.pythonanywhere.com/";
 
@@ -25,10 +25,17 @@ const Auth: React.FC<AuthTypes> = (
   });
   const [error, setError] = useState("");
 
+  const getEndpoint = () => {
+    if ( login ) {
+      return `${BASE_URL}auth/login/`
+    }
+    return `${BASE_URL}auth/create/`
+  }
+
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const postUrl = `${BASE_URL}auth/login/`;
+    const postUrl = getEndpoint();
     const postObject = {
       email: userInfo.email,
       password: userInfo.password,
@@ -37,8 +44,7 @@ const Auth: React.FC<AuthTypes> = (
     try {
       setLoading(true);
       const res = await axios.post(postUrl, postObject);
-      if (res.data.status_code === 200) {
-        setLoading(false);
+      if (res.data?.status_code === 200) {
         const userModel: UserInterface = {
           auth: {
             uid: res.data.user_id,
@@ -87,7 +93,7 @@ const Auth: React.FC<AuthTypes> = (
       <p className="mt-10 text-center text-sm text-gray-500">
         Already have an account?{" "}
         <a
-          href="/login"
+          href="/Auth"
           className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
         >
           Login here

@@ -5,6 +5,7 @@ import {useUser} from "../../hooks/useUser";
 import {BotData, PlanInterface, UserInterface} from "../../interfaces/userInterface";
 import {useNavigate} from "react-router-dom";
 import Bots from "../../components/BotsTable";
+import LoadingIndicator from "../../components/LoadingIndicator";
 
 const Dashboard = () => {
   const {user, saveUser, updateUser, checkUserAvailability} = useUser();
@@ -86,6 +87,13 @@ const Dashboard = () => {
     })
   }, []);
 
+  const loadingScreen = () => {
+    if (loading) {
+      return <div className={"w-full h-full position-absolute justify-center items-center opacity-40"}>
+        <LoadingIndicator size={50} color={"white"} loading={loading} />
+      </div>
+    }
+  }
 
   return (
     <Sidebar>

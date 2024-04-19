@@ -20,7 +20,7 @@ import {wixGuideList} from "./img_exports/wixImg";
 import {wPGuideList} from "./img_exports/wPImg";
 import {sqSGuideList} from "./img_exports/squareImg";
 import Dashboard from "./pages/dashboard/Dashboard";
-import Auth from "./pages/auth/Login";
+import Auth from "./pages/Auth";
 
 
 
