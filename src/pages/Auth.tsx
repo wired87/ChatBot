@@ -45,7 +45,9 @@ const Auth: React.FC<AuthTypes> = (
     try {
       setLoading(true);
       const res = await axios.post(postUrl, postObject);
+      console.log("Auth Response:", res);
       if (res.data?.status_code === 200) {
+        console.log("DATA:", res.data)
         const userModel: UserInterface = {
           auth: {
             uid: res.data.user_id,
@@ -53,9 +55,9 @@ const Auth: React.FC<AuthTypes> = (
             refresh:  res.data.refresh,
           },
         }
+        console.log("userModel:", userModel);
         await saveUser(userModel)
-        console.log("Session info stored...");
-        setError(res.data.message);
+
         navigate("/dashboard");
       }
       setError(res.data.message);
