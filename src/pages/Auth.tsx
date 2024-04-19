@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {useUser} from "../hooks/useUser";
 import {UserInterface} from "../interfaces/userInterface";
+import LoadingIndicator from "../components/LoadingIndicator";
 
 const BASE_URL = "https://wired66.pythonanywhere.com/";
 
@@ -61,8 +62,8 @@ const Auth: React.FC<AuthTypes> = (
     } catch (error) {
       console.error("Error during registration:", error);
       setError("Something Went wrong");
-      // Handle error, display error message to the user
     } finally {
+      console.log("Auth process finished...")
       setLoading(false);
     }
   };
@@ -102,6 +103,11 @@ const Auth: React.FC<AuthTypes> = (
     )
   }
 
+  if (loading) {
+    return(
+      <LoadingIndicator size={50} loading={loading} />
+    )
+  }
   return (
     <div className="bg-white flex min-h-screen flex-1 flex-col justify-center items-center px-6 py-12 lg:px-8">
       <div className={"min-w-[300px] mx-[30px] lg:w-[300px] sm:w-[200px]"}>

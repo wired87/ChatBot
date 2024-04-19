@@ -83,18 +83,18 @@ const Dashboard = () => {
       .then(() => {
         console.log("User set...")
       }).catch(e => {
-      console.log("Error occurred. . .")
+      console.log("Error occurred:", e)
     })
   }, []);
 
-  const loadingScreen = () => {
-    if (loading) {
-      return <div className={"w-full h-full position-absolute justify-center items-center opacity-40"}>
+
+  if ( loading ) {
+    return(
+      <div className={"w-full h-full position-absolute justify-center items-center opacity-40"}>
         <LoadingIndicator size={50} color={"white"} loading={loading} />
       </div>
-    }
+    )
   }
-
   return (
     <Sidebar>
       <div className="  grid grid-cols-2 lg:grid-cols-3 gap-4 w-full  mb-12">
