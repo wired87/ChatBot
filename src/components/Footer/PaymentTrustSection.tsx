@@ -1,8 +1,6 @@
 import React, {memo} from "react";
 import { FaIdeal } from "react-icons/fa";
 import { SiMastercard } from "react-icons/si";
-import { FaCcVisa } from "react-icons/fa";
-import { FaPaypal } from "react-icons/fa";
 import { FaStripe } from "react-icons/fa";
 const iconSize = 50
 const PaymentTrustSection: React.FC = () => {
@@ -14,8 +12,16 @@ const PaymentTrustSection: React.FC = () => {
           <SiMastercard  size={iconSize}/>
         </div>
         <div className={"flex flex-row gap-[50px] "}>
-          <FaCcVisa  size={iconSize}/>
-          <FaPaypal  size={iconSize}/>
+          <img
+            className="w-[62px] relative rounded-8xs h-[41px] overflow-hidden shrink-0"
+            alt=""
+            src="/visa.svg"
+          />
+          <img
+            className="w-[62px] relative rounded-8xs h-[41px] overflow-hidden shrink-0"
+            alt=""
+            src="/visa.svg"
+          />
         </div>
       </div>
       <div className={"flex flex-row py-[30px]"}>

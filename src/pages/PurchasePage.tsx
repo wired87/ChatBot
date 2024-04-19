@@ -16,7 +16,14 @@ const PurchasePage: FunctionComponent = () => {
 
   return (
     <>
-      <div className="w-full relative bg-reply-bg overflow-hidden flex flex-col items-start justify-start text-left text-base text-black font-h5">
+
+    </>
+  );
+};
+
+export default PurchasePage;
+/*
+ <div className="w-full relative bg-reply-bg overflow-hidden flex flex-col items-start justify-start text-left text-base text-black font-h5">
         <div className="self-stretch flex flex-row items-center justify-center py-[50px] px-0 bg-[url('/public/hero-section2@3x.png')] bg-cover bg-no-repeat bg-[top] text-center text-reply-bg">
           <div className="self-stretch flex-1 flex flex-col items-center justify-center py-6 px-[60px] gap-[32px] md:pl-8 md:pr-8 md:box-border sm:pl-4 sm:pr-4 sm:box-border">
             <b className="self-stretch relative">
@@ -195,7 +202,7 @@ const PurchasePage: FunctionComponent = () => {
                         <img
                           className="w-[62px] relative rounded-8xs h-[41px] overflow-hidden shrink-0"
                           alt=""
-                          src="/icons.svg"
+                          src="/visa.svg"
                         />
                       </div>
                       <div className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[26px]">
@@ -453,8 +460,4 @@ const PurchasePage: FunctionComponent = () => {
           <Chotbot onClose={closeChotbotPopup} />
         </PortalPopup>
       )}
-    </>
-  );
-};
-
-export default PurchasePage;
+ */
