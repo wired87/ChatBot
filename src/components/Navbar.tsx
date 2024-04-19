@@ -64,6 +64,13 @@ const Navbar: FunctionComponent<NavbarType> = () => {
     }
     return "/login"
   }
+
+  const authBtnText = () => {
+    if (user && user?.auth?.uid) {
+      return "Logout"
+    }
+    return "Get started!"
+  }
   return (
     <>
       <div className="self-stretch flex flex-col items-start justify-start text-center text-12xl text-main-colour font-body-regular-paragraph-small">
@@ -83,7 +90,9 @@ const Navbar: FunctionComponent<NavbarType> = () => {
               onClick={() => navigate(getStartedRedirect())}>
               <div className="relative text-base leading-[150%] uppercase font-medium font-body-regular-paragraph-small
               text-main-colour text-center">
-                Get started!
+                {
+                  authBtnText()
+                }
               </div>
             </button>
           </div>
