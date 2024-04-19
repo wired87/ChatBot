@@ -209,7 +209,7 @@ const Auth: React.FC<AuthTypes> = (
           {
             Content()
           }
-          <p className="text-center text-bold text-red-700 text-xs mt-4">{error}</p>
+          <p className="text-center text-bold text-red-700 text-xl mt-4">{error}</p>
           {
             footerText()
           }
