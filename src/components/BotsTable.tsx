@@ -23,7 +23,7 @@ export default function Bots({ bots }: any) {
     );
   };
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
+    <div className="px-4 sm:px-6 lg:px-8 bg-white">
       <Modal selected={selected} open={open} setOpen={setOpen} />
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">

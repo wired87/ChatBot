@@ -6,12 +6,12 @@ import { FaStripe } from "react-icons/fa";
 
 
 const navigation = [
-  { name: "Dashboard", href: "#", icon: FaStripe, current: true },
-  { name: "Team", href: "#", icon: FaStripe, current: false },
-  { name: "Projects", href: "#", icon: FaStripe, current: false },
-  { name: "Calendar", href: "#", icon: FaStripe, current: false },
-  { name: "Documents", href: "#", icon: FaStripe, current: false },
-  { name: "Reports", href: "#", icon: FaStripe, current: false },
+  { name: "Dashboard", href: "#", icon: "", current: true },
+  { name: "Team", href: "#", icon: "", current: false },
+  { name: "Projects", href: "#", icon: "", current: false },
+  { name: "Calendar", href: "#", icon: "", current: false },
+  { name: "Documents", href: "#", icon:  "", current: false },
+  { name: "Reports", href: "#", icon:  "", current: false },
 ];
 const teams = [
   { id: 1, name: "Heroicons", href: "#", initial: "H", current: false },
@@ -110,15 +110,6 @@ export default function Sidebar(props: any) {
                                     "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                                   )}
                                 >
-                                  <item.icon
-                                    className={classNames(
-                                      item.current
-                                        ? "text-indigo-600"
-                                        : "text-gray-400 group-hover:text-indigo-600",
-                                      "h-6 w-6 shrink-0"
-                                    )}
-                                    aria-hidden="true"
-                                  />
                                   {item.name}
                                 </a>
                               </li>
@@ -201,15 +192,6 @@ export default function Sidebar(props: any) {
                             "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                           )}
                         >
-                          <item.icon
-                            className={classNames(
-                              item.current
-                                ? "text-indigo-600"
-                                : "text-gray-400 group-hover:text-indigo-600",
-                              "h-6 w-6 shrink-0"
-                            )}
-                            aria-hidden="true"
-                          />
                           {item.name}
                         </a>
                       </li>

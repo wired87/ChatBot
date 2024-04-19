@@ -1,10 +1,11 @@
-import React, {memo, useEffect, useState} from "react";
+import React, {memo, useContext, useEffect, useState} from "react";
 import axios from "axios";
 //
 import { useNavigate } from "react-router-dom";
 import {useUser} from "../hooks/useUser";
 import {UserInterface} from "../interfaces/userInterface";
 import LoadingIndicator from "../components/LoadingIndicator";
+import {MainContext} from "../Context";
 
 const BASE_URL = "https://wired66.pythonanywhere.com/";
 
@@ -18,7 +19,8 @@ const Auth: React.FC<AuthTypes> = (
   }
 ) => {
   const navigate = useNavigate();
-  const { saveUser, checkUserAvailability} = useUser();
+  const { saveUser, checkUserAvailability } = useUser();
+  const { updateUser} = useContext(MainContext);
   const [loading, setLoading] = useState(false);
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -65,8 +67,8 @@ const Auth: React.FC<AuthTypes> = (
           },
         }
         console.log("userModel:", userModel);
-        await saveUser(userModel)
-
+        saveUser(userModel)
+        updateUser(userModel)
         navigate("/dashboard");
       }
       setError(res.data.message);
