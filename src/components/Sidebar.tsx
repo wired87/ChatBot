@@ -31,7 +31,7 @@ export default function Sidebar(props: any) {
   const logout = () => {
     localStorage.clear();
     sessionStorage.clear();
-    nav("/register");
+    nav("/");
   };
 
   return (

@@ -1,4 +1,4 @@
-import {FunctionComponent, ReactNode, useCallback, useEffect} from "react";
+import {FunctionComponent, ReactNode, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 
 export type MenuDrowerType = {
@@ -42,7 +42,6 @@ const MenuDrower: FunctionComponent<MenuDrowerType> = ({ onClose, buttonLine }) 
   return (
     <div
       className="w-[280px] h-full relative bg-reply-bg flex flex-col items-start justify-start gap-[40px] [&.animate]:animate-[0.25s_ease_0s_1_normal_forwards_slide-in-right] opacity-[0] max-w-[90%] overflow-auto text-center text-12xl text-reply-bg font-body-regular-paragraph-small"
-      data-animate-on-scroll
     >
       <div className="self-stretch bg-main-colour flex flex-col items-start justify-start p-5 gap-[40px]">
         <div className="flex flex-row items-center justify-start">
