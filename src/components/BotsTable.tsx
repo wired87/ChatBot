@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Modal from "./Modal";
-import {BotData} from "../interfaces/userInterface";
+import { BotData } from "../interfaces/userInterface";
 
 export default function Bots({ bots }: any) {
   console.log(typeof bots);
@@ -23,9 +23,9 @@ export default function Bots({ bots }: any) {
     );
   };
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
+    <div className="px-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
       <Modal selected={selected} open={open} setOpen={setOpen} />
-      <div className="sm:flex sm:items-center">
+      <div className="flex justify-between sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-gray-900">
             Bots
@@ -35,9 +35,11 @@ export default function Bots({ bots }: any) {
             email and role.
           </p>
         </div>
-        <button className="px-5 py-2 bg-indigo-600 rounded-md text-white ">
-          Add new Bot
-        </button>
+        <div className="">
+          <button className="px-5 py-2 shrink-0  bg-indigo-600 rounded-md text-white ">
+            Add new Bot
+          </button>
+        </div>
       </div>
       {bots.length <= 0 ? (
         <div className={"flex flex-1 justify-center items-center"}>
