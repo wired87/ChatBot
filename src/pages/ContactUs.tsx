@@ -15,7 +15,6 @@ const ContactUs: FunctionComponent = () => {
                 </p>
                 <p className="m-0 text-xl leading-[30px]">
                   We're open for any suggestion or just to have a nice conversation
-
                 </p>
               </b>
             </div>
