@@ -1,7 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',  // Standardmäßig Padding auf allen Seiten
+    },
     extend: {
       colors: {
         "reply-bg": "#fff",
@@ -117,7 +121,7 @@ module.exports = {
         max: "960px",
       },
       sm: {
-        max: "420px",
+        max: "620px",
       },
     },
   },

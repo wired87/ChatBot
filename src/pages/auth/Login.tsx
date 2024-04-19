@@ -12,10 +12,12 @@ interface AuthTypes {
 }
 
 const Auth: React.FC<AuthTypes> = (
-
+  {
+    login
+  }
 ) => {
   const navigate = useNavigate();
-  const { saveUser, updateUser} = useUser();
+  const { saveUser} = useUser();
   const [loading, setLoading] = useState(false);
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -59,17 +61,49 @@ const Auth: React.FC<AuthTypes> = (
     }
   };
 
-  return (
 
-      <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+  const heading = () => {
+    if (login) {
+      return "Sign in to your BotWorld account"
+    }
+    return "Create a new Account"
+  }
+
+  const footerText = () => {
+    if (login ) {
+      return(
+        <p className="mt-10 text-center text-sm text-gray-500">
+          Don't have an account?{" "}
+          <a
+            href="/register"
+            className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+          >
+            Register now
+          </a>
+        </p>
+      )
+    }
+    return(
+      <p className="mt-10 text-center text-sm text-gray-500">
+        Already have an account?{" "}
+        <a
+          href="/login"
+          className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+        >
+          Login here
+        </a>
+      </p>
+    )
+  }
+
+  return (
+    <div className="bg-white flex min-h-screen flex-1 flex-col justify-center items-center px-6 py-12 lg:px-8">
+      <div className={"min-w-[300px] mx-[30px] lg:w-[300px] sm:w-[200px]"}>
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
-            className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
-          />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign in to your account
+            {
+              heading()
+            }
           </h2>
           <p className="text-center text-xs mt-4">{error}</p>
         </div>
@@ -136,25 +170,19 @@ const Auth: React.FC<AuthTypes> = (
             <div>
               <button
                 type="submit"
+                disabled={loading}
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 {loading ? "Login..." : "Login"}
               </button>
             </div>
           </form>
-
-          <p className="mt-10 text-center text-sm text-gray-500">
-            Don't have account?{" "}
-            <a
-              href="#"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-            >
-              Register now
-            </a>
-          </p>
+          {
+            footerText()
+          }
         </div>
       </div>
-
+    </div>
   );
 }
 

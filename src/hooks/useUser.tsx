@@ -6,7 +6,7 @@ export const useUser = () => {
 
   const updateUser = (value: UserInterface | null) => setUser(value);
 
-  const checkUserAvailability = (): Promise<UserInterface | null> | void => {
+  const checkUserAvailability = (): UserInterface | null | void => {
     try {
       const user = localStorage.getItem('user');
       if (user) {

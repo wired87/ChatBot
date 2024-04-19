@@ -1,4 +1,4 @@
-import {useContext, useEffect} from "react";
+import {Fragment, useContext, useEffect} from "react";
 import {
   Routes,
   Route,
@@ -23,6 +23,7 @@ import {wPGuideList} from "./img_exports/wPImg";
 import {sqSGuideList} from "./img_exports/squareImg";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Auth from "./pages/auth/Login";
+import ProtectedRoutes from "./routes/ProtectedRoutes";
 
 
 
@@ -83,30 +84,34 @@ function App() {
 
 
   return (
-    <MainContextProvider>
-      <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+    <Fragment>
+      <MainContextProvider>
+        <Navbar />
+          <Routes>
+            <Route path="/" element={<ProtectedRoutes />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
+            <Route path="/" element={<Home />} />
 
-          <Route path="/register" element={<Auth login={false}/>} />
-          <Route path="/login" element={<Auth login={true} />} />
+            <Route path="/register" element={<Auth login={false}/>} />
+            <Route path="/login" element={<Auth login={true} />} />
 
 
-          <Route path="/shop-page" element={<ShopPage />} />
-          <Route path="/shoping-cart" element={<ShopingCart />} />
-          <Route path="/purchase-page" element={<PurchasePage />} />
-          <Route path="/demo" element={<DemoPage />} />
-          <Route path="/pricing" element={<Pricing />} />
+            <Route path="/shop-page" element={<ShopPage />} />
+            <Route path="/shoping-cart" element={<ShopingCart />} />
+            <Route path="/purchase-page" element={<PurchasePage />} />
+            <Route path="/demo" element={<DemoPage />} />
+            <Route path="/pricing" element={<Pricing />} />
 
-          <Route path="/supported-platforms" element={<Platforms />} />
-          <Route path="/supported-platforms/guides/shopify" element={<Guide title={"Shopify"} itemList={shopifyGuideList} />} />
-          <Route path="/supported-platforms/guides/wix" element={<Guide title={"Wix"} itemList={wixGuideList} />} />
-          <Route path="/supported-platforms/guides/wordpress" element={<Guide title={"WordPress"} itemList={wPGuideList} />} />
-          <Route path="/supported-platforms/guides/squarespace" element={<Guide title={"Squarespace"} itemList={sqSGuideList} />} />
-        </Routes>
-      <Footer />
-    </MainContextProvider>
+            <Route path="/supported-platforms" element={<Platforms />} />
+            <Route path="/supported-platforms/guides/shopify" element={<Guide title={"Shopify"} itemList={shopifyGuideList} />} />
+            <Route path="/supported-platforms/guides/wix" element={<Guide title={"Wix"} itemList={wixGuideList} />} />
+            <Route path="/supported-platforms/guides/wordpress" element={<Guide title={"WordPress"} itemList={wPGuideList} />} />
+            <Route path="/supported-platforms/guides/squarespace" element={<Guide title={"Squarespace"} itemList={sqSGuideList} />} />
+          </Routes>
+        <Footer />
+      </MainContextProvider>
+    </Fragment>
   );
 }
 export default App;
