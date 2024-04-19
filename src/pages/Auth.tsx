@@ -202,13 +202,14 @@ const Auth: React.FC<AuthTypes> = (
               heading()
             }
           </h2>
-          <p className="text-center text-xs mt-4">{error}</p>
+
         </div>
 
         <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
           {
             Content()
           }
+          <p className="text-center text-bold text-red-700 text-xs mt-4">{error}</p>
           {
             footerText()
           }
