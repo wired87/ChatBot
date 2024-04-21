@@ -22,46 +22,46 @@ export default function Platforms() {
       </div>
       <div className="grid grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8 mx-auto max-w-6xl">
 
-      <Card className="flex flex-col items-center p-6 text-center max-w-[400px] cursor-pointer" onClick={() =>  navigate("/supported-platforms/guides/shopify")}>
+      <Card className="flex flex-col items-center p-6 text-center max-w-[400px] cursor-pointer" onClick={() =>  navigate("/supported-platforms/shopify")}>
           <FaShopify size={50} />
           <h3 className="font-semibold mb-2">Shopify</h3>
-          <a className="text-blue-600 hover:underline" href="#">
-            → Integration guide
+          <a className="text-blue-600 hover:underline" href="/supported-platforms/shopify">
+            Explore
           </a>
         </Card>
-        <Card className="flex flex-col items-center p-6 text-center max-w-[400px] cursor-pointer" onClick={() =>  navigate("/supported-platforms/guides/squarespace")}>
+        <Card className="flex flex-col items-center p-6 text-center max-w-[400px] cursor-pointer" onClick={() =>  navigate("/supported-platforms/squarespace")}>
           <FaSquarespace size={50}/>
           <h3 className="font-semibold mb-2">Squarespace</h3>
           <a className="text-blue-600 hover:underline" href="#">
-            → Integration guide
+            Explore
           </a>
         </Card>
-        <Card className="flex flex-col items-center p-6 text-center max-w-[400px] cursor-pointer" onClick={() =>  navigate("/supported-platforms/guides/wordpress")}>
+        <Card className="flex flex-col items-center p-6 text-center max-w-[400px] cursor-pointer" onClick={() =>  navigate("/supported-platforms/wordpress")}>
           <FaWordpress size={50} />
           <h3 className="font-semibold mb-2">WordPress</h3>
           <a className="text-blue-600 hover:underline" href="#">
-            → Integration guide
+            Explore
           </a>
         </Card>
-        <Card className="flex flex-col items-center p-6 text-center max-w-[400px] cursor-pointer" onClick={() =>  navigate("/supported-platforms/guides/wix")}>
+        <Card className="flex flex-col items-center p-6 text-center max-w-[400px] cursor-pointer" onClick={() =>  navigate("/supported-platforms/wix")}>
           <FaWix size={50} />
           <h3 className="font-semibold mb-2">Wix</h3>
           <a className="text-blue-600 hover:underline" href="#">
-            → Integration guide
+            Explore
           </a>
         </Card>
         <Card className="flex flex-col items-center p-6 text-center max-w-[400px] cursor-pointer" onClick={() =>  navigate("/")}>
           <SiBigcommerce size={50} />
           <h3 className="font-semibold mb-2">BigCommerce</h3>
           <a className="text-blue-600 hover:underline" href="#">
-            → Integration guide
+            Explore
           </a>
         </Card>
         <Card className="flex flex-col items-center p-6 text-center max-w-[400px] cursor-pointer" onClick={() =>  navigate("/")}>
           <ZapIcon className="mb-4 h-12 w-12" />
           <h3 className="font-semibold mb-2">Zapier</h3>
           <a className="text-blue-600 hover:underline" href="#">
-            → Integration guide
+            Explore
           </a>
         </Card>
       </div>

@@ -60,19 +60,20 @@ const Navbar: FunctionComponent<NavbarType> = () => {
   }
 
 
-  const getStartedRedirect = () => {
+  const getStartedRedirect = useCallback(() => {
     if (user && user?.auth?.uid) {
       return "/dashboard"
     }
     return "/login"
-  }
+  }, [user, user?.auth?.uid]);
 
-  const authBtnText = () => {
+  const authBtnText = useCallback(() => {
     if (user && user?.auth?.uid) {
       return "Logout"
     }
     return "Get started!"
-  }
+  }, [user, user?.auth?.uid]);
+
   return (
     <>
       <div className="self-stretch flex flex-col items-start justify-start text-center text-12xl text-main-colour font-body-regular-paragraph-small">

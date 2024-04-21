@@ -4,17 +4,31 @@ const Contact: React.FC = () => {
   return(
     <div className="self-stretch bg-reply-bg flex flex-col items-start justify-start p-[100px] lg:p-16 lg:box-border md:p-8 md:box-border sm:pl-4 sm:pr-4 sm:box-border">
       <div className="self-stretch flex flex-row flex-wrap items-start justify-start py-5 px-0 gap-[10px] text-left text-9xl text-operator-message-text font-poppins">
-        <div className="flex-1 bg-whitesmoke-400 overflow-hidden flex flex-col items-start justify-start p-10 box-border min-w-[420px]">
+        <div className="flex-1 bg-whitesmoke-400 overflow-hidden flex flex-row items-start justify-between p-10 box-border min-w-[420px]">
           <div className="self-stretch flex flex-col items-start justify-start pt-0 px-0 pb-[23px] gap-[80px]">
             <div className="self-stretch flex flex-col items-start justify-start gap-[6px]">
               <div className="self-stretch relative font-semibold">
-                Contact Information
-              </div>
-              <div className="self-stretch relative text-lg text-dimgray-200">
-                Say something to start a live chat!
+                Imprint
               </div>
             </div>
             <div className="self-stretch flex flex-col items-start justify-end gap-[20px] text-base text-dimgray-300">
+              <div className="self-stretch flex flex-row items-start justify-start gap-[25px]">
+                <img
+                  className="w-6 relative h-6 overflow-hidden shrink-0"
+                  alt=""
+                  src="/comp.svg"
+                />
+                <div className="flex-1 relative">codingWizard</div>
+              </div>
+              <div className="self-stretch flex flex-col items-start justify-end gap-[20px] text-base text-dimgray-300">
+              <div className="self-stretch flex flex-row items-start justify-start gap-[25px]">
+                <img
+                  className="w-6 relative h-6 overflow-hidden shrink-0"
+                  alt=""
+                  src="/person.svg"
+                />
+                <div className="flex-1 relative">Benedikt Sterra</div>
+              </div>
               <div className="self-stretch flex flex-row items-start justify-start gap-[25px]">
                 <img
                   className="w-6 relative h-6 overflow-hidden shrink-0"
@@ -50,7 +64,7 @@ const Contact: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="self-stretch flex flex-row items-end justify-between">
+          <div className="self-stretch flex flex-row items-end justify-between relative">
             <div className="w-[138px] h-[138px] flex flex-row items-start justify-start relative">
               <div className="w-[calc(100%_+_131px)] !m-[0] absolute top-[24px] right-[-168px] left-[37px] flex flex-row items-start justify-start z-[0]">
                 <div className="w-[269px] relative rounded-[50%] bg-main-colour h-[269px]" />
@@ -61,7 +75,18 @@ const Contact: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="flex-1 flex flex-col items-center justify-start p-5 box-border gap-[20px] min-w-[400px] text-xs">
+      </div>
+    </div>
+    </div>
+  )
+}
+
+export default memo(Contact);
+
+
+
+/*
+ <div className="flex-1 flex flex-col items-center justify-start p-5 box-border gap-[20px] min-w-[400px] text-xs">
           <div className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[20px]">
             <div className="flex-1 flex flex-col items-start justify-start gap-[5px] min-w-[360px]">
               <div className="self-stretch relative leading-[20px] font-medium">
@@ -163,9 +188,4 @@ const Contact: React.FC = () => {
             </button>
           </div>
         </div>
-      </div>
-    </div>
-  )
-}
-
-export default memo(Contact);
+ */

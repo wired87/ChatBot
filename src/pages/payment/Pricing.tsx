@@ -1,10 +1,8 @@
 import {FunctionComponent, useState, ReactNode} from "react";
 import "antd/dist/antd.min.css";
 
-import {PriceSwitch} from "../components/Switch";
-import PriceContainer from "../components/pricing/PriceContainer";
-
-import {useLoading} from "../hooks/useLoading";
+import {PriceSwitch} from "../../components/Switch";
+import PriceContainer from "../../components/pricing/PriceContainer";
 
 // TODO BACKEND = IF 0 DAYS -> KILL ALL CHATS LEFT
 
@@ -53,28 +51,6 @@ const priceData: PriceDataInterface[] = [
 const Pricing: FunctionComponent = () => {
 
   const [annual, setAnnual] = useState<boolean>(false);
-
-  const { loading, updateLoading } = useLoading();
-
-
-
-/*
-  const purchaseRequest = () => {
-    try {
-      const res = await fetch(checkEndpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({"refresh": token.refresh, "user_id": userID}),
-      });
-    }
-  }
-
-*/
-
-
-
 
   const updatePriceType = () => {
     setAnnual(!annual);

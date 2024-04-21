@@ -20,7 +20,7 @@ const Auth: React.FC<AuthTypes> = (
 ) => {
   const navigate = useNavigate();
   const { saveUser, checkUserAvailability } = useUser();
-  const { updateUser} = useContext(MainContext);
+  const { updateUser } = useContext(MainContext);
   const [loading, setLoading] = useState(false);
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -107,7 +107,7 @@ const Auth: React.FC<AuthTypes> = (
       <p className="mt-10 text-center text-sm text-gray-500">
         Already have an account?{" "}
         <a
-          href="/Auth"
+          href="/login"
           className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
         >
           Login here

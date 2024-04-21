@@ -10,18 +10,11 @@ import {ToolIconComp} from "./ToolIconContainer";
 const textArray: WhyWe[] = [
   {
     title: "Easy setup",
-    text: "Easye then filling out the shipping address! \n -> Just give your Bot a name, \n -> Tell him the url or your Website ... \n ... and e after 15 min of training, your bot is ready for the Game! ",
+    text: "Easier then filling out shipping address! Just give your Bot a name, Tell him the url or your Website and " +
+      "e after 15 min of training, your bot is ready for the Game! ",
     btnText: "Check out our Demo",
     rightSideComp: "",
-    navScreen: "/"
-  },
-  {
-    title: "Easy integration",
-    text: "Our no code integration guide made it easy for you set everything up! Still have a questions?\n" +
-      "              Contact us witch your issue!",
-    btnText: "info@botworld.cloud",
-    rightSideComp: "",
-    navScreen: "/"
+    navScreen: "/demo"
   },
   {
     title: "Supported by various platforms",
@@ -29,7 +22,14 @@ const textArray: WhyWe[] = [
       "following our easy guide.",
     btnText: "Read the guide!",
     rightSideComp: <ToolIconComp />,
-    navScreen: "/"
+    navScreen: "/supported-platforms"
+  },
+  {
+    title: "Customer support",
+    text: "Encountering an issue with our services? Dont hesitate to contact us with your concern. We are here to help! ",
+    btnText: "info@botworld.cloud",
+    rightSideComp: "",
+    navScreen: "https://mail.google.com/mail/?view=cm&fs=1&to=info@botworld.cloud&su=Customer%20request&body=Hi%20BotWorld%20Team,\n"
   },
   {
     title: "Best priced!",
@@ -45,6 +45,15 @@ const textArray: WhyWe[] = [
 const WhyWeComp: React.FC = () => {
 
   const navigate = useNavigate()
+
+  const nav = (navScreen: string) => {
+    if ( navScreen.includes("https://") ) {
+      window.open(navScreen, '_blank');
+    } else {
+      navigate(navScreen);
+    }
+  }
+
 
   const Content = useMemo(() => {
     return textArray.map((item: WhyWe) => (
@@ -74,9 +83,9 @@ const WhyWeComp: React.FC = () => {
               </div>
               <button
                 className="cursor-pointer py-[3px] px-[15px] bg-[transparent] rounded-8xs shadow-[0px_0px_14px_rgba(0,_0,_0,_0.12)] flex flex-row items-center justify-center border-[1px] border-solid border-shades-dark-10"
-                onClick={() => navigate(item.navScreen)}
+                onClick={() => nav(item.navScreen)}
               >
-                <div className="relative text-base font-medium font-poppins text-operator-message-text text-left">
+                <div className="relative text-base font-medium font-poppins text-white text-left">
                   {
                     item.btnText
                   }

@@ -1,8 +1,12 @@
 import React, {memo} from "react";
 import PaymentTrustSection from "./Footer/PaymentTrustSection";
+import {useNavigate} from "react-router-dom";
 
 
 export const Footer: React.FC = () => {
+
+  const navigate = useNavigate();
+
   return(
     <div className="self-stretch flex flex-col items-start justify-start text-base text-black font-body-regular-paragraph-small">
       <div className="self-stretch bg-reply-bg overflow-hidden flex flex-row items-center justify-start py-[60px] px-[100px]">
@@ -22,30 +26,30 @@ export const Footer: React.FC = () => {
                 alt=""
                 src="/mail.svg"
               />
-              <p>
+              <a href={"https://mail.google.com/mail/?view=cm&fs=1&to=info@botworld.cloud&su=Customer%20request&body=Hi%20BotWorld%20Team,\n"}>
                 info@botworld.cloud
-              </p>
-            </div>
-          </div>
-          <div className="flex-1 h-[175px] flex flex-col items-start justify-start gap-[24px] min-w-[220px]">
-            <b className="self-stretch relative leading-[120%]">Help</b>
-            <div className="self-stretch flex flex-col items-start justify-start gap-[16px]">
-              <a href={"/#faq1"} className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                FAQ
               </a>
-              <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
-                Contact us
-              </button>
             </div>
           </div>
+
           <div className="flex-1 h-[175px] flex flex-col items-start justify-start gap-[24px] min-w-[220px]">
             <b className="self-stretch relative leading-[120%]">Legal</b>
             <div className="self-stretch flex flex-col items-start justify-start gap-[16px]">
-              <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
+              <button
+                onClick={() =>window.open("https://www.freeprivacypolicy.com/live/55d074b9-8cc4-4e80-8709-45effd7c8e49", "_blank")}
+                className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%]
+                font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
                 Privacy Policy
               </button>
-              <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%] font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
+              <button onClick={() => navigate("/terms-of-service")}
+                      className="cursor-pointer [border:none] p-0 bg-[transparent] relative
+                      text-sm leading-[150%] font-body-regular-paragraph-small text-black text-left inline-block">
                 Terms of Service
+              </button>
+              <button onClick={() => navigate("/imprint")}
+                      className="cursor-pointer [border:none] p-0 bg-[transparent] relative
+                      text-sm leading-[150%] font-body-regular-paragraph-small text-black text-left inline-block">
+               Imprint
               </button>
             </div>
           </div>

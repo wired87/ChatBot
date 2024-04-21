@@ -1,7 +1,6 @@
 import React, {memo, ReactNode, useContext, useEffect, useState} from "react";
 import {MainContext} from "../../Context";
-import {PriceDataInterface} from "../../pages/Pricing";
-import {useNavigate} from "react-router-dom";
+import {PriceDataInterface} from "../../pages/payment/Pricing";
 import LoadingIndicator from "../LoadingIndicator";
 import {useLoading} from "../../hooks/useLoading";
 import axios from "axios";
@@ -20,7 +19,6 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
   }
 ) => {
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
-  const navigate = useNavigate();
   const {user } = useContext(MainContext);
   const { loading, updateLoading } = useLoading();
   const [purchaseObject, setPurchaseObject] = useState<PricingSenderObject | null>(null);

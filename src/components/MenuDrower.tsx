@@ -2,11 +2,10 @@ import {FunctionComponent, ReactNode, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 
 export type MenuDrowerType = {
-  onClose?: () => void;
   buttonLine: () => ReactNode;
 };
 
-const MenuDrower: FunctionComponent<MenuDrowerType> = ({ onClose, buttonLine }) => {
+const MenuDrower: FunctionComponent<MenuDrowerType> = ({ buttonLine }) => {
   const navigate = useNavigate();
   useEffect(() => {
     const scrollAnimElements = document.querySelectorAll(
@@ -53,7 +52,7 @@ const MenuDrower: FunctionComponent<MenuDrowerType> = ({ onClose, buttonLine }) 
             <img
               className="w-[21px] relative h-[21px]"
               alt=""
-              src="/vector11.svg"
+              src="/person.svg"
             />
             <div className="w-5 relative text-12xl leading-[120%] font-black font-body-regular-paragraph-small text-reply-bg text-center hidden">
               T
