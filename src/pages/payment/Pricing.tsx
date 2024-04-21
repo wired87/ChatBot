@@ -1,8 +1,9 @@
-import {FunctionComponent, useState, ReactNode} from "react";
+import {FunctionComponent, useState, ReactNode, useEffect, useCallback} from "react";
 import "antd/dist/antd.min.css";
 
 import {PriceSwitch} from "../../components/Switch";
 import PriceContainer from "../../components/pricing/PriceContainer";
+import {useUser} from "../../hooks/useUser";
 
 // TODO BACKEND = IF 0 DAYS -> KILL ALL CHATS LEFT
 
@@ -51,17 +52,25 @@ const priceData: PriceDataInterface[] = [
 const Pricing: FunctionComponent = () => {
 
   const [annual, setAnnual] = useState<boolean>(false);
+  const [uid, setUid] = useState<string | null>(null);
+  const { checkUserAvailability } = useUser()
 
   const updatePriceType = () => {
     setAnnual(!annual);
   }
 
+  useEffect(() => {
+    const user = checkUserAvailability();
+    if ( user?.auth?.uid ) {
+      setUid(user?.auth?.uid)
+    }
+  }, []);
 
-  const priceContainer = (): ReactNode => {
+  const priceContainer = useCallback((): ReactNode => {
     return priceData.map((item: PriceDataInterface) => (
-        <PriceContainer item={item} annual={annual} />
+        <PriceContainer item={item} annual={annual} uid={uid || ""} />
     ))
-  }
+  }, [uid])
 
 
   return (

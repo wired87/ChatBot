@@ -5,17 +5,23 @@ import LoadingIndicator from "../LoadingIndicator";
 import {useLoading} from "../../hooks/useLoading";
 import axios from "axios";
 import {PricingSenderObject} from "../../interfaces/PricingInterface";
+import {useNavigate} from "react-router-dom";
 
 interface PriceContainerInterface {
   item: PriceDataInterface;
   annual: boolean;
+  uid: string;
 }
+
+
+
 const checkEndpoint = "https://wired66.pythonanywhere.com/payment/checkout/"
 
 const PriceContainer: React.FC<PriceContainerInterface> = (
   {
     item,
     annual,
+    uid
   }
 ) => {
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
@@ -23,12 +29,12 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
   const { loading, updateLoading } = useLoading();
   const [purchaseObject, setPurchaseObject] = useState<PricingSenderObject | null>(null);
 
-
+  const navigate = useNavigate();
 
   const updatePurchaseObject = (name: string, duration: string, planType: string) => {
     setPurchaseObject(
       {
-        name: name,
+        user_id: name,
         duration: duration,
         planType: planType,
       }
@@ -68,24 +74,6 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
       })
     }
   }, [purchaseObject]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -184,20 +172,16 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
 
   const handlePurchaseSubmit = () => {
     updateLoading(true);
-    /*if (user?.uid) {
+    if ( uid.length > 0 ) {
       updatePurchaseObject(
-        "Pq2QiSzcjJ", // test uid: Pq2QiSzcjJ
+        uid,
         annual? "annual" : "monthly",
         item.title
       )
-    }else {
-      navigate("/") // TODO -> REDIRECT TO AUTH
-    }*/
-    updatePurchaseObject(
-      "Pq2QiSzcjJ", // test uid: Pq2QiSzcjJ
-      annual? "annual" : "monthly",
-      item.title
-    )
+    } else {
+      navigate("/login")
+    }
+
   }
 
 
