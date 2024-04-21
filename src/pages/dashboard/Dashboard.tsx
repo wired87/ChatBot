@@ -102,8 +102,17 @@ const Dashboard = () => {
 
   return (
     <Sidebar>
-      <div className=" grid grid-cols-2 max-w-7xl mx-auto lg:grid-cols-3 gap-4 w-full mb-12 bg-white">
-        <div className="px-6 shadow-sm flex bg-gray-100  flex-col py-4 rounded-lg text-gray-800">
+      <div className=" grid grid-cols-2 max-w-7xl mx-auto   gap-4 w-full mb-12 bg-white">
+        <div className="px-6 shadow-sm flex bg-slate-300  flex-col py-4 rounded-lg text-gray-800">
+          <div className="text-2xl font-semibold text-gray-900">
+            Muhammad Kashif
+          </div>
+          {loadingContent()}
+          <div className="text-sm">kashif@mail.com</div>
+          <div className="text-sm">+92 3095203945</div>
+          <div className="text-sm">Alia Town Baghbanpura Lahore Pakistan</div>
+        </div>
+        <div className="px-6 shadow-sm flex bg-slate-300  flex-col py-4 rounded-lg text-gray-800">
           <div className="text-2xl font-semibold text-gray-900">
             Muhammad Kashif
           </div>

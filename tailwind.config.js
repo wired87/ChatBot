@@ -1,48 +1,48 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     container: {
       center: true,
-      padding: '2rem',  // Standardmäßig Padding auf allen Seiten
+      padding: "2rem", // Standardmäßig Padding auf allen Seiten
     },
     extend: {
       colors: {
         "reply-bg": "#fff",
         darkslategray: {
-          "100": "#393939",
-          "200": "rgba(72, 72, 72, 0.5)",
+          100: "#393939",
+          200: "rgba(72, 72, 72, 0.5)",
         },
         "black-75": {
-          "300": "rgba(43, 48, 58, 0.75)",
+          300: "rgba(43, 48, 58, 0.75)",
         },
         "main-colour": "#09165f",
         black: "#2b303a",
         dimgray: {
-          "100": "#696969",
-          "200": "#6e6666",
-          "300": "#605959",
-          "400": "#575757",
-          "500": "#4e4b66",
+          100: "#696969",
+          200: "#6e6666",
+          300: "#605959",
+          400: "#575757",
+          500: "#4e4b66",
         },
         "operator-message-text": "#000",
         silver: "#c8c8c8",
         gray: {
-          "100": "#fefefe",
-          "200": "#fafafa",
-          "300": "#8d8d8d",
-          "400": "#808080",
-          "500": "#202020",
-          "600": "#1e1e1e",
-          "700": "#161616",
-          "800": "#141414",
-          "900": "#060e35",
+          100: "#fefefe",
+          200: "#fafafa",
+          300: "#8d8d8d",
+          400: "#808080",
+          500: "#202020",
+          600: "#1e1e1e",
+          700: "#161616",
+          800: "#141414",
+          900: "#060e35",
         },
         whitesmoke: {
-          "100": "#f5f5f5",
-          "200": "#eee",
-          "300": "#ebebeb",
-          "400": "rgba(247, 247, 247, 0.6)",
+          100: "#f5f5f5",
+          200: "#eee",
+          300: "#ebebeb",
+          400: "rgba(247, 247, 247, 0.6)",
         },
         "shades-dark-10": "#e8e8e8",
         cornflowerblue: "#0693e3",
@@ -51,8 +51,8 @@ module.exports = {
         "main-secondary": "#ff4b37",
         darkgray: "#b0b0b0",
         gainsboro: {
-          "100": "#e0e0e0",
-          "200": "#d9d9d9",
+          100: "#e0e0e0",
+          200: "#d9d9d9",
         },
         blueviolet: "#7949ff",
         gold: "#ffc421",

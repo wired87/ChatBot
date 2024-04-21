@@ -92,7 +92,7 @@ export default function Sidebar(props: any) {
                         alt="Your Company"
                       />
                     </div>
-                    <nav className="flex flex-1 px-10 items-start flex-col">
+                    <nav className="flex flex-1  items-start flex-col">
                       <ul
                         role="list"
                         className="flex flex-1 w-full  text-black flex-col gap-y-3"
