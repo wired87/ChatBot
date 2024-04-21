@@ -36,9 +36,9 @@ const Navbar: FunctionComponent<NavbarType> = () => {
     setMenuDrowerOpen(true);
   }, []);
 
-  const closeMenuDrower = useCallback(() => {
+  const closeMenuDrower = () => {
     setMenuDrowerOpen(false);
-  }, []);
+  }
 
 
   const navigate = useNavigate();

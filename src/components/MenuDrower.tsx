@@ -2,10 +2,11 @@ import {FunctionComponent, ReactNode, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 
 export type MenuDrowerType = {
+  onClose?: () => void;
   buttonLine: () => ReactNode;
 };
 
-const MenuDrower: FunctionComponent<MenuDrowerType> = ({ buttonLine }) => {
+const MenuDrower: FunctionComponent<MenuDrowerType> = ({ onClose, buttonLine }) => {
   const navigate = useNavigate();
   useEffect(() => {
     const scrollAnimElements = document.querySelectorAll(
