@@ -25,7 +25,7 @@ export default function Bots({ bots }: any) {
   return (
     <div className="px-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
       <Modal selected={selected} open={open} setOpen={setOpen} />
-      <div className="flex justify-between sm:items-center">
+      <div className="flex justify-between md:flex-row main_ flex-col  ">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-gray-900">
             Bots
@@ -36,7 +36,21 @@ export default function Bots({ bots }: any) {
           </p>
         </div>
         <div className="">
-          <button className="px-5 py-2 shrink-0  bg-indigo-600 rounded-md text-white ">
+          <button className="px-5 py-2 shrink-0 flex items-center gap-2  bg-indigo-600 rounded-md text-white ">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 4.5v15m7.5-7.5h-15"
+              />
+            </svg>
             Add new Bot
           </button>
         </div>

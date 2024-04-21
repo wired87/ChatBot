@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 
 import "./global.css";
+import "./index.css";
 
 const muiTheme = createTheme({ palette: { mode: "dark" } });
 
