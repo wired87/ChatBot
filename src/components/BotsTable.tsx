@@ -58,7 +58,7 @@ export default function Bots({ bots }: any) {
 
       <div className="mt-8 flow-root  border">
         <div className="    border-l border-green-500  overflow-x-auto  ">
-          <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+          <div className="inline-block min-w-full  align-middle sm:px-6 lg:px-8">
             <table className="min-w-full divide-y divide-gray-300">
               <thead>
                 <tr>
