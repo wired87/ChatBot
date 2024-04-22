@@ -78,7 +78,6 @@ const AddBot: React.FC<Props> = (
   }
 
   const createBot = async () => {
-    setInputError("");
     const uid = user?.auth?.uid;
     console.log("uid:", user?.auth?.uid)
     if ( uid && uid?.length > 0 ) {

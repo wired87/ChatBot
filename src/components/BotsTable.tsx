@@ -10,13 +10,13 @@ interface BotsTable {
 
 const BotsTable: React.FC<BotsTable> = (
   {
-    bots, user
+    bots,
+    user
   }
 ) => {
 
 
   const [open, setOpen] = useState<boolean>(false);
-  const updateOpen = () => setOpen(!open);
 
   const [add, setAdd] = useState<boolean>(false);
   const updateAdd = () => setAdd(!add);
@@ -38,6 +38,11 @@ const BotsTable: React.FC<BotsTable> = (
       </div>
     );
   };
+
+  const getUserBool = () => {
+    return !(user?.plan?.name)
+  }
+
   return (
     <div className="px-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
       <AddBot user={user} open={add} updateOpen={updateAdd} />
@@ -51,9 +56,8 @@ const BotsTable: React.FC<BotsTable> = (
         <div className="">
           <button
             onClick={updateAdd}
-            disabled={!(user?.plan?.name || true)}
-            className="px-5 py-2 cursor-pointer shrink-0 flex items-center gap-2  bg-indigo-600 rounded-md text-white "
-          >
+            disabled={getUserBool()}
+            className="px-5 py-2 cursor-pointer shrink-0 flex items-center gap-2  bg-indigo-600 rounded-md text-white" >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
