@@ -7,20 +7,14 @@ import successLottie from "../assets/annimations/successLottie.json";
 import LoadingIndicator from "../components/LoadingIndicator";
 
 import { useParams } from 'react-router-dom';
+import {defaultOptions} from "../functions/lottie";
 
 interface Creds {
   password: string;
   passwordTwo: string;
 }
 
-interface LottieOptions {
-  loop: boolean;
-  autoplay: boolean;
-  animationData: object;
-  rendererSettings: {
-    preserveAspectRatio: string;
-  }
-}
+
 
 interface SenderObject {
   uidb64: string;
@@ -76,17 +70,6 @@ const ResetPw: React.FC = () => {
     }
 
   }
-
-  const defaultOptions = (animationData: object):LottieOptions  => {
-    return {
-      loop: false,
-      autoplay: true,
-      animationData: animationData,
-      rendererSettings: {
-        preserveAspectRatio: 'xMidYMid slice'
-      }
-    }
-  };
 
   const handleChange = (key: keyof Creds) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setCreds(prevCreds => ({

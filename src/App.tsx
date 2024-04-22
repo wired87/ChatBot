@@ -91,8 +91,7 @@ function App() {
 
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
-
-
+            
             <Route path="/register" element={<Auth login={false}/>} />
             <Route path="/login" element={<Auth login={true} />} />
             <Route path="/reset-password/:uid/:token/" element={<ResetPw />} />

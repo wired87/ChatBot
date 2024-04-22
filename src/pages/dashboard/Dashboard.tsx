@@ -13,6 +13,9 @@ import Bots from "../../components/BotsTable";
 import LoadingIndicator from "../../components/LoadingIndicator";
 
 const Dashboard = () => {
+
+
+
   const { user, saveUser, updateUser, checkUserAvailability } = useUser();
   const [loading, setLoading] = useState<boolean>(false);
 

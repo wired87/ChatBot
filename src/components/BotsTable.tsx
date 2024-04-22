@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "./Modal";
 import { BotData } from "../interfaces/userInterface";
 import AddBot from "./AddBot";
+
 export default function Bots({ bots }: any) {
   console.log(typeof bots);
 

@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
 
   return(
     <div className="self-stretch flex flex-col items-start justify-start text-base text-black font-body-regular-paragraph-small">
-      <div className="self-stretch bg-reply-bg overflow-hidden flex flex-row items-center justify-start py-[60px] px-[100px]">
+      <div className="self-stretch bg-reply-bg overflow-hidden flex flex-row items-center justify-start py-[60px] px-[100px] sm:px-[30px]">
         <div className="flex-1 flex flex-row flex-wrap items-start justify-start py-5 px-0 gap-[20px_10px]">
           <div className="flex-1 h-[175px] flex flex-col items-start justify-start gap-[24px] min-w-[220px] text-4xl font-h5">
             <div className="self-stretch flex-1 flex flex-col items-start justify-start gap-[36px] text-mini text-dimgray-500 font-body-regular-paragraph-small">
@@ -17,7 +17,6 @@ export const Footer: React.FC = () => {
               </div>
             </div>
           </div>
-
           <div className="flex-1 h-[175px] flex flex-col items-start justify-start gap-[24px] min-w-[220px]">
             <b className="self-stretch relative leading-[120%]">Contact</b>
             <div className="self-stretch flex flex-row items-start justify-start gap-[16px]">
