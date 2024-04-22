@@ -90,8 +90,8 @@ const AddBot: React.FC<Props> = (
         setInputError(senderObject);
         setLoading(false);
         return;
-
       }
+
       try {
         const res = await axios.post(
           postUrl,
@@ -155,7 +155,7 @@ const AddBot: React.FC<Props> = (
     }
     return(
       <div className={"flex flex-col justify-start items-start w-full"}>
-        <div className="gap-4 w-full">
+        <div className="gap-4 w-full px-5 ">
           <div className="mt-2 w-full">
             <label
               className="block text-md text-gray-600"
