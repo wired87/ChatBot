@@ -93,13 +93,6 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
     return "Get it!"
   }
 
-  const getPurchaseCardHeading = () => {
-    if (user && user?.plan?.name === item.title)
-    {
-      return item.title + "(current)"
-    }
-    return item.title
-  }
 
   const getPrice = () => {
     if (!annual) {
@@ -200,7 +193,7 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
       <div className="w-[159px] rounded-[27.88px] bg-gray-100 h-[45px] flex flex-row items-center justify-center text-center text-base-7 text-gray-700">
         <div className="flex-1 relative uppercase font-medium">
           {
-            getPurchaseCardHeading()
+            item.title
           }
         </div>
       </div>
