@@ -18,6 +18,9 @@ const BotsTable: React.FC<BotsTable> = (
   const [open, setOpen] = useState<boolean>(false);
   const updateOpen = () => setOpen(!open);
 
+  const [add, setAdd] = useState<boolean>(false);
+  const updateAdd = () => setAdd(!add);
+
   const [selected, setSelected] = useState({});
   const statusMessage = (status: string | undefined) => {
     return (
@@ -36,7 +39,7 @@ const BotsTable: React.FC<BotsTable> = (
   };
   return (
     <div className="px-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <AddBot uid={uid || ""} open={open} updateOpen={updateOpen} />
+      <AddBot uid={uid || ""} open={add} updateOpen={updateAdd} />
       <Modal selected={selected} open={open} setOpen={setOpen} />
       <div className="flex justify-between md:flex-row main_ flex-col  ">
         <div className="sm:flex-auto">

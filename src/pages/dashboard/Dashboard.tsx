@@ -18,7 +18,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   // todo if true systemerror modal pop up - refresh
-  const [e, setE] = useState<boolean>(false);
+  const [e, setE] = useState<string>("");
 
   const navigate = useNavigate();
 
@@ -52,29 +52,41 @@ const Dashboard = () => {
           user_id: localUser?.auth?.uid,
         }
       );
-      console.log(res);
+      if (res.data?.status_code === 200) {
+        console.log("Data:", res.data);
+        console.log(res);
 
-      const r = res.data;
+        const r = res.data;
 
-      const botData: BotData[] = r.bots;
+        const botData: BotData[] = r.bots;
 
-      const plan: PlanInterface = {
-        name: r.plan.name,
-        chatsLeft: r.chatsLeft,
-        totalBotsIncluded: r.totalBotsIncluded,
-      };
+        const plan: PlanInterface = {
+          name: r.plan.name,
+          chatsLeft: r.chatsLeft,
+          totalBotsIncluded: r.totalBotsIncluded,
+        };
 
-      newUser = {
-        plan: plan,
-        bots: botData,
-      };
+        newUser = {
+          plan: plan,
+          bots: botData,
+        };
 
-      console.log("Received user data:", newUser);
-      updateUser(newUser);
-      await saveUser(newUser);
-    } catch (err) {
-      console.log(err);
-      setE(true);
+        console.log("Received user data:", newUser);
+        updateUser(newUser);
+        await saveUser(newUser);
+
+      } else {
+        console.log("Invalid request...")
+        setE(res.data.message)
+      }
+
+    } catch ( e:unknown ) {
+      if ( e instanceof Error ) {
+        console.log("Something unexpected occurred:", e);
+        setE("The connection was getting lost. Please try gian.");
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
