@@ -1,8 +1,11 @@
 import React, {Fragment, memo, useState} from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import axios from "axios";
+
 import successBotCreate from "../assets/annimations/successBotCreate.json";
+import errorLottie from "../assets/annimations/errorLottie.json";
 import Lottie from "react-lottie";
+
 import {defaultOptions} from "../functions/lottie";
 import LoadingIndicator from "./LoadingIndicator";
 import {useNavigate} from "react-router-dom";
@@ -27,15 +30,6 @@ interface PostObject {
   data_url: string;
   description: string;
 }
-/*
- {
-      "user_id": "UCvfVXT5WR",
-      "model_id": "favtrdlofvicc012",
-      "data_url": "https://beautybar-pavlovic.de/",
-      "description": "All data"
-  }
- */
-
 
 const postUrl: string = "https://wired66.pythonanywhere.com/bot/create/";
 
@@ -70,20 +64,17 @@ const AddBot: React.FC<Props> = (
   };
 
   const getSenderObject = (): PostObject | string => {
-    const name: string = input.name;
-    const url: string = input.dataUrl;
-    const description: string = input.description;
-
-    if ( !url.includes(["https"])) {
-      return "The given url is not safe..."
-    } else if ( url.length === 0 || description.length === 0 || name.length === 0 ) {
-      return "All fields are required..."
+    const { name, dataUrl, description } = input;
+    if (!dataUrl.startsWith("https")) {
+      return "The given URL is not secure.";
+    } else if ( dataUrl.length === 0 || description.length === 0 || name.length === 0 ) {
+      return "All fields are required...";
     }
     return {
       user_id: uid,
-      model_id: input.name,
-      data_url: input.dataUrl,
-      description: input.description,
+      model_id: name,
+      data_url: dataUrl,
+      description: description,
     }
   }
 
@@ -95,7 +86,7 @@ const AddBot: React.FC<Props> = (
 
       // data preparation
       const senderObject: PostObject | string = getSenderObject();
-      if ( senderObject instanceof string ) {
+      if ( typeof senderObject === 'string' ) {
         setInputError(senderObject);
         setLoading(false);
         return;
@@ -225,7 +216,7 @@ const AddBot: React.FC<Props> = (
               type="button"
               className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               onClick={() => {
-                props.setOpen(false);
+                updateOpen();
                 createBot()
                   .then(r => console.log("Bot request successful..."))
                   .catch(e => console.log("Bot request failed cause Error:", e))
@@ -250,8 +241,7 @@ const AddBot: React.FC<Props> = (
           enterTo="opacity-100"
           leave="ease-in duration-200"
           leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
+          leaveTo="opacity-0" >
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         </Transition.Child>
 
@@ -264,21 +254,28 @@ const AddBot: React.FC<Props> = (
               enterTo="opacity-100 translate-y-0 sm:scale-100"
               leave="ease-in duration-200"
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-              leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all  max-w-4xl  ">
-                <div>
-                  <div className="mt-3 text-left sm:mt-5">
-                    <Dialog.Title
-                      as="h3"
-                      className="text-3xl font-semibold leading-6 text-gray-900"
-                    >
-                      Add New Bot
-                    </Dialog.Title>
+              leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            >
+              <Dialog.Panel
+                className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5
+              text-left shadow-xl transition-all w-full  max-w-3xl  "
+              >
+                <>
+                  <div>
+                    <div className="mt-3 text-left sm:mt-5">
+                      <Dialog.Title
+                        as="h3"
+                        className="text-3xl font-semibold leading-6 text-gray-900"
+                      >
+                        Add New Bot
+                      </Dialog.Title>
+                    </div>
                   </div>
-                </div>
-                {
-                  Content
-                }
+                  {
+                    Content
+                  }
+                </>
+
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -289,3 +286,6 @@ const AddBot: React.FC<Props> = (
 }
 
 export default memo(AddBot);
+
+
+
