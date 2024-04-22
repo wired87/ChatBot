@@ -78,7 +78,8 @@ const AddBot: React.FC<Props> = (
     }
   }
 
-  const createBot = async () => {
+  const createBot = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     setInputError("");
     console.log("uid:", uid)
     if ( uid?.length > 0 ) {
@@ -150,7 +151,12 @@ const AddBot: React.FC<Props> = (
         </div>)
     }
     return(
-      <div className={"flex flex-col justify-start items-start w-full"}>
+      <form
+        onSubmit={createBot}
+        className="flex flex-col justify-start items-start w-full"
+        action="#"
+        method="POST"
+      >
         <div className="gap-4 w-full px-5 ">
           <div className="mt-2 w-full">
             <label
@@ -213,26 +219,21 @@ const AddBot: React.FC<Props> = (
         </div>
         <div className="mt-5 sm:mt-6">
           <button
-            type="button"
+            type="submit"
             className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3
             py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500
             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
-            focus-visible:outline-indigo-600"
-            onClick={(e) => {
-              createBot()
-                .then(() => console.log("Bot request successful..."))
-                .catch(e => console.log("Bot request failed cause Error:", e))
-            }} >
+            focus-visible:outline-indigo-600" >
             Create a new bot
           </button>
         </div>
-      </div>
+      </form>
     )
   }
 
   return (
     <Transition.Root show={open} as={Fragment} >
-      <Dialog as="div" className="relative z-50" onClose={() =>{}}>
+      <Dialog as="div" className="relative z-50" onClose={updateOpen}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
