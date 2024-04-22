@@ -266,7 +266,7 @@ const AddBot: React.FC<Props> = (
                 className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5
               text-left shadow-xl transition-all w-full  max-w-3xl  "
               >
-                <>
+
                   <div>
                     <div className="mt-3 text-left sm:mt-5">
                       <Dialog.Title
@@ -276,11 +276,12 @@ const AddBot: React.FC<Props> = (
                         Add New Bot
                       </Dialog.Title>
                     </div>
+                    {
+                      Content()
+                    }
                   </div>
-                  {
-                    Content
-                  }
-                </>
+
+
 
               </Dialog.Panel>
             </Transition.Child>
