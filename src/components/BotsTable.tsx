@@ -41,7 +41,7 @@ const BotsTable: React.FC<BotsTable> = (
   };
 
   const getUserBool = () => {
-    return user?.plan?.name
+    return !(user?.plan?.name) // todo ausrufezeichen klammern weg
   }
 
 
