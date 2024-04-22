@@ -128,7 +128,6 @@ const AddBot: React.FC<Props> = (
 
 
   const Content = () => {
-
     if ( error.length > 0 ) {
       return(
         <div className={"flex flex-col justify-center items-center w-full"}>

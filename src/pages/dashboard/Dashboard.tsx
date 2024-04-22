@@ -103,7 +103,9 @@ const Dashboard = () => {
       )
     }
     return(
-      <LoadingIndicator loading={!(user?.auth?.uid)} />
+      <div className="px-4 flex justify-center items-center max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <LoadingIndicator loading={!(user?.auth?.uid)} />
+      </div>
     )
   }, [uid]);
 
