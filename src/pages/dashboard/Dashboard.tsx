@@ -21,6 +21,15 @@ const Dashboard = () => {
   const [e, setE] = useState<string>("");
 
   const navigate = useNavigate();
+  useEffect(() => {
+    setUserData()
+      .then(() => {
+        console.log("User set...");
+      })
+      .catch((e) => {
+        console.log("Error occurred:", e);
+      });
+  }, []);
 
   const setUserData = async (): Promise<void> => {
     setLoading(true);
@@ -98,21 +107,13 @@ const Dashboard = () => {
     }
     return(
       <div className="px-4 max-w-7xl mx-auto flex jusitfy-center items-center sm:px-6 lg:px-8">
-        <LoadingIndicator loading={true} />
+        <LoadingIndicator loading={!(user?.auth?.uid)} />
       </div>
     )
   }, [user, user?.auth?.uid]);
 
 
-  useEffect(() => {
-    setUserData()
-      .then(() => {
-        console.log("User set...");
-      })
-      .catch((e) => {
-        console.log("Error occurred:", e);
-      });
-  }, []);
+
 
   const loadingContent = () => {
     if (loading) {
@@ -159,4 +160,4 @@ const Dashboard = () => {
   );
 };
 
-export default memo(Dashboard);
+export default Dashboard;
