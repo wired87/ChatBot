@@ -4,3 +4,13 @@
 .border-l {
   border-left: 1px solid #e2e8f0 !important;
 }
+.absolute_btn {
+  position: absolute;
+}
+@media all and (max-width: 700px) {
+  .absolute_btn {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 30px;
+  }
+}

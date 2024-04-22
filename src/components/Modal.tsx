@@ -58,7 +58,7 @@ export default function Modal(props: any) {
                   </p>
                 </div>
 
-                <div className="flex absolute top-3 right-3 items-center mt-4 gap-3">
+                <div className="flex absolute_btn top-3 right-3 items-center mt-4 gap-3">
                   <button className="bg-rose-700 px-6 text-white  py-2 rounded-md">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
