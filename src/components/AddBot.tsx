@@ -9,6 +9,7 @@ import Lottie from "react-lottie";
 import {defaultOptions} from "../functions/lottie";
 import LoadingIndicator from "./LoadingIndicator";
 import {useNavigate} from "react-router-dom";
+import {UserInterface} from "../interfaces/userInterface";
 
 interface Input {
   name: string;
@@ -17,12 +18,10 @@ interface Input {
 }
 
 interface Props {
-  uid: string;
+  user: UserInterface;
   updateOpen: () => void;
   open: boolean
-
 }
-
 
 interface PostObject {
   user_id: string;
@@ -37,7 +36,7 @@ const AddBot: React.FC<Props> = (
   {
     open,
     updateOpen,
-    uid
+    user
   }
 ) => {
 
@@ -71,18 +70,18 @@ const AddBot: React.FC<Props> = (
       return "All fields are required...";
     }
     return {
-      user_id: uid,
+      user_id: user?.auth?.uid || "",
       model_id: name,
       data_url: dataUrl,
       description: description,
     }
   }
 
-  const createBot = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const createBot = async () => {
     setInputError("");
-    console.log("uid:", uid)
-    if ( uid?.length > 0 ) {
+    const uid = user?.auth?.uid;
+    console.log("uid:", user?.auth?.uid)
+    if ( uid && uid?.length > 0 ) {
       setLoading(true);
 
       // data preparation
@@ -126,6 +125,15 @@ const AddBot: React.FC<Props> = (
     }
   }
 
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if ( user?.plan?.name ) {
+      await createBot();
+    } else {
+      setInputError("You dont have an active plan currently... ")
+    }
+  }
+
 
   const Content = () => {
     if ( error.length > 0 ) {
@@ -151,7 +159,7 @@ const AddBot: React.FC<Props> = (
     }
     return(
       <form
-        onSubmit={createBot}
+        onSubmit={onSubmit}
         className="flex flex-col justify-start items-start w-full"
         action="#"
         method="POST"
@@ -232,7 +240,7 @@ const AddBot: React.FC<Props> = (
 
   return (
     <Transition.Root show={open} as={Fragment} >
-      <Dialog as="div" className="relative z-50" onClose={updateOpen}>
+      <Dialog as="div" className="relative z-50" onClose={checkReload}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -253,8 +261,7 @@ const AddBot: React.FC<Props> = (
               enterTo="opacity-100 translate-y-0 sm:scale-100"
               leave="ease-in duration-200"
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-              leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            >
+              leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" >
               <Dialog.Panel
                 className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5
                             text-left shadow-xl transition-all w-full max-w-3xl" >

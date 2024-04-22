@@ -97,17 +97,17 @@ const Dashboard = () => {
 
   const botTableContent = useCallback(() => {
     console.log("uid:111", uid);
-    if ( uid && uid.length > 0 ) {
+    if ( user ) {
       return(
-        <BotsTable bots={user?.bots || []} uid={user?.auth?.uid} />
+        <BotsTable bots={user?.bots || []} user={user} />
       )
     }
     return(
       <div className="px-4 flex justify-center items-center max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <LoadingIndicator loading={!(user?.auth?.uid)} />
+        <LoadingIndicator loading={true} />
       </div>
     )
-  }, [uid]);
+  }, [user]);
 
 
 
