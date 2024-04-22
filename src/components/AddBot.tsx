@@ -124,17 +124,10 @@ const AddBot: React.FC<Props> = (
       window.location.reload();
     }
   }
-  useEffect(() => {
-    console.log("loading", loading);
-    console.log("success", success);
-    console.log("error", error);
-  }, [error, loading, success]);
 
 
-  const Content = useCallback(() => {
-    console.log("loading", loading);
-    console.log("success", success);
-    console.log("error", error);
+  const Content = () => {
+
     if ( error.length > 0 ) {
       return(
         <>
@@ -232,7 +225,7 @@ const AddBot: React.FC<Props> = (
         </div>
       </div>
     )
-  }, [loading, success, error]);
+  }
 
 
   return (
