@@ -154,30 +154,27 @@ const AddBot: React.FC<Props> = (
       return( <LoadingIndicator loading={loading} />)
     }
     return(
-      <div className={"flex flex-col justify-start items-start"}>
-        <div className="gap-4">
-          <div className="mt-2">
-            <div className="">
-              <label
-                className="block text-md text-gray-600"
-                htmlFor="name"
-              >
-                Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                onChange={updateInput("name")}
-                className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full"
-                placeholder="Just an identifier. . ."
-                id="name"
-                required
-              />
-            </div>
+      <div className={"flex flex-col justify-start items-start w-full"}>
+        <div className="gap-4 w-full">
+          <div className="mt-2 w-full">
+            <label
+              className="block text-md text-gray-600"
+              htmlFor="name"
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              onChange={updateInput("name")}
+              className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full outline-0"
+              placeholder="Just an identifier. . ."
+              id="name"
+              required
+            />
           </div>
 
-          <div className="mt-2">
-            <div className="">
+          <div className="mt-2 w-full">
               <label
                 className="block text-md text-gray-600"
                 htmlFor="name" >
@@ -188,15 +185,14 @@ const AddBot: React.FC<Props> = (
                 name="dataUrl"
                 onChange={updateInput("dataUrl")}
                 required
-                className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full"
+                className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full outline-0"
                 placeholder="The url of your website ( landingpage )"
                 id="dataUrl"
               />
-            </div>
           </div>
 
-          <div className="mt-2">
-            <div className="">
+          <div className="mt-2 w-full">
+
               <label
                 className="block text-md text-gray-600"
                 htmlFor="name"
@@ -207,15 +203,15 @@ const AddBot: React.FC<Props> = (
                 type="text"
                 name="description"
                 onChange={updateInput("description")}
-                className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full"
+                className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full outline-0"
                 placeholder="Name"
                 id="name"
                 maxLength={20}
                 required
               />
-            </div>
           </div>
         </div>
+
         <div className={"text-center w-full"}>
           {inputError}
         </div>
