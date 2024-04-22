@@ -4,6 +4,7 @@ import "antd/dist/antd.min.css";
 import {PriceSwitch} from "../../components/Switch";
 import PriceContainer from "../../components/pricing/PriceContainer";
 import {useUser} from "../../hooks/useUser";
+import {UserInterface} from "../../interfaces/userInterface";
 
 // TODO BACKEND = IF 0 DAYS -> KILL ALL CHATS LEFT
 
@@ -52,7 +53,7 @@ const priceData: PriceDataInterface[] = [
 const Pricing: FunctionComponent = () => {
 
   const [annual, setAnnual] = useState<boolean>(false);
-  const [uid, setUid] = useState<string | null>(null);
+  const [localUser, setLocalUser] = useState<UserInterface | null>(null);
   const { checkUserAvailability } = useUser()
 
   const updatePriceType = () => {
@@ -62,15 +63,15 @@ const Pricing: FunctionComponent = () => {
   useEffect(() => {
     const user = checkUserAvailability();
     if ( user?.auth?.uid ) {
-      setUid(user?.auth?.uid)
+      setLocalUser(user);
     }
   }, []);
 
   const priceContainer = useCallback((): ReactNode => {
     return priceData.map((item: PriceDataInterface) => (
-        <PriceContainer item={item} annual={annual} uid={uid || ""} />
+        <PriceContainer item={item} annual={annual} user={localUser || null} />
     ))
-  }, [uid])
+  }, [localUser])
 
 
   return (
@@ -104,8 +105,7 @@ const Pricing: FunctionComponent = () => {
           </div>
           <div className="self-stretch flex flex-row flex-wrap items-center justify-center gap-[50px] text-mini-9 text-operator-message-text">
             {
-              priceContainer(
-              )
+              priceContainer()
             }
           </div>
           <p style={{marginTop: 50, opacity: .5, color: "rgb(0,0,0)", fontSize: 16}}>* = 1 Chat begins at the first recieved response over a period of 30 minutes till 20 messages.</p>

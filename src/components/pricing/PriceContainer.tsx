@@ -1,30 +1,31 @@
-import React, {memo, ReactNode, useContext, useEffect, useState} from "react";
-import {MainContext} from "../../Context";
+import React, {memo, ReactNode, useEffect, useState} from "react";
 import {PriceDataInterface} from "../../pages/payment/Pricing";
 import LoadingIndicator from "../LoadingIndicator";
 import {useLoading} from "../../hooks/useLoading";
 import axios from "axios";
 import {PricingSenderObject} from "../../interfaces/PricingInterface";
 import {useNavigate} from "react-router-dom";
+import {UserInterface} from "../../interfaces/userInterface";
 
 interface PriceContainerInterface {
   item: PriceDataInterface;
   annual: boolean;
-  uid: string;
+  user: UserInterface | null;
 }
 
-const checkEndpoint = "https://wired66.pythonanywhere.com/payment/checkout/"
+const checkEndpoint: string = "https://wired66.pythonanywhere.com/payment/checkout/"
 
 const PriceContainer: React.FC<PriceContainerInterface> = (
   {
     item,
     annual,
-    uid
+    user
   }
 ) => {
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
-  const {user } = useContext(MainContext);
+
   const { loading, updateLoading } = useLoading();
+
   const [purchaseObject, setPurchaseObject] = useState<PricingSenderObject | null>(null);
 
   const navigate = useNavigate();
@@ -87,7 +88,7 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
   const getPurchaseButtonText = () => {
     if (user && user?.plan?.name === item.title)
     {
-      return "current plan"
+      return "Current plan"
     }
     return "Get it!"
   }
@@ -170,7 +171,8 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
 
   const handlePurchaseSubmit = () => {
     updateLoading(true);
-    if ( uid.length > 0 ) {
+    const uid: string | undefined | null = user?.auth?.uid;
+    if ( uid && uid?.length > 0 ) {
       updatePurchaseObject(
         uid,
         annual? "annual" : "monthly",
