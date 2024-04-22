@@ -131,18 +131,18 @@ const AddBot: React.FC<Props> = (
 
     if ( error.length > 0 ) {
       return(
-        <>
-          <Lottie options={defaultOptions(errorLottie)} height={400} width={400} />
+        <div className={"flex flex-col justify-center items-center w-full"}>
+          <Lottie options={defaultOptions(errorLottie)} height={300} width={300} />
           <h4>{error}</h4>
-        </>
+        </div>
       )
     } else if ( success.length > 0 ) {
       return(
-        <>
-          <Lottie options={defaultOptions(successBotCreate)} height={400} width={400} />
+        <div className={"flex flex-col justify-center items-center w-full"}>
+          <Lottie options={defaultOptions(successBotCreate)} height={300} width={300} />
           <h4>{success}</h4>
           <button onClick={() => window.location.reload()}>close</button>
-        </>
+        </div>
       )
     } else if ( loading ) {
       return(
@@ -220,7 +220,7 @@ const AddBot: React.FC<Props> = (
         <div className="mt-5 sm:mt-6">
           <button
             type="submit"
-            className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3
+            className="cursor-pointer inline-flex w-full justify-center rounded-md bg-indigo-600 px-3
             py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500
             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
             focus-visible:outline-indigo-600" >
