@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 import LoadingIndicator from "../../components/LoadingIndicator";
 import BotsTable from "../../components/BotsTable";
 
+declare var newUser:UserInterface;
+
 const Dashboard = () => {
 
   const { user, saveUser, updateUser, checkUserAvailability } = useUser();
@@ -51,7 +53,7 @@ const Dashboard = () => {
   };
 
   const getDashboard = async (localUser: UserInterface) => {
-    let newUser = localUser;
+    newUser = localUser;
     console.log("Current user:", newUser);
 
     try {
@@ -63,27 +65,23 @@ const Dashboard = () => {
       );
       if (res.data?.status_code === 200) {
         console.log("Data:", res.data);
-        console.log(res);
+        const r = res.data.userData;
+        console.log("User data:", r);
 
-        const r = res.data;
-
-        const botData: BotData[] = r.bots;
-
-        const plan: PlanInterface = {
-          name: r.plan.name,
-          chatsLeft: r.chatsLeft,
-          totalBotsIncluded: r.totalBotsIncluded,
-        };
-
-        newUser = {
-          plan: plan,
-          bots: botData,
-        };
+        const botData: BotData[] | undefined | null = r.bots;
+        if ( botData ) {
+          newUser.bots = botData
+        }
+        const plan: PlanInterface | undefined | null = r.plan;
+        if ( plan ) {
+          newUser.plan = plan
+        }
 
         console.log("Received user data:", newUser);
         updateUser(newUser);
         saveUser(newUser);
-        setUid(localUser?.auth?.uid || "")
+        setUid(newUser?.auth?.uid || "");
+
       } else {
         console.log("Invalid request...")
         setE(res.data.message)
@@ -100,15 +98,14 @@ const Dashboard = () => {
   };
 
   const botTableContent = useCallback(() => {
+    console.log("uid:111", uid);
     if ( uid && uid.length > 0 ) {
       return(
         <BotsTable bots={user?.bots || []} uid={user?.auth?.uid} />
       )
     }
     return(
-      <div className="px-4 max-w-7xl mx-auto flex jusitfy-center items-center sm:px-6 lg:px-8">
-        <LoadingIndicator loading={!(user?.auth?.uid)} />
-      </div>
+      <LoadingIndicator loading={!(user?.auth?.uid)} />
     )
   }, [uid]);
 

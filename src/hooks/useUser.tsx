@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import {UserInterface} from "../interfaces/userInterface";
 
 export const useUser = () => {
@@ -11,7 +11,6 @@ export const useUser = () => {
       const userModel = localStorage.getItem('user');
       console.log("USER IN LOCALSTORAGE:", userModel)
       if (userModel) {
-        console.log("User available:", userModel);
         return JSON.parse(userModel);
       }
       console.log("No user in local Storage found...")
@@ -20,6 +19,7 @@ export const useUser = () => {
         console.error("Could not get the JwtToken from SecureStore:", e);
     }
   }
+
 
   const saveUser = (data: UserInterface) => {
     const jsonData = JSON.stringify(data);

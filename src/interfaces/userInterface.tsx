@@ -21,7 +21,7 @@ export interface Auth {
 }
 
 export interface UserInterface {
-  bots?: BotData[];
-  plan?: PlanInterface;
+  bots?: BotData[] | null;
+  plan?: PlanInterface | null;
   auth?: Auth;
 }
