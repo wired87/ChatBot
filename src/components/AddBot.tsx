@@ -1,4 +1,4 @@
-import React, {Fragment, memo, useState} from "react";
+import React, {Fragment, memo, useEffect, useState} from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import axios from "axios";
 
@@ -124,7 +124,11 @@ const AddBot: React.FC<Props> = (
       window.location.reload();
     }
   }
-
+  useEffect(() => {
+    console.log("loading", loading);
+    console.log("success", success);
+    console.log("error", error);
+  }, [error, loading, success]);
 
   const Content = () => {
     if ( error.length > 0 ) {
@@ -144,7 +148,7 @@ const AddBot: React.FC<Props> = (
       )
     } else if ( loading ) {
       return( <LoadingIndicator loading={loading} />)
-    } else if ( !loading && error.length === 0 && !success ) {
+    } else if ( !loading && error.length === 0 && success.length === 0 ) {
       return(
         <>
           <div className="grid grid-cols-2 gap-4">
