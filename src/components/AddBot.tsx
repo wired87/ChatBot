@@ -144,7 +144,10 @@ const AddBot: React.FC<Props> = (
         </>
       )
     } else if ( loading ) {
-      return( <LoadingIndicator loading={loading} />)
+      return(
+        <div className={"flex w-full h-full justify-center items-center"}>
+          <LoadingIndicator loading={loading} />
+        </div>)
     }
     return(
       <div className={"flex flex-col justify-start items-start w-full"}>
@@ -216,7 +219,6 @@ const AddBot: React.FC<Props> = (
             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
             focus-visible:outline-indigo-600"
             onClick={(e) => {
-              e.stopPropagation();
               createBot()
                 .then(() => console.log("Bot request successful..."))
                 .catch(e => console.log("Bot request failed cause Error:", e))

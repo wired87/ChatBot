@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, {memo, useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar";
 import { useUser } from "../../hooks/useUser";
@@ -73,7 +73,7 @@ const Dashboard = () => {
 
         console.log("Received user data:", newUser);
         updateUser(newUser);
-        await saveUser(newUser);
+        saveUser(newUser);
 
       } else {
         console.log("Invalid request...")
@@ -89,6 +89,20 @@ const Dashboard = () => {
       setLoading(false);
     }
   };
+
+  const botTableContent = useCallback(() => {
+    if ( user?.auth?.uid ) {
+      return(
+        <BotsTable bots={user?.bots || []} uid={user?.auth?.uid} />
+      )
+    }
+    return(
+      <div className="px-4 max-w-7xl mx-auto flex jusitfy-center items-center sm:px-6 lg:px-8">
+        <LoadingIndicator loading={true} />
+      </div>
+    )
+  }, [user, user?.auth?.uid]);
+
 
   useEffect(() => {
     setUserData()
@@ -136,7 +150,11 @@ const Dashboard = () => {
           <div className="text-sm">Alia Town Baghbanpura Lahore Pakistan</div>
         </div>
       </div>
-      <BotsTable bots={user?.bots || []} uid={user?.auth?.uid} />
+      <div className="px-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
+        {
+          botTableContent()
+        }
+      </div>
     </Sidebar>
   );
 };
