@@ -132,6 +132,9 @@ const AddBot: React.FC<Props> = (
 
 
   const Content = useCallback(() => {
+    console.log("loading", loading);
+    console.log("success", success);
+    console.log("error", error);
     if ( error.length > 0 ) {
       return(
         <>
