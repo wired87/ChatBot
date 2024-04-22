@@ -80,7 +80,7 @@ const AddBot: React.FC<Props> = (
 
   const createBot = async () => {
     setInputError("");
-
+    console.log("uid:", uid)
     if ( uid?.length > 0 ) {
       setLoading(true);
 
@@ -223,7 +223,6 @@ const AddBot: React.FC<Props> = (
             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
             focus-visible:outline-indigo-600"
             onClick={() => {
-              updateOpen();
               createBot()
                 .then(() => console.log("Bot request successful..."))
                 .catch(e => console.log("Bot request failed cause Error:", e))
