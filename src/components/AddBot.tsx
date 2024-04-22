@@ -152,89 +152,88 @@ const AddBot: React.FC<Props> = (
       )
     } else if ( loading ) {
       return( <LoadingIndicator loading={loading} />)
-    } else if ( !loading && error.length === 0 && success.length === 0 ) {
-      return(
-        <>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="mt-2">
-              <div className="">
-                <label
-                  className="block text-md text-gray-600"
-                  htmlFor="name"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  onChange={updateInput("name")}
-                  className="px-3 py-2 rounded-md text-gray-700  bg-slate-100"
-                  placeholder="Just an identifier. . ."
-                  id="name"
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="mt-2">
-              <div className="">
-                <label
-                  className="block text-md text-gray-600"
-                  htmlFor="name" >
-                  Your website url
-                </label>
-                <input
-                  type="text"
-                  name="dataUrl"
-                  onChange={updateInput("dataUrl")}
-                  required
-                  className="px-3 py-2 rounded-md text-gray-700  bg-slate-100"
-                  placeholder="The url of your website ( landingpage )"
-                  id="dataUrl"
-                />
-              </div>
-            </div>
-
-            <div className="mt-2">
-              <div className="">
-                <label
-                  className="block text-md text-gray-600"
-                  htmlFor="name"
-                >
-                  Description
-                </label>
-                <input
-                  type="text"
-                  name="description"
-                  onChange={updateInput("description")}
-                  className="px-3 py-2 rounded-md text-gray-700  bg-slate-100"
-                  placeholder="Name"
-                  id="name"
-                  maxLength={20}
-                  required
-                />
-              </div>
-            </div>
-          </div>
-          <div className={"text-center w-full"}>
-            {inputError}
-          </div>
-          <div className="mt-5 sm:mt-6">
-            <button
-              type="button"
-              className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              onClick={() => {
-                updateOpen();
-                createBot()
-                  .then(r => console.log("Bot request successful..."))
-                  .catch(e => console.log("Bot request failed cause Error:", e))
-              }} >
-              Create a new bot
-            </button>
-          </div>
-        </>
-      )
     }
+    return(
+      <>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="mt-2">
+            <div className="">
+              <label
+                className="block text-md text-gray-600"
+                htmlFor="name"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                onChange={updateInput("name")}
+                className="px-3 py-2 rounded-md text-gray-700  bg-slate-100"
+                placeholder="Just an identifier. . ."
+                id="name"
+                required
+              />
+            </div>
+          </div>
+
+          <div className="mt-2">
+            <div className="">
+              <label
+                className="block text-md text-gray-600"
+                htmlFor="name" >
+                Your website url
+              </label>
+              <input
+                type="text"
+                name="dataUrl"
+                onChange={updateInput("dataUrl")}
+                required
+                className="px-3 py-2 rounded-md text-gray-700  bg-slate-100"
+                placeholder="The url of your website ( landingpage )"
+                id="dataUrl"
+              />
+            </div>
+          </div>
+
+          <div className="mt-2">
+            <div className="">
+              <label
+                className="block text-md text-gray-600"
+                htmlFor="name"
+              >
+                Description
+              </label>
+              <input
+                type="text"
+                name="description"
+                onChange={updateInput("description")}
+                className="px-3 py-2 rounded-md text-gray-700  bg-slate-100"
+                placeholder="Name"
+                id="name"
+                maxLength={20}
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div className={"text-center w-full"}>
+          {inputError}
+        </div>
+        <div className="mt-5 sm:mt-6">
+          <button
+            type="button"
+            className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            onClick={() => {
+              updateOpen();
+              createBot()
+                .then(r => console.log("Bot request successful..."))
+                .catch(e => console.log("Bot request failed cause Error:", e))
+            }} >
+            Create a new bot
+          </button>
+        </div>
+      </>
+    )
   }, [loading, success, error]);
 
 
