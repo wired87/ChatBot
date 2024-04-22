@@ -228,8 +228,8 @@ const AddBot: React.FC<Props> = (
 
 
   return (
-    <Transition.Root show={open} as={Fragment} afterLeave={checkReload}>
-      <Dialog as="div" className="relative z-50" >
+    <Transition.Root show={open} as={Fragment} >
+      <Dialog as="div" className="relative z-50" onClose={updateOpen}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
