@@ -168,7 +168,7 @@ const AddBot: React.FC<Props> = (
                 type="text"
                 name="name"
                 onChange={updateInput("name")}
-                className="px-3 py-2 rounded-md text-gray-700  bg-slate-100"
+                className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full"
                 placeholder="Just an identifier. . ."
                 id="name"
                 required
@@ -188,7 +188,7 @@ const AddBot: React.FC<Props> = (
                 name="dataUrl"
                 onChange={updateInput("dataUrl")}
                 required
-                className="px-3 py-2 rounded-md text-gray-700  bg-slate-100"
+                className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full"
                 placeholder="The url of your website ( landingpage )"
                 id="dataUrl"
               />
@@ -207,7 +207,7 @@ const AddBot: React.FC<Props> = (
                 type="text"
                 name="description"
                 onChange={updateInput("description")}
-                className="px-3 py-2 rounded-md text-gray-700  bg-slate-100"
+                className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full"
                 placeholder="Name"
                 id="name"
                 maxLength={20}
@@ -222,7 +222,10 @@ const AddBot: React.FC<Props> = (
         <div className="mt-5 sm:mt-6">
           <button
             type="button"
-            className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3
+            py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500
+            focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+            focus-visible:outline-indigo-600"
             onClick={() => {
               updateOpen();
               createBot()
