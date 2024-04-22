@@ -158,7 +158,7 @@ const AddBot: React.FC<Props> = (
       )
     } else if ( loading ) {
       return(
-        <div className={"flex w-full h-full justify-center items-center"}>
+        <div className={"flex w-full h-full justify-center items-center pt-5 pb-8"}>
           <LoadingIndicator loading={loading} />
         </div>)
     }

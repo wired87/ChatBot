@@ -28,11 +28,13 @@ const BotsTable: React.FC<BotsTable> = (
     return (
       <div
         className={
-          status === "Active"
-            ? "text-emerald-700 px-2 inline-flex py-1 rounded-md font-semibold bg-emerald-100 "
-            : status === "Inactive"
-              ? "text-yellow-700 px-2 inline-flex py-1 rounded-md font-semibold bg-yellow-100"
-              : ""
+          status === "ACTIVE" ?
+            "text-emerald-700 px-2 inline-flex py-1 rounded-md font-semibold bg-emerald-100 " :
+            status === "IN_PROGRESS" ?
+              "text-yellow-700 px-2 inline-flex py-1 rounded-md font-semibold bg-yellow-100" :
+              status === "INACTIVE" ?
+                "text-yellow-700 px-2 inline-flex py-1 rounded-md font-semibold bg-red-100" :
+                ""
         }
       >
         {status || "UNKNOWN"}
@@ -200,7 +202,7 @@ const BotsTable: React.FC<BotsTable> = (
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {bot.description}
                     </td>
-                    <td className="whitespace-nowrap flex items-center gap-2 px-3 py-4 text-sm text-gray-500">
+                    <td className="whitespace-nowrap flex items-center justify-between gap-2 px-3 py-4 text-sm text-gray-500">
                       {bot.dataUrl}
                       <span
                         className="cursor-pointer"
