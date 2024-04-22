@@ -52,7 +52,14 @@ const StatusPayment: React.FC<StatusProps> = (
   const headingText = () => {
     if (success ) {
       return(
-        <h3 className="md:text-2xl text-base text-gray-900 font-semibold text-center">Payment Successful!</h3>
+        <>
+          <h3 className="md:text-2xl text-base text-gray-900 font-semibold text-center">
+            Payment Successful!
+          </h3>
+          <h4 className="md:text-2xl text-base text-gray-900 font-semibold text-center">
+            It may take a few minutes till your plan will be active
+          </h4>
+        </>
       )
     }
     return(
