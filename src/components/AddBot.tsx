@@ -18,7 +18,7 @@ interface Input {
 }
 
 interface Props {
-  user: UserInterface;
+  user?: UserInterface;
   updateOpen: () => void;
   open: boolean
 }

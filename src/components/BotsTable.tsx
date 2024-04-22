@@ -40,7 +40,7 @@ const BotsTable: React.FC<BotsTable> = (
   };
   return (
     <div className="px-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <AddBot uid={user?.auth?.uid || ""} open={add} updateOpen={updateAdd} />
+      <AddBot user={user} open={add} updateOpen={updateAdd} />
       <Modal selected={selected} open={open} setOpen={setOpen} />
       <div className="flex justify-between md:flex-row main_ flex-col  ">
         <div className="sm:flex-auto">
