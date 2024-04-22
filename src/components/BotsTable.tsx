@@ -24,7 +24,7 @@ export default function Bots({ bots }: any) {
     );
   };
   return (
-    <div className="px-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div className=" max-w-7xl mx-auto  ">
       <AddBot open={add} setOpen={setAdd} />
       <Modal selected={selected} open={open} setOpen={setOpen} />
       <div className="flex justify-between md:flex-row main_ flex-col  ">

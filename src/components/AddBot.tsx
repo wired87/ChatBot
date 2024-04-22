@@ -29,7 +29,7 @@ export default function AddBot(props: any) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all  max-w-4xl  ">
+              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all w-full  max-w-3xl  ">
                 <div>
                   <div className="mt-3 text-left sm:mt-5">
                     <Dialog.Title
@@ -41,7 +41,7 @@ export default function AddBot(props: any) {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4">
                   <div className="mt-2">
                     <div className="">
                       <label
@@ -53,7 +53,7 @@ export default function AddBot(props: any) {
                       <input
                         type="text"
                         name=""
-                        className="px-3 py-2 rounded-md text-gray-700  bg-slate-100"
+                        className="px-3 py-2 w-full rounded-md text-gray-700  bg-slate-100"
                         placeholder="Name"
                         id="name"
                       />
@@ -68,7 +68,7 @@ export default function AddBot(props: any) {
                         Status
                       </label>
                       <select
-                        className="px-3 py-2 w-full text-gray-700 bg-slate-200"
+                        className="px-3 py-2 w-full text-gray-700 bg-slate-100"
                         name=""
                         id=""
                       >
@@ -86,13 +86,13 @@ export default function AddBot(props: any) {
                         className="block text-md text-gray-600"
                         htmlFor="name"
                       >
-                        Name
+                        Data URL
                       </label>
                       <input
                         type="text"
                         name=""
-                        className="px-3 py-2 rounded-md text-gray-700  bg-slate-100"
-                        placeholder="Name"
+                        className="px-3 w-full py-2 rounded-md text-gray-700  bg-slate-100"
+                        placeholder="www.site.com"
                         id="name"
                       />
                     </div>
@@ -103,15 +103,14 @@ export default function AddBot(props: any) {
                         className="block text-md text-gray-600"
                         htmlFor="name"
                       >
-                        Name
+                        Description
                       </label>
-                      <input
-                        type="text"
+                      <textarea
                         name=""
-                        className="px-3 py-2 rounded-md text-gray-700  bg-slate-100"
+                        className="px-3 py-2 w-full rounded-md text-gray-700  bg-slate-100"
                         placeholder="Name"
                         id="name"
-                      />
+                      ></textarea>
                     </div>
                   </div>
                 </div>
