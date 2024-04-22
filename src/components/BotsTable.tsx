@@ -53,7 +53,7 @@ const BotsTable: React.FC<BotsTable> = (
         </div>
         <div className="">
           <button
-            onClick={updateOpen}
+            onClick={updateAdd}
             className="px-5 py-2 cursor-pointer shrink-0 flex items-center gap-2  bg-indigo-600 rounded-md text-white "
           >
             <svg
