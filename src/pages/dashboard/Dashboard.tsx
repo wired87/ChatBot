@@ -1,4 +1,4 @@
-import React, {memo, useCallback, useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar";
 import { useUser } from "../../hooks/useUser";
@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   const { user, saveUser, updateUser, checkUserAvailability } = useUser();
   const [loading, setLoading] = useState<boolean>(false);
-
+  const [uid, setUid] = useState<string>("");
   // todo if true systemerror modal pop up - refresh
   const [e, setE] = useState<string>("");
 
@@ -100,7 +100,7 @@ const Dashboard = () => {
   };
 
   const botTableContent = useCallback(() => {
-    if ( user?.auth?.uid ) {
+    if ( uid && uid.length > 0 ) {
       return(
         <BotsTable bots={user?.bots || []} uid={user?.auth?.uid} />
       )
@@ -110,7 +110,7 @@ const Dashboard = () => {
         <LoadingIndicator loading={!(user?.auth?.uid)} />
       </div>
     )
-  }, [user, user?.auth?.uid]);
+  }, [uid]);
 
 
 

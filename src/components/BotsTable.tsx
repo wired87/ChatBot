@@ -46,10 +46,6 @@ const BotsTable: React.FC<BotsTable> = (
           <h1 className="text-base font-semibold leading-6 text-gray-900">
             Bots
           </h1>
-          <p className="mt-2 text-sm text-gray-700">
-            A list of all the Bots in your account including their name, title,
-            email and role.
-          </p>
         </div>
         <div className="">
           <button
