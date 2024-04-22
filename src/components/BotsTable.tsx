@@ -18,8 +18,6 @@ const BotsTable: React.FC<BotsTable> = (
 
   const [open, setOpen] = useState<boolean>(false);
 
-  const [sec, setSec] = useState<number>(5);
-
   const [add, setAdd] = useState<boolean>(false);
   const updateAdd = () => setAdd(!add);
 
@@ -50,11 +48,14 @@ const BotsTable: React.FC<BotsTable> = (
 
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setSec(sec => sec - 1);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+    if ( fieldError.length > 0 ) {
+      const interval = setInterval(() => {
+        setFieldError("");
+      }, 5000);
+
+      return () => clearInterval(interval);
+    }
+  }, [fieldError])
 
   const handleAddClick = () => {
     if (getUserBool()) {
@@ -65,7 +66,7 @@ const BotsTable: React.FC<BotsTable> = (
   }
 
   const filedErrorText = () => {
-    if ( fieldError ) {
+    if ( fieldError.length > 0 ) {
       return(
         <h5 className={"text-red"}>{fieldError}</h5>
       )
