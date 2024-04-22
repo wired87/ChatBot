@@ -56,7 +56,7 @@ const BotsTable: React.FC<BotsTable> = (
         <div className="">
           <button
             onClick={updateAdd}
-            disabled={getUserBool()}
+            // disabled={false}  getUserBool()
             className="px-5 py-2 cursor-pointer shrink-0 flex items-center gap-2  bg-indigo-600 rounded-md text-white" >
             <svg
               xmlns="http://www.w3.org/2000/svg"
