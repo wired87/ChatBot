@@ -1,4 +1,4 @@
-import React, {memo, useState} from "react";
+import React, {memo, useEffect, useState} from "react";
 import Modal from "./Modal";
 import {BotData, UserInterface} from "../interfaces/userInterface";
 import AddBot from "./AddBot";
@@ -18,10 +18,13 @@ const BotsTable: React.FC<BotsTable> = (
 
   const [open, setOpen] = useState<boolean>(false);
 
+  const [sec, setSec] = useState<number>(5);
+
   const [add, setAdd] = useState<boolean>(false);
   const updateAdd = () => setAdd(!add);
 
   const [selected, setSelected] = useState({});
+  const [fieldError, setFieldError] = useState<string>("");
 
   const statusMessage = (status: string | undefined) => {
     return (
@@ -40,7 +43,33 @@ const BotsTable: React.FC<BotsTable> = (
   };
 
   const getUserBool = () => {
-    return !(user?.plan?.name)
+    return user?.plan?.name
+  }
+
+
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSec(sec => sec - 1);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleAddClick = () => {
+    if (getUserBool()) {
+      updateAdd();
+    } else {
+      setFieldError("You have no active plan currently...");
+    }
+  }
+
+  const filedErrorText = () => {
+    if ( fieldError ) {
+      return(
+        <h5 className={"text-red"}>{fieldError}</h5>
+      )
+    }
   }
 
   return (
@@ -53,10 +82,10 @@ const BotsTable: React.FC<BotsTable> = (
             Bots
           </h1>
         </div>
-        <div className="">
+        <div className="flex flex-col">
           <button
-            onClick={updateAdd}
-            // disabled={false}  getUserBool()
+            onClick={handleAddClick}
+
             className="px-5 py-2 cursor-pointer shrink-0 flex items-center gap-2  bg-indigo-600 rounded-md text-white" >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -74,6 +103,9 @@ const BotsTable: React.FC<BotsTable> = (
             </svg>
             Add new Bot
           </button>
+          {
+            filedErrorText()
+          }
         </div>
       </div>
 
