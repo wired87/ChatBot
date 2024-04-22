@@ -24,23 +24,20 @@ const BotsTable: React.FC<BotsTable> = (
   const [selected, setSelected] = useState({});
   const [fieldError, setFieldError] = useState<string>("");
 
-  const statusMessage = (status: string | undefined) => {
-    return (
-      <div
-        className={
-          status === "ACTIVE" ?
-            "text-emerald-700 px-2 inline-flex py-1 rounded-md font-semibold bg-emerald-100 " :
-            status === "IN_PROGRESS" ?
-              "text-yellow-700 px-2 inline-flex py-1 rounded-md font-semibold bg-yellow-100" :
-              status === "INACTIVE" ?
-                "text-yellow-700 px-2 inline-flex py-1 rounded-md font-semibold bg-red-100" :
-                ""
-        }
-      >
-        {status || "UNKNOWN"}
-      </div>
-    );
-  };
+  const statusMessageClass = (status: string | undefined): string => {
+    if ( status ) {
+      if (status === "ACTIVE") {
+        return "text-emerald-700 px-2 inline-flex py-1 rounded-md font-semibold bg-emerald-100";
+      } else if (status === "IN_PROGRESS") {
+        return "text-yellow-700 px-2 inline-flex py-1 rounded-md font-semibold bg-yellow-100";
+      } else if (status === "INACTIVE") {
+        return "text-yellow-700 px-2 inline-flex py-1 rounded-md font-semibold bg-red-100";
+      }
+      return ""
+    }
+    return ""
+  }
+
 
   const getUserBool = () => {
     return user?.plan?.name
@@ -190,14 +187,12 @@ const BotsTable: React.FC<BotsTable> = (
                       {bot.name}
                     </td>
                     <td className="whitespace-nowrap   flex  px-3 py-4 text-sm text-gray-500">
-                      {bot.status === "Success" ? (
-                        <span className="px-2 py-1 text-xs  rounded-md bg-green-100 text-green-800">
-                          {" "}
-                          {statusMessage(bot.status)}
-                        </span>
-                      ) : (
-                        ""
-                      )}
+                      <span className="px-2 py-1 text-xs  rounded-md bg-green-100 text-green-800">
+                        <div
+                          className={statusMessageClass(bot.status)}>
+                            {bot.status}
+                        </div>
+                      </span>
                     </td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {bot.description}
