@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 import LoadingIndicator from "../../components/LoadingIndicator";
 import BotsTable from "../../components/BotsTable";
 
-declare var newUser:UserInterface;
 
 const Dashboard = () => {
 
@@ -53,8 +52,7 @@ const Dashboard = () => {
   };
 
   const getDashboard = async (localUser: UserInterface) => {
-    newUser = localUser;
-    console.log("Current user:", newUser);
+    console.log("Current user:", localUser);
 
     try {
       const res = await axios.post(
@@ -70,17 +68,17 @@ const Dashboard = () => {
 
         const botData: BotData[] | undefined | null = r.bots;
         if ( botData ) {
-          newUser.bots = botData
+          localUser.bots = botData
         }
         const plan: PlanInterface | undefined | null = r.plan;
         if ( plan ) {
-          newUser.plan = plan
+          localUser.plan = plan
         }
 
-        console.log("Received user data:", newUser);
-        updateUser(newUser);
-        saveUser(newUser);
-        setUid(newUser?.auth?.uid || "");
+        console.log("Received user data:", localUser);
+        updateUser(localUser);
+        saveUser(localUser);
+        setUid(localUser?.auth?.uid || "");
 
       } else {
         console.log("Invalid request...")
