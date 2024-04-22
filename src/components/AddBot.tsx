@@ -154,8 +154,8 @@ const AddBot: React.FC<Props> = (
       return( <LoadingIndicator loading={loading} />)
     }
     return(
-      <>
-        <div className="grid grid-cols-2 gap-4">
+      <div className={"flex flex-col justify-start items-start"}>
+        <div className="gap-4">
           <div className="mt-2">
             <div className="">
               <label
@@ -226,13 +226,13 @@ const AddBot: React.FC<Props> = (
             onClick={() => {
               updateOpen();
               createBot()
-                .then(r => console.log("Bot request successful..."))
+                .then(() => console.log("Bot request successful..."))
                 .catch(e => console.log("Bot request failed cause Error:", e))
             }} >
             Create a new bot
           </button>
         </div>
-      </>
+      </div>
     )
   }, [loading, success, error]);
 
@@ -264,8 +264,7 @@ const AddBot: React.FC<Props> = (
             >
               <Dialog.Panel
                 className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5
-              text-left shadow-xl transition-all w-full  max-w-3xl  "
-              >
+              text-left shadow-xl transition-all w-full  max-w-3xl  " >
 
                   <div>
                     <div className="mt-3 text-left sm:mt-5">
@@ -280,9 +279,6 @@ const AddBot: React.FC<Props> = (
                       Content()
                     }
                   </div>
-
-
-
               </Dialog.Panel>
             </Transition.Child>
           </div>
