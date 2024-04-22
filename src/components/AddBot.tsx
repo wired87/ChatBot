@@ -120,6 +120,9 @@ const AddBot: React.FC<Props> = (
 
 
   const checkReload = () => {
+    setError("");
+    setSuccess("");
+    setInputError("");
     if (success.length > 0 ) {
       window.location.reload();
     }
