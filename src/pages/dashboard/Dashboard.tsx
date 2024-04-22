@@ -83,7 +83,7 @@ const Dashboard = () => {
         console.log("Received user data:", newUser);
         updateUser(newUser);
         saveUser(newUser);
-
+        setUid(localUser?.auth?.uid || "")
       } else {
         console.log("Invalid request...")
         setE(res.data.message)
