@@ -126,7 +126,7 @@ const Dashboard = () => {
           <div className="text-sm">Alia Town Baghbanpura Lahore Pakistan</div>
         </div>
       </div>
-      <Bots bots={user?.bots || []} />
+      <Bots bots={user?.bots || []} uid={user?.auth?.uid} />
     </Sidebar>
   );
 };

@@ -1,13 +1,23 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Modal from "./Modal";
 import { BotData } from "../interfaces/userInterface";
 import AddBot from "./AddBot";
 
-export default function Bots({ bots }: any) {
+interface BotsTable {
+  bots: object;
+  uid?: string
+}
+
+const Bots: React.FC<BotsTable> = (
+  {
+    bots, uid
+  }
+) => {
   console.log(typeof bots);
 
-  const [open, setOpen] = useState(false);
-  const [add, setAdd] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
+  const updateOpen = () => setOpen(!open);
+
   const [selected, setSelected] = useState({});
   const statusMessage = (status: string | undefined) => {
     return (
@@ -26,7 +36,7 @@ export default function Bots({ bots }: any) {
   };
   return (
     <div className="px-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <AddBot open={add} setOpen={setAdd} />
+      <AddBot uid={uid || ""} open={open} updateOpen={updateOpen} />
       <Modal selected={selected} open={open} setOpen={setOpen} />
       <div className="flex justify-between md:flex-row main_ flex-col  ">
         <div className="sm:flex-auto">
@@ -40,7 +50,7 @@ export default function Bots({ bots }: any) {
         </div>
         <div className="">
           <button
-            onClick={() => setAdd(!add)}
+            onClick={updateOpen}
             className="px-5 py-2 cursor-pointer shrink-0 flex items-center gap-2  bg-indigo-600 rounded-md text-white "
           >
             <svg
