@@ -197,7 +197,7 @@ const AddBot: React.FC<Props> = (
                 name="description"
                 onChange={updateInput("description")}
                 className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full outline-0"
-                placeholder="Name"
+                placeholder="My cool new Bot"
                 id="name"
                 maxLength={20}
                 required
@@ -214,7 +214,8 @@ const AddBot: React.FC<Props> = (
             py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500
             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
             focus-visible:outline-indigo-600"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               createBot()
                 .then(() => console.log("Bot request successful..."))
                 .catch(e => console.log("Bot request failed cause Error:", e))
@@ -225,7 +226,6 @@ const AddBot: React.FC<Props> = (
       </div>
     )
   }
-
 
   return (
     <Transition.Root show={open} as={Fragment} >
@@ -254,7 +254,7 @@ const AddBot: React.FC<Props> = (
             >
               <Dialog.Panel
                 className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5
-              text-left shadow-xl transition-all w-full  max-w-3xl  " >
+                            text-left shadow-xl transition-all w-full max-w-3xl" >
 
                   <div>
                     <div className="mt-3 text-left sm:mt-5">
