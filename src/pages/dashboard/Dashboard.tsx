@@ -9,12 +9,10 @@ import {
   UserInterface,
 } from "../../interfaces/userInterface";
 import { useNavigate } from "react-router-dom";
-import Bots from "../../components/BotsTable";
 import LoadingIndicator from "../../components/LoadingIndicator";
+import BotsTable from "../../components/BotsTable";
 
 const Dashboard = () => {
-
-
 
   const { user, saveUser, updateUser, checkUserAvailability } = useUser();
   const [loading, setLoading] = useState<boolean>(false);
@@ -126,7 +124,7 @@ const Dashboard = () => {
           <div className="text-sm">Alia Town Baghbanpura Lahore Pakistan</div>
         </div>
       </div>
-      <Bots bots={user?.bots || []} uid={user?.auth?.uid} />
+      <BotsTable bots={user?.bots || []} uid={user?.auth?.uid} />
     </Sidebar>
   );
 };

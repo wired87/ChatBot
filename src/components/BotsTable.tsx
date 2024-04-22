@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, {memo, useState} from "react";
 import Modal from "./Modal";
 import { BotData } from "../interfaces/userInterface";
 import AddBot from "./AddBot";
 
 interface BotsTable {
-  bots: object;
+  bots: object[];
   uid?: string
 }
 
-const Bots: React.FC<BotsTable> = (
+const BotsTable: React.FC<BotsTable> = (
   {
     bots, uid
   }
@@ -145,32 +145,7 @@ const Bots: React.FC<BotsTable> = (
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 bg-white">
-                {[
-                  {
-                    name: "kashif Bot",
-                    status: "Success",
-                    desc: "This is cool",
-                    dataUrl: "www.website.com",
-                  },
-                  {
-                    name: "kashif Bot",
-                    status: "Success",
-                    desc: "This is cool",
-                    dataUrl: "www.website.com",
-                  },
-                  {
-                    name: "kashif Bot",
-                    status: "Success",
-                    desc: "This is cool",
-                    dataUrl: "www.website.com",
-                  },
-                  {
-                    name: "kashif Bot",
-                    status: "Success",
-                    desc: "This is cool",
-                    dataUrl: "www.website.com",
-                  },
-                ].map((bot: BotData) => (
+                {bots.map((bot: BotData) => (
                   <tr key={bot.name}>
                     <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                       {bot.name}
@@ -223,3 +198,4 @@ const Bots: React.FC<BotsTable> = (
     </div>
   );
 }
+export default memo(BotsTable);
