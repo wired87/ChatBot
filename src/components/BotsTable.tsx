@@ -86,8 +86,7 @@ const BotsTable: React.FC<BotsTable> = (
         <div className="flex flex-col">
           <button
             onClick={handleAddClick}
-
-            className="px-5 py-2 cursor-pointer shrink-0 flex items-center gap-2  bg-indigo-600 rounded-md text-white" >
+            className="px-5 py-2 cursor-pointer flex items-center gap-2  bg-indigo-600 rounded-md text-white" >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
