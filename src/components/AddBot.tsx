@@ -1,4 +1,4 @@
-import React, {Fragment, memo, useCallback, useEffect, useState} from "react";
+import React, {Fragment, memo,  useState} from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import axios from "axios";
 
@@ -210,7 +210,6 @@ const AddBot: React.FC<Props> = (
         </div>
         <div className="mt-5 sm:mt-6">
           <button
-            type="button"
             className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3
             py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500
             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
@@ -230,7 +229,7 @@ const AddBot: React.FC<Props> = (
 
   return (
     <Transition.Root show={open} as={Fragment} afterLeave={checkReload}>
-      <Dialog as="div" className="relative z-50" onClose={updateOpen}>
+      <Dialog as="div" className="relative z-50" >
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
