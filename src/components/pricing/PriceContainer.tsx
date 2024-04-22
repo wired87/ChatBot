@@ -13,8 +13,6 @@ interface PriceContainerInterface {
   uid: string;
 }
 
-
-
 const checkEndpoint = "https://wired66.pythonanywhere.com/payment/checkout/"
 
 const PriceContainer: React.FC<PriceContainerInterface> = (
@@ -57,7 +55,7 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
 
       const response = await getUrl()
       if (response && response.checkout_session_url) {
-        window.open(response.checkout_session_url, /*'_blank'*/);
+        window.open(response.checkout_session_url, '_blank');
       }
       console.log("RESPONSE ",response)
     }catch(e){

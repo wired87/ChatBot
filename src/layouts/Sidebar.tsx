@@ -1,31 +1,16 @@
 import { Fragment, useState } from "react";
-import { Dialog, Menu, Transition } from "@headlessui/react";
+import { Dialog,  Transition } from "@headlessui/react";
 //
 import { useNavigate } from "react-router-dom";
-import {
-  Bars3Icon,
-  BellIcon,
-  CalendarIcon,
-  ChartPieIcon,
-  Cog6ToothIcon,
-  DocumentDuplicateIcon,
-  FolderIcon,
-  HomeIcon,
-  UsersIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
-import {
-  ChevronDownIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/20/solid";
+import { CiSettings } from "react-icons/ci";
 
 const navigation = [
-  { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-  { name: "Team", href: "#", icon: UsersIcon, current: false },
-  { name: "Projects", href: "#", icon: FolderIcon, current: false },
-  { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
-  { name: "Documents", href: "#", icon: DocumentDuplicateIcon, current: false },
-  { name: "Reports", href: "#", icon: ChartPieIcon, current: false },
+  { name: "Dashboard", href: "#", icon: CiSettings, current: true },
+  { name: "Team", href: "#", icon: CiSettings, current: false },
+  { name: "Projects", href: "#", icon: CiSettings, current: false },
+  { name: "Calendar", href: "#", icon: CiSettings, current: false },
+  { name: "Documents", href: "#", icon: CiSettings, current: false },
+  { name: "Reports", href: "#", icon: CiSettings, current: false },
 ];
 const teams = [
   { id: 1, name: "Heroicons", href: "#", initial: "H", current: false },
@@ -100,7 +85,7 @@ export default function Sidebar(props: any) {
                         onClick={() => setSidebarOpen(false)}
                       >
                         <span className="sr-only">Close sidebar</span>
-                        <XMarkIcon
+                        <CiSettings
                           className="h-6 w-6 text-white"
                           aria-hidden="true"
                         />
@@ -183,7 +168,7 @@ export default function Sidebar(props: any) {
                             href="#"
                             className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
                           >
-                            <Cog6ToothIcon
+                            <CiSettings
                               className="h-6 w-6 shrink-0 text-gray-400 group-hover:text-indigo-600"
                               aria-hidden="true"
                             />
@@ -277,7 +262,7 @@ export default function Sidebar(props: any) {
                     href="#"
                     className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
                   >
-                    <Cog6ToothIcon
+                    <CiSettings
                       className="h-6 w-6 shrink-0 text-gray-400 group-hover:text-indigo-600"
                       aria-hidden="true"
                     />
@@ -297,7 +282,7 @@ export default function Sidebar(props: any) {
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
-              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+              <CiSettings className="h-6 w-6" aria-hidden="true" />
             </button>
 
             {/* Separator */}
@@ -311,7 +296,7 @@ export default function Sidebar(props: any) {
                 <label htmlFor="search-field" className="sr-only">
                   Search
                 </label>
-                <MagnifyingGlassIcon
+                <CiSettings
                   className="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
                   aria-hidden="true"
                 />
@@ -329,7 +314,7 @@ export default function Sidebar(props: any) {
                   className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500"
                 >
                   <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
+                  <CiSettings className="h-6 w-6" aria-hidden="true" />
                 </button>
 
                 {/* Separator */}
