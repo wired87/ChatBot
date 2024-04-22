@@ -1,4 +1,4 @@
-import React, {Fragment, memo, useEffect, useState} from "react";
+import React, {Fragment, memo, useCallback, useEffect, useState} from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import axios from "axios";
 
@@ -130,7 +130,8 @@ const AddBot: React.FC<Props> = (
     console.log("error", error);
   }, [error, loading, success]);
 
-  const Content = () => {
+
+  const Content = useCallback(() => {
     if ( error.length > 0 ) {
       return(
         <>
@@ -231,8 +232,7 @@ const AddBot: React.FC<Props> = (
         </>
       )
     }
-  }
-
+  }, [loading, success, error]);
 
 
   return (
