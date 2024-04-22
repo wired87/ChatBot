@@ -188,48 +188,6 @@ export default function Sidebar(props: any) {
 
             {/* Separator */}
             <div className="h-6 w-px bg-gray-400 " aria-hidden="true" />
-
-            <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
-              <form className="relative flex flex-1" action="#" method="GET">
-                <label htmlFor="search-field" className="sr-only">
-                  Search
-                </label>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-5 h-5"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-                  />
-                </svg>
-
-                <input
-                  id="search-field"
-                  className="block h-full w-full border-0 py-0 pl-8 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
-                  placeholder="Search..."
-                  type="search"
-                  name="search"
-                />
-              </form>
-              <div className="flex items-center gap-x-4 lg:gap-x-6">
-                {/* Separator */}
-                <div
-                  className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200"
-                  aria-hidden="true"
-                />
-
-                {/* Profile dropdown */}
-                <button className="text-gray-700" onClick={logout}>
-                  Logout
-                </button>
-              </div>
-            </div>
           </div>
 
           <main className="py-10">
