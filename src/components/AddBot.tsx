@@ -125,7 +125,10 @@ const AddBot: React.FC<Props> = (
     setInputError("");
     if (success.length > 0 ) {
       window.location.reload();
+    } else {
+      updateOpen()
     }
+
   }
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -225,7 +228,7 @@ const AddBot: React.FC<Props> = (
         </div>
 
         <div className={"text-center w-full"}>
-          {inputError}
+          <h4 className={"color-main-secondary"}>{inputError}</h4>
         </div>
         <div className="mt-5 sm:mt-6">
           <button
