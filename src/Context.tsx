@@ -23,4 +23,6 @@ export const MainContext = createContext(
       setResponse: Dispatch<SetStateAction<any>>,
       setStatus?: Dispatch<SetStateAction<number>>,
     ) => Promise<any>,
+
+
   });

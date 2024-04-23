@@ -26,13 +26,16 @@ import Imprint from "./pages/Imprint";
 import StatusPayment from "./pages/payment/SuccessPayment";
 import RequestReset from "./pages/RequestResetPw";
 import ResetPw from "./pages/ResetPw";
+import {useUser} from "./hooks/useUser";
 
 function App() {
   const action = useNavigationType();
   const location = useLocation();
   const pathname = location.pathname;
 
-  const { checkSessionData, user, updateUser, checkUserAvailability } = useContext(MainContext);
+  const { checkSessionData, user, updateUser } = useContext(MainContext);
+
+  const { checkUserAvailability } = useUser();
 
   useEffect(() => {
     if (action !== "POP") {

@@ -1,4 +1,4 @@
-import {FunctionComponent, useState, useCallback, useContext} from "react";
+import {FunctionComponent, useState, useCallback} from "react";
 import MenuDrower from "./MenuDrower";
 import PortalDrawer from "./PortalDrawer";
 import {useNavigate} from "react-router-dom";
@@ -26,7 +26,7 @@ const buttonValueArray: NavbarHook[] = [
 ];
 
 interface NavProps {
-  user?: UserInterface;
+  user?: UserInterface | null;
 }
 
 const Navbar: FunctionComponent<NavProps> = (
@@ -34,6 +34,7 @@ const Navbar: FunctionComponent<NavProps> = (
     user
   }
 ) => {
+
   const [isMenuDrowerOpen, setMenuDrowerOpen] = useState(false);
 
   const openMenuDrower = useCallback(() => {
