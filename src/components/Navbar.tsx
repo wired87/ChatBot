@@ -3,11 +3,8 @@ import MenuDrower from "./MenuDrower";
 import PortalDrawer from "./PortalDrawer";
 import {useNavigate} from "react-router-dom";
 import {NavbarHook} from "../interfaces/navbarHook";
-import {MainContext} from "../Context";
+import {UserInterface} from "../interfaces/userInterface";
 
-export type NavbarType = {
-  vector?: string;
-};
 
 const buttonValueArray: NavbarHook[] = [
   {
@@ -26,10 +23,17 @@ const buttonValueArray: NavbarHook[] = [
     title: "Pricing",
     screen: "/pricing",
   }
-]
+];
 
+interface NavProps {
+  user?: UserInterface;
+}
 
-const Navbar: FunctionComponent<NavbarType> = () => {
+const Navbar: FunctionComponent<NavProps> = (
+  {
+    user
+  }
+) => {
   const [isMenuDrowerOpen, setMenuDrowerOpen] = useState(false);
 
   const openMenuDrower = useCallback(() => {
@@ -42,7 +46,6 @@ const Navbar: FunctionComponent<NavbarType> = () => {
 
 
   const navigate = useNavigate();
-  const { user } = useContext(MainContext);
 
 
   const buttonLine = () => {
@@ -73,6 +76,7 @@ const Navbar: FunctionComponent<NavbarType> = () => {
     }
     return "Get started!"
   }, [user, user?.auth?.uid]);
+
 
   return (
     <>

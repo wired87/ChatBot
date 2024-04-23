@@ -68,7 +68,6 @@ const ResetPw: React.FC = () => {
         setLoading(false)
       }
     }
-
   }
 
   const handleChange = (key: keyof Creds) => (e: React.ChangeEvent<HTMLInputElement>) => {

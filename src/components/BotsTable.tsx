@@ -39,8 +39,8 @@ const BotsTable: React.FC<BotsTable> = (
   }
 
 
-  const getUserBool = () => {
-    return user?.plan?.name
+  const userFieldsExist = () => {
+    return user?.plan?.name && Number(user?.plan?.totalBotsIncluded) > 0
   }
 
 
@@ -57,7 +57,7 @@ const BotsTable: React.FC<BotsTable> = (
   }, [fieldError])
 
   const handleAddClick = () => {
-    if (getUserBool()) {
+    if (userFieldsExist()) {
       updateAdd();
     } else {
       setFieldError("You have no active plan currently...");

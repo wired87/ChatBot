@@ -32,7 +32,7 @@ function App() {
   const location = useLocation();
   const pathname = location.pathname;
 
-  const { checkSessionData } = useContext(MainContext)
+  const { checkSessionData, user, updateUser, checkUserAvailability } = useContext(MainContext);
 
   useEffect(() => {
     if (action !== "POP") {
@@ -83,10 +83,18 @@ function App() {
   }, []);
 
 
+  useEffect(() => {
+    const localUser = checkUserAvailability();
+    if ( user ) {
+      updateUser(user);
+
+    }
+    }, []);
+
   return (
     <Fragment>
       <MainContextProvider>
-        <Navbar />
+        <Navbar user={user}/>
           <Routes>
 
             <Route path="/" element={<Home />} />

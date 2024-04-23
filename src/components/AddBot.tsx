@@ -116,7 +116,7 @@ const AddBot: React.FC<Props> = (
       navigate("/login");
     }
   };
-
+  // get a href
 
   const checkReload = () => {
     setError("");
@@ -127,15 +127,14 @@ const AddBot: React.FC<Props> = (
     } else {
       updateOpen()
     }
-
   }
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if ( user?.plan?.name ) {
+    if ( user?.plan?.name && Number(user?.plan?.totalBotsIncluded) > 0 ) {
       await createBot();
     } else {
-      setInputError("You dont have an active plan currently... ")
+      setInputError("You dont have enough available Bots currently. Please upgrade your plan. ")
     }
   }
 

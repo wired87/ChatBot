@@ -75,8 +75,6 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
   }, [purchaseObject]);
 
 
-
-
   useEffect(() => {
     if (user && user?.plan?.name === item.title) {
       console.log("DISABLED...")
