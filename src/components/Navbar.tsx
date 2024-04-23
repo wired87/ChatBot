@@ -1,11 +1,12 @@
-import React, {useState, useCallback, useContext} from "react";
+import React, {useState, useCallback, useEffect} from "react";
 import MenuDrower from "./MenuDrower";
 import PortalDrawer from "./PortalDrawer";
 import {useNavigate} from "react-router-dom";
 import {NavbarHook} from "../interfaces/navbarHook";
-import {MainContext} from "../Context";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {UserInterface} from "../interfaces/userInterface";
+import {authActions} from "../functions/redux/app/slices/authSlice";
+import {useUser} from "../hooks/useUser";
 
 
 const buttonValueArray: NavbarHook[] = [
@@ -31,6 +32,18 @@ const buttonValueArray: NavbarHook[] = [
 const Navbar: React.FC = (
 
 ) => {
+  const  { checkUserAvailability } = useUser();
+
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    console.log("NAVBAR FETCHING DATA...")
+    const user = checkUserAvailability();
+    if ( user?.auth?.uid ) {
+      dispatch(authActions.Login({ user: user }));
+    }
+  }, []);
 
   const [isMenuDrowerOpen, setMenuDrowerOpen] = useState(false);
 

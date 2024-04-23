@@ -1,4 +1,4 @@
-import {Fragment, useContext, useEffect} from "react";
+import {Fragment, useEffect} from "react";
 import {
   Routes,
   Route,
@@ -10,7 +10,6 @@ import Home from "./pages/Home";
 import DemoPage from "./pages/DemoPage";
 import Pricing from "./pages/payment/Pricing";
 import MainContextProvider from "./hooks/useMainContext";
-import {MainContext} from "./Context";
 import Navbar from "./components/Navbar";
 import {Footer} from "./components/Footer";
 import Platforms from "./pages/Platforms";
@@ -26,22 +25,28 @@ import Imprint from "./pages/Imprint";
 import StatusPayment from "./pages/payment/SuccessPayment";
 import RequestReset from "./pages/RequestResetPw";
 import ResetPw from "./pages/ResetPw";
-import {useUser} from "./hooks/useUser";
+import {Provider} from 'react-redux';
+import {persistor, store} from "./functions/redux/app/store/configureStore";
+import { PersistGate } from 'redux-persist/integration/react';
+
 
 function App() {
   const action = useNavigationType();
+
   const location = useLocation();
+
   const pathname = location.pathname;
 
-  const { checkSessionData, user, updateUser } = useContext(MainContext);
 
-  const { checkUserAvailability } = useUser();
+
+
 
   useEffect(() => {
     if (action !== "POP") {
       window.scrollTo(0, 0);
     }
   }, [action, pathname]);
+
 
   useEffect(() => {
     let title = "";
@@ -81,52 +86,44 @@ function App() {
   }, [pathname]);
 
 
-  useEffect(() => {
-    checkSessionData();
-  }, []);
-
-
-  useEffect(() => {
-    const localUser = checkUserAvailability();
-    if ( user ) {
-      updateUser(user);
-
-    }
-    }, []);
 
   return (
-    <Fragment>
-      <MainContextProvider>
-        <Navbar />
-          <Routes>
+    <Provider store={store} >
+      <PersistGate loading={null} persistor={persistor}>
+        <Fragment>
+          <MainContextProvider>
+            <Navbar />
+              <Routes>
 
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            
-            <Route path="/register" element={<Auth login={false}/>} />
-            <Route path="/login" element={<Auth login={true} />} />
-            <Route path="/reset-password/:uid/:token/" element={<ResetPw />} />
-            <Route path="/reset-request/" element={<RequestReset />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/dashboard" element={<Dashboard />} />
 
-            <Route path="/demo" element={<DemoPage />} />
+                <Route path="/register" element={<Auth login={false}/>} />
+                <Route path="/login" element={<Auth login={true} />} />
+                <Route path="/reset-password/:uid/:token/" element={<ResetPw />} />
+                <Route path="/reset-request/" element={<RequestReset />} />
 
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/payment-success" element={<StatusPayment success={true} /> } />
-            <Route path="/payment-failed" element={<StatusPayment success={false} /> } />
+                <Route path="/demo" element={<DemoPage />} />
 
-            <Route path="/terms-of-service" element={<Terms />} />
-            <Route path="/imprint" element={<Imprint />} />
+                <Route path="/pricing" element={<Pricing />} />
+                <Route path="/payment-success" element={<StatusPayment success={true} /> } />
+                <Route path="/payment-failed" element={<StatusPayment success={false} /> } />
 
-            <Route path="/supported-platforms" element={<Platforms />} />
-            <Route path="/supported-platforms/shopify" element={<Guide title={"Shopify"} itemList={shopifyGuideList} />} />
-            <Route path="/supported-platforms/wix" element={<Guide title={"Wix"} itemList={wixGuideList} />} />
-            <Route path="/supported-platforms/wordpress" element={<Guide title={"WordPress"} itemList={wPGuideList} />} />
-            <Route path="/supported-platforms/squarespace" element={<Guide title={"Squarespace"} itemList={sqSGuideList} />} />
+                <Route path="/terms-of-service" element={<Terms />} />
+                <Route path="/imprint" element={<Imprint />} />
 
-          </Routes>
-        <Footer />
-      </MainContextProvider>
-    </Fragment>
+                <Route path="/supported-platforms" element={<Platforms />} />
+                <Route path="/supported-platforms/shopify" element={<Guide title={"Shopify"} itemList={shopifyGuideList} />} />
+                <Route path="/supported-platforms/wix" element={<Guide title={"Wix"} itemList={wixGuideList} />} />
+                <Route path="/supported-platforms/wordpress" element={<Guide title={"WordPress"} itemList={wPGuideList} />} />
+                <Route path="/supported-platforms/squarespace" element={<Guide title={"Squarespace"} itemList={sqSGuideList} />} />
+
+              </Routes>
+            <Footer />
+          </MainContextProvider>
+        </Fragment>
+      </PersistGate>
+    </Provider>
   );
 }
 export default App;
