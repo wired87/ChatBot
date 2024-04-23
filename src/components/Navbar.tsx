@@ -1,9 +1,10 @@
-import {FunctionComponent, useState, useCallback} from "react";
+import React, {FunctionComponent, useState, useCallback, useContext} from "react";
 import MenuDrower from "./MenuDrower";
 import PortalDrawer from "./PortalDrawer";
 import {useNavigate} from "react-router-dom";
 import {NavbarHook} from "../interfaces/navbarHook";
 import {UserInterface} from "../interfaces/userInterface";
+import {MainContext} from "../Context";
 
 
 const buttonValueArray: NavbarHook[] = [
@@ -25,15 +26,12 @@ const buttonValueArray: NavbarHook[] = [
   }
 ];
 
-interface NavProps {
-  user?: UserInterface | null;
-}
 
-const Navbar: FunctionComponent<NavProps> = (
-  {
-    user
-  }
+
+const Navbar: React.FC = (
+
 ) => {
+  const { user } = useContext(MainContext);
 
   const [isMenuDrowerOpen, setMenuDrowerOpen] = useState(false);
 

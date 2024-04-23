@@ -97,7 +97,7 @@ function App() {
   return (
     <Fragment>
       <MainContextProvider>
-        <Navbar user={user}/>
+        <Navbar />
           <Routes>
 
             <Route path="/" element={<Home />} />
