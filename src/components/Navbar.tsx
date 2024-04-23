@@ -83,7 +83,7 @@ const Navbar: React.FC = (
 
   const authBtnText = useCallback(() => {
     if (user && user?.auth?.uid) {
-      return "Logout"
+      return "Dashboard"
     }
     return "Get started!"
   }, [user, user?.auth?.uid]);
