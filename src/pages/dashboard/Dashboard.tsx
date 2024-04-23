@@ -11,6 +11,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import LoadingIndicator from "../../components/LoadingIndicator";
 import BotsTable from "../../components/BotsTable";
+import { useDispatch } from "react-redux";
+import {authActions} from "../../functions/redux/app/slices/authSlice";
 
 
 const Dashboard = () => {
@@ -18,8 +20,11 @@ const Dashboard = () => {
   const { user, saveUser, updateUser, checkUserAvailability } = useUser();
   const [loading, setLoading] = useState<boolean>(false);
   const [uid, setUid] = useState<string>("");
+
   // todo if true systemerror modal pop up - refresh
   const [e, setE] = useState<string>("");
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -79,6 +84,7 @@ const Dashboard = () => {
         updateUser(localUser);
         saveUser(localUser);
         setUid(localUser?.auth?.uid || "");
+        dispatch(authActions.Login({ user: localUser }));
 
       } else {
         console.log("Invalid request...")

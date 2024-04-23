@@ -1,10 +1,11 @@
-import React, {FunctionComponent, useState, useCallback, useContext} from "react";
+import React, {useState, useCallback, useContext} from "react";
 import MenuDrower from "./MenuDrower";
 import PortalDrawer from "./PortalDrawer";
 import {useNavigate} from "react-router-dom";
 import {NavbarHook} from "../interfaces/navbarHook";
-import {UserInterface} from "../interfaces/userInterface";
 import {MainContext} from "../Context";
+import { useSelector } from "react-redux";
+import {UserInterface} from "../interfaces/userInterface";
 
 
 const buttonValueArray: NavbarHook[] = [
@@ -27,13 +28,13 @@ const buttonValueArray: NavbarHook[] = [
 ];
 
 
-
 const Navbar: React.FC = (
 
 ) => {
-  const { user } = useContext(MainContext);
 
   const [isMenuDrowerOpen, setMenuDrowerOpen] = useState(false);
+
+  const user: UserInterface | null | undefined = useSelector((state: any) => state.userSlice.user);
 
   const openMenuDrower = useCallback(() => {
     setMenuDrowerOpen(true);
@@ -43,9 +44,7 @@ const Navbar: React.FC = (
     setMenuDrowerOpen(false);
   }
 
-
   const navigate = useNavigate();
-
 
   const buttonLine = () => {
     return buttonValueArray.map((item: any) => (
@@ -61,13 +60,13 @@ const Navbar: React.FC = (
     ))
   }
 
-
   const getStartedRedirect = useCallback(() => {
     if (user && user?.auth?.uid) {
       return "/dashboard"
     }
     return "/login"
   }, [user, user?.auth?.uid]);
+
 
   const authBtnText = useCallback(() => {
     if (user && user?.auth?.uid) {
