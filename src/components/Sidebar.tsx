@@ -5,6 +5,8 @@ import { Disclosure } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
 import { useNavigate } from "react-router-dom";
+import Unsub from "./modal/Unsub";
+import DelAccountModal from "./modal/DelAccount";
 
 const teams: any = [];
 
@@ -12,32 +14,40 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
-const navigation: any = [
-  {
-    name: "Settings",
-    current: false,
 
-    children: [
-      { name: "reset-password", href: "#" },
-      { name: "reset email", href: "#" },
-      { name: "plan", href: "#" },
-      { name: "delete accoun", href: "#" },
-    ],
-  },
-];
 export default function Sidebar(props: any) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  const [deletePlanModal, setDeletePlanModal] = useState<boolean>(false);
+
+  const [deleteAccountModal, setDeleteAccountModal] = useState<boolean>(false);
+
   const nav = useNavigate();
 
-  const logout = () => {
-    localStorage.clear();
-    sessionStorage.clear();
-    nav("/");
-  };
+  const updateDeletePlanModal = () => setDeletePlanModal(!deletePlanModal);
+
+  const updateDeleteAccountModal = () => setDeleteAccountModal(!deleteAccountModal);
+
+
+  const navigation: any = [
+    {
+      name: "Settings",
+      current: false,
+
+      children: [
+        { name: "reset-password", onClick: () => nav("/request-reset") },
+        //{ name: "reset email", href: "#" },
+        { name: "Delete plan", onClick: updateDeletePlanModal },
+        { name: "Delete Account", onClick: updateDeleteAccountModal },
+      ],
+    },
+  ];
+
 
   return (
     <>
+      <Unsub open={deletePlanModal} updateOpen={updateDeletePlanModal} />
+      <DelAccountModal open={deleteAccountModal} updateOpen={updateDeleteAccountModal}/>
       <div>
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog as="div" className="relative z-50  " onClose={setSidebarOpen}>
@@ -159,8 +169,8 @@ export default function Sidebar(props: any) {
                                     {item.children.map((subItem: any) => (
                                       <li key={subItem.name}>
                                         <Disclosure.Button
-                                          as="a"
-                                          href={subItem.href}
+                                          as="button"
+                                          onClick={subItem.onClick}
                                           className={classNames(
                                             subItem.current
                                               ? "bg-gray-50"

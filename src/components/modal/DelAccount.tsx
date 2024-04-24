@@ -18,9 +18,9 @@ interface Props {
   open: boolean
 }
 
-const postUrl: string = "https://wired66.pythonanywhere.com/payment/unsub/";
+const postUrl: string = "https://wired66.pythonanywhere.com/auth/delete/";
 
-const Unsub: React.FC<Props> = (
+const DelAccountModal: React.FC<Props> = (
   {
     open,
     updateOpen,
@@ -43,6 +43,8 @@ const Unsub: React.FC<Props> = (
         }
       );
       if (res.data?.status_code === 200) {
+        localStorage.clear();
+        sessionStorage.clear();
         window.location.reload();
       } else {
         console.log("Invalid request...")
@@ -91,7 +93,8 @@ const Unsub: React.FC<Props> = (
         </div>
         <div className={"flex flex-col w-full h-full min-h-[100px]"}>
           <h5>
-            You will keep your all your Bots but you will not be able to use them anymore.
+            We will delete all your data from our system include your current subscription plan what means you will
+            <span className={"text-bold"}>loose your all your Bots</span>.
           </h5>
           <div className={"flex justify-between items-center flex-row w-full px-5 py-3"}>
             <Button onClick={updateOpen}>Close</Button>
@@ -136,7 +139,7 @@ const Unsub: React.FC<Props> = (
                       as="h3"
                       className="text-3xl font-semibold leading-6 text-gray-900"
                     >
-                      Delete Plan
+                      Delete your Account?
                     </Dialog.Title>
                   </div>
                   {
@@ -152,4 +155,4 @@ const Unsub: React.FC<Props> = (
   );
 }
 
-export default memo(Unsub);
+export default memo(DelAccountModal);

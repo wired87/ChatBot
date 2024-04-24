@@ -103,7 +103,7 @@ function App() {
                 <Route path="/register" element={<Auth login={false}/>} />
                 <Route path="/login" element={<Auth login={true} />} />
                 <Route path="/reset-password/:uid/:token/" element={<ResetPw />} />
-                <Route path="/reset-request/" element={<RequestReset />} />
+                <Route path="/reset-request" element={<RequestReset />} />
 
                 <Route path="/demo" element={<DemoPage />} />
 
