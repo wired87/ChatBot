@@ -4,7 +4,7 @@ import {Button} from "@mui/material";
 import {BotData} from "../interfaces/userInterface";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { CiSettings } from "react-icons/ci";
-import ConfirmBotDeleteModal from "./modal/ConfirmDeleteBotModal";
+import ConfirmBotDeleteModal from "./modal/content/CDeleteB";
 
 interface BotInfoModal {
   open: boolean;

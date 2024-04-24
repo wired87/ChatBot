@@ -1,9 +1,9 @@
 import React, {memo, ReactNode, useState} from "react";
-import BaseModal from "./BaseModal";
-import ConfirmContent from "./content/ConfirmContent";
 import axios from "axios";
-import LoadingIndicator from "../LoadingIndicator";
-import ModalError from "./content/ModalError";
+import ModalError from "./ModalError";
+import LoadingIndicator from "../../LoadingIndicator";
+import ConfirmContent from "./ConfirmContent";
+import BaseModal from "../BaseModal";
 
 
 interface ConfirmModalProps {

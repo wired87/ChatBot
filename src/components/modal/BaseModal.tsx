@@ -1,4 +1,4 @@
-import {Dialog, Transition} from "@headlessui/react/dist";
+import {Dialog, Transition} from "@headlessui/react";
 import React, {Fragment, memo, ReactNode} from "react";
 interface BaseModalTypes {
   children: ReactNode;

@@ -1,5 +1,5 @@
 import React, {memo} from "react";
-import {Dialog} from "@headlessui/react/dist";
+import {Dialog} from "@headlessui/react";
 import {Button} from "@mui/material";
 
 interface ConfirmProps {
