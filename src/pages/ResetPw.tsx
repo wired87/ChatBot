@@ -57,6 +57,9 @@ const ResetPw: React.FC = () => {
         if (res.data?.status_code === 200) {
           console.log("DATA:", res.data)
           setSuccess(true);
+        } else {
+          console.log("Wrong response...")
+          setError(true);
         }
       } catch ( e:unknown ) {
         if ( e instanceof Error ) {
