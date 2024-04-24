@@ -150,14 +150,14 @@ const AddBot: React.FC<Props> = (
     if ( error.length > 0 ) {
       return(
         <div className={"flex flex-col justify-center items-center w-full"}>
-          <Lottie options={defaultOptions(errorLottie)} height={300} width={300} />
+          <Lottie options={defaultOptions(errorLottie)} height={200} width={200} />
           <h4>{error}</h4>
         </div>
       )
     } else if ( success.length > 0 ) {
       return(
         <div className={"flex flex-col justify-center items-center w-full"}>
-          <Lottie options={defaultOptions(successBotCreate)} height={300} width={300} />
+          <Lottie options={defaultOptions(successBotCreate)} height={200} width={200} />
           <h4>{success}</h4>
           <button onClick={() => window.location.reload()}>close</button>
         </div>
