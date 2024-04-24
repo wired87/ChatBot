@@ -2,7 +2,6 @@ import React, {Fragment, memo, useState} from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import {BotData} from "../interfaces/userInterface";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { CiSettings } from "react-icons/ci";
 import ConfirmBotDeleteModal from "./modal/content/CDeleteB";
 
 interface BotInfoModal {
@@ -89,7 +88,7 @@ const Modal: React.FC<BotInfoModal> = (
                   <div className="flex absolute top-3 right-3 items-center mt-4 gap-3">
 
 
-                    <RiDeleteBin6Line onClick={updateDeleteOpen} />
+                    <RiDeleteBin6Line color={"red"} onClick={updateDeleteOpen} />
 
 
                   </div>
