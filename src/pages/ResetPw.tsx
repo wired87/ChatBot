@@ -81,16 +81,16 @@ const ResetPw: React.FC = () => {
   const loadingContent =() => {
     if ( !loading ) {
       return(
-        <div className={"flex flex-col justify-center items-center text-center text-red"}>
+        <>
           <input
-            id="password"
-            name="password"
-            type="password"
-            onChange={handleChange("password")}
-            autoComplete="email"
-            required
-            className="my-4 block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-          />
+              id="password"
+              name="password"
+              type="password"
+              onChange={handleChange("password")}
+              autoComplete="email"
+              required
+              className="my-4 block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
           <input
             id="passwordTwo"
             name="passwordTwo"
@@ -106,7 +106,7 @@ const ResetPw: React.FC = () => {
             fieldError
           }
           </p>
-        </div>
+        </>
 
       )
     }
@@ -145,7 +145,7 @@ const ResetPw: React.FC = () => {
             className="block text-sm font-medium leading-6 text-gray-900" >
             Email address from your linked account
           </label>
-          <div className="mt-2">
+          <div className={"mt-2 flex flex-col justify-center items-center text-center text-red"}>
             {
               loadingContent()
             }
@@ -169,7 +169,7 @@ const ResetPw: React.FC = () => {
   return(
     <div className="bg-white flex min-h-screen flex-1 flex-col justify-center items-center px-6 py-12 lg:px-8">
       <div className={"min-w-[300px] mx-[30px] lg:w-[300px] sm:w-[200px]"}>
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm flex flex-col justify-center items-center text-center">
           {
             Content()
           }
