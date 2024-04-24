@@ -35,7 +35,7 @@ export default function Sidebar(props: any) {
       current: false,
 
       children: [
-        { name: "reset-password", onClick: () => nav("/request-reset") },
+        { name: "Reset-password", onClick: () => nav("/request-reset") },
         //{ name: "reset email", href: "#" },
         { name: "Delete plan", onClick: updateDeletePlanModal },
         { name: "Delete Account", onClick: updateDeleteAccountModal },
@@ -169,13 +169,13 @@ export default function Sidebar(props: any) {
                                     {item.children.map((subItem: any) => (
                                       <li key={subItem.name}>
                                         <Disclosure.Button
-                                          as="button"
+                                          as="a"
                                           onClick={subItem.onClick}
                                           className={classNames(
                                             subItem.current
                                               ? "bg-gray-50"
                                               : "hover:bg-gray-50",
-                                            "block rounded-md py-2 list-none pr-2 pl-9 text-sm leading-6 text-gray-700"
+                                            "block rounded-md py-2 list-none pr-2 pl-9 text-sm leading-6 text-gray-700 cursor-pointer"
                                           )}
                                         >
                                           {subItem.name}
@@ -196,8 +196,7 @@ export default function Sidebar(props: any) {
                             viewBox="0 0 24 24"
                             strokeWidth={1.5}
                             stroke="currentColor"
-                            className="w-4 h-4"
-                          >
+                            className="w-4 h-4" >
                             <path
                               strokeLinecap="round"
                               strokeLinejoin="round"
