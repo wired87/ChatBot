@@ -34,7 +34,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^latest",
+    "@headlessui/react": "^1.7.19",
     "@types/react-lottie": "^1.2.10",
     "autoprefixer": "^10.4.8",
     "postcss": "^8.4.38",
