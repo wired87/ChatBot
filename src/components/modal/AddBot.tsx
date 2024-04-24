@@ -2,14 +2,15 @@ import React, {Fragment, memo,  useState} from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import axios from "axios";
 
-import successBotCreate from "../assets/annimations/successBotCreate.json";
-import errorLottie from "../assets/annimations/errorLottie.json";
+import successBotCreate from "../../assets/annimations/successBotCreate.json";
+import errorLottie from "../../assets/annimations/errorLottie.json";
 import Lottie from "react-lottie";
 
-import {defaultOptions} from "../functions/lottie";
-import LoadingIndicator from "./LoadingIndicator";
 import {useNavigate} from "react-router-dom";
-import {UserInterface} from "../interfaces/userInterface";
+import {UserInterface} from "../../interfaces/userInterface";
+import {defaultOptions} from "../../functions/lottie";
+import LoadingIndicator from "../LoadingIndicator";
+
 
 interface Input {
   name: string;
@@ -18,7 +19,7 @@ interface Input {
 }
 
 interface Props {
-  user?: UserInterface;
+  user?: UserInterface | null;
   updateOpen: () => void;
   open: boolean
 }
@@ -61,7 +62,9 @@ const AddBot: React.FC<Props> = (
       [key]: e.target.value
     }));
   };
-
+  function replaceWhitespaceWithUnderscore(input: string): string {
+    return input.replace(/\s/g, '_');
+  }
   const getSenderObject = (): PostObject | string => {
     const { name, dataUrl, description } = input;
     if (!dataUrl.startsWith("https")) {
@@ -71,7 +74,7 @@ const AddBot: React.FC<Props> = (
     }
     return {
       user_id: user?.auth?.uid || "",
-      model_id: name,
+      model_id: replaceWhitespaceWithUnderscore(name),
       data_url: dataUrl,
       description: description,
     }
@@ -98,7 +101,7 @@ const AddBot: React.FC<Props> = (
         );
         if (res.data?.status_code === 200) {
           console.log("Data:", res.data);
-          setSuccess(res.data.message);
+          setSuccess(res.data.bot_status);
         } else {
           console.log("Invalid request...")
           setError(res.data.message)
@@ -131,8 +134,10 @@ const AddBot: React.FC<Props> = (
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if ( user?.plan?.name && Number(user?.plan?.totalBotsIncluded) > 0 ) {
+    if ( user?.plan?.name && Number(user?.plan?.totalBotsIncluded) > 0 && /^[a-z]+$/.test(input)) {
       await createBot();
+    } else if (!/^[a-z]+$/.test(input)) {
+      setInputError("The name of the Bot can only contain alphabetic characters from a-z")
     } else {
       setInputError("You dont have enough available Bots currently. Please upgrade your plan. ")
     }
@@ -181,47 +186,47 @@ const AddBot: React.FC<Props> = (
               name="name"
               onChange={updateInput("name")}
               className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full outline-0"
-              placeholder="Just an identifier. . ."
+              placeholder="Alphabetic characters from a-z"
               id="name"
               required
             />
           </div>
 
           <div className="mt-2 w-full">
-              <label
-                className="block text-md text-gray-600"
-                htmlFor="name" >
-                Your website url
-              </label>
-              <input
-                type="text"
-                name="dataUrl"
-                onChange={updateInput("dataUrl")}
-                required
-                className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full outline-0"
-                placeholder="The url of your website ( landingpage )"
-                id="dataUrl"
-              />
+            <label
+              className="block text-md text-gray-600"
+              htmlFor="name" >
+              Your website url
+            </label>
+            <input
+              type="text"
+              name="dataUrl"
+              onChange={updateInput("dataUrl")}
+              required
+              className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full outline-0"
+              placeholder="The url of your website ( landingpage )"
+              id="dataUrl"
+            />
           </div>
 
           <div className="mt-2 w-full">
 
-              <label
-                className="block text-md text-gray-600"
-                htmlFor="name"
-              >
-                Description
-              </label>
-              <input
-                type="text"
-                name="description"
-                onChange={updateInput("description")}
-                className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full outline-0"
-                placeholder="My cool new Bot"
-                id="name"
-                maxLength={20}
-                required
-              />
+            <label
+              className="block text-md text-gray-600"
+              htmlFor="name"
+            >
+              Description
+            </label>
+            <input
+              type="text"
+              name="description"
+              onChange={updateInput("description")}
+              className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full outline-0"
+              placeholder="My cool new Bot"
+              id="name"
+              maxLength={20}
+              required
+            />
           </div>
         </div>
 
@@ -270,19 +275,19 @@ const AddBot: React.FC<Props> = (
                 className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5
                             text-left shadow-xl transition-all w-full max-w-3xl" >
 
-                  <div>
-                    <div className="mt-3 text-left sm:mt-5">
-                      <Dialog.Title
-                        as="h3"
-                        className="text-3xl font-semibold leading-6 text-gray-900"
-                      >
-                        Add New Bot
-                      </Dialog.Title>
-                    </div>
-                    {
-                      Content()
-                    }
+                <div>
+                  <div className="mt-3 text-left sm:mt-5">
+                    <Dialog.Title
+                      as="h3"
+                      className="text-3xl font-semibold leading-6 text-gray-900"
+                    >
+                      Add New Bot
+                    </Dialog.Title>
                   </div>
+                  {
+                    Content()
+                  }
+                </div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -293,6 +298,3 @@ const AddBot: React.FC<Props> = (
 }
 
 export default memo(AddBot);
-
-
-

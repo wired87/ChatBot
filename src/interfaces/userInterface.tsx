@@ -20,8 +20,17 @@ export interface Auth {
   uid?: string;
 }
 
+
+
+
+export interface PaymentInterface {
+  invoices?: string[];
+
+}
+
 export interface UserInterface {
   bots?: BotData[] | null;
   plan?: PlanInterface | null;
   auth?: Auth;
+  paymentData?: PaymentInterface
 }

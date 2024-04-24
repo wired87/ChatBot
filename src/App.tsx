@@ -28,6 +28,7 @@ import ResetPw from "./pages/ResetPw";
 import {Provider} from 'react-redux';
 import {persistor, store} from "./functions/redux/app/store/configureStore";
 import { PersistGate } from 'redux-persist/integration/react';
+import Settings from "./pages/Settings";
 
 
 function App() {
@@ -96,6 +97,7 @@ function App() {
               <Routes>
 
                 <Route path="/" element={<Home />} />
+
                 <Route path="/dashboard" element={<Dashboard />} />
 
                 <Route path="/register" element={<Auth login={false}/>} />

@@ -73,6 +73,7 @@ const Navbar: React.FC = (
     ))
   }
 
+
   const getStartedRedirect = useCallback(() => {
     if (user && user?.auth?.uid) {
       return "/dashboard"

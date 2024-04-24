@@ -1,27 +1,31 @@
 import React, {memo, useEffect, useState} from "react";
 import Modal from "./Modal";
 import {BotData, UserInterface} from "../interfaces/userInterface";
-import AddBot from "./AddBot";
+import AddBot from "./modal/AddBot";
+import LoadingIndicator from "./LoadingIndicator";
 
 interface BotsTable {
   bots: object[];
-  user?: UserInterface
+  user?: UserInterface | null;
+  loading: boolean;
 }
 
 const BotsTable: React.FC<BotsTable> = (
   {
     bots,
-    user
+    user,
+    loading
   }
-) => {
+): any => {
 
 
   const [open, setOpen] = useState<boolean>(false);
+  const updateOpen = () => setOpen(!open);
 
   const [add, setAdd] = useState<boolean>(false);
   const updateAdd = () => setAdd(!add);
 
-  const [selected, setSelected] = useState({});
+  const [selected, setSelected] = useState<BotData>({});
   const [fieldError, setFieldError] = useState<string>("");
 
   const statusMessageClass = (status: string | undefined): string => {
@@ -42,8 +46,6 @@ const BotsTable: React.FC<BotsTable> = (
   const userFieldsExist = () => {
     return user?.plan?.name && Number(user?.plan?.totalBotsIncluded) > 0
   }
-
-
 
 
   useEffect(() => {
@@ -71,11 +73,75 @@ const BotsTable: React.FC<BotsTable> = (
       )
     }
   }
+  const tableContent = () => {
+    if ( user ) {
+      return(
+        <tbody className="divide-y divide-gray-200 bg-white">
+        {bots.map((bot: BotData) => (
+          <tr key={bot.name}>
+            <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+              {bot.name}
+            </td>
+            <td className="whitespace-nowrap   flex  px-3 py-4 text-sm text-gray-500">
+                      <span className="px-2 py-1 text-xs  rounded-md bg-green-100 text-green-800">
+                        <div
+                          className={statusMessageClass(bot.status)}>
+                            {bot.status}
+                        </div>
+                      </span>
+            </td>
+            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+              {bot.description}
+            </td>
+            <td className="whitespace-nowrap flex items-center justify-between gap-2 px-3 py-4 text-sm text-gray-500">
+              {bot.dataUrl}
+              <span
+                className="cursor-pointer"
+                onClick={() => {
+                  setSelected(bot);
+                  setOpen(!open);
+                }} >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                          />
+                        </svg>
+                      </span>
+            </td>
+          </tr>
+        ))}
+        </tbody>
+      )
+    }else if ( loading ) {
+      return (
+        <div className="px-4 flex justify-center items-center max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <LoadingIndicator loading={true}/>
+        </div>
+      )
+    }return(
+      <div className="divide-y min-h-[200px] divide-gray-200 w-full h-full bg-white flex justify-center items-center ">
+        <h3>Nothing here currently...</h3>
+      </div>
+    )
+  }
+
 
   return (
     <div className="px-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
       <AddBot user={user} open={add} updateOpen={updateAdd} />
-      <Modal selected={selected} open={open} setOpen={setOpen} />
+      <Modal open={open}
+             updateOpen={updateOpen}
+             bot={selected}
+      />
       <div className="flex justify-between md:flex-row main_ flex-col  ">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-gray-900">
@@ -180,50 +246,9 @@ const BotsTable: React.FC<BotsTable> = (
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200 bg-white">
-                {bots.map((bot: BotData) => (
-                  <tr key={bot.name}>
-                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                      {bot.name}
-                    </td>
-                    <td className="whitespace-nowrap   flex  px-3 py-4 text-sm text-gray-500">
-                      <span className="px-2 py-1 text-xs  rounded-md bg-green-100 text-green-800">
-                        <div
-                          className={statusMessageClass(bot.status)}>
-                            {bot.status}
-                        </div>
-                      </span>
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                      {bot.description}
-                    </td>
-                    <td className="whitespace-nowrap flex items-center justify-between gap-2 px-3 py-4 text-sm text-gray-500">
-                      {bot.dataUrl}
-                      <span
-                        className="cursor-pointer"
-                        onClick={() => {
-                          setSelected(bot);
-                          setOpen(!open);
-                        }} >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-                          />
-                        </svg>
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
+              {
+                tableContent()
+              }
             </table>
           </div>
         </div>
