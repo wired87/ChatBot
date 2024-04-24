@@ -33,6 +33,7 @@ const ResetPw: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
+  const [fieldError, setFieldError] = useState<string>("");
 
 
 
@@ -67,6 +68,8 @@ const ResetPw: React.FC = () => {
       } finally {
         setLoading(false)
       }
+    } else {
+      setFieldError("There is a mismatch with your input...");
     }
   }
 
@@ -77,10 +80,10 @@ const ResetPw: React.FC = () => {
     }));
   };
 
-  const loadingContent = useCallback(() => {
+  const loadingContent =() => {
     if ( !loading ) {
       return(
-        <>
+        <div className={"flex flex-col justify-center items-center text-center text-red"}>
           <input
             id="password"
             name="password"
@@ -88,23 +91,27 @@ const ResetPw: React.FC = () => {
             onChange={handleChange("password")}
             autoComplete="email"
             required
-            className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            className="my-4 block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           />
           <input
             id="passwordTwo"
             name="passwordTwo"
             type="password"
+
             onChange={handleChange("passwordTwo")}
             autoComplete="email"
             required
-            className="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            className="text-black my-4 block px-2 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           />
-        </>
+          {
+            fieldError
+          }
+        </div>
 
       )
     }
     return( <LoadingIndicator loading={loading} />)
-  }, [loading])
+  }
 
 
   const Content = () => {
@@ -150,7 +157,7 @@ const ResetPw: React.FC = () => {
             disabled={loading}
             className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-
+            Change password!
           </button>
         </div>
       </form>
