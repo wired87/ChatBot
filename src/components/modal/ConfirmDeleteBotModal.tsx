@@ -14,7 +14,7 @@ interface ConfirmModalProps {
 
 const BASE_URL: string = process.env.REACT_APP_BASE_EDNPOINT!;
 const DELETE_BOT_URL: string = process.env.REACT_APP_DELETE_BOT_ENDP!;
-const deleteBotUrl: string = `${BASE_URL}${DELETE_BOT_URL}`
+const deleteBotUrl: string = `${BASE_URL + DELETE_BOT_URL}`;
 
 
 const ConfirmBotDeleteModal: React.FC<ConfirmModalProps> = (
@@ -45,9 +45,9 @@ const ConfirmBotDeleteModal: React.FC<ConfirmModalProps> = (
         setE(res.data.message)
       }
 
-    } catch ( e:unknown ) {
-      if ( e instanceof Error ) {
-        console.log("Something unexpected occurred:", e);
+    } catch ( err:unknown ) {
+      if ( err instanceof Error ) {
+        console.log("Something unexpected happened:", err);
         setE("The connection was getting lost. Please try gian.");
       }
     } finally {
@@ -76,7 +76,7 @@ const ConfirmBotDeleteModal: React.FC<ConfirmModalProps> = (
         cusHeading={"Are you sure?"}
         helpText={"Your total Bot limit will NOT be increased!"}
         updateOpen={updateOpen}
-        onConfirm={}
+        onConfirm={onSend}
       />
     )
   }
