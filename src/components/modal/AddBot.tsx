@@ -62,9 +62,11 @@ const AddBot: React.FC<Props> = (
       [key]: e.target.value
     }));
   };
-  function replaceWhitespaceWithUnderscore(input: string): string {
-    return input.replace(/\s/g, '_');
+
+  function replaceWhitespace(input: string): string {
+    return input.replace(/\s+/g, '');
   }
+
   const getSenderObject = (): PostObject | string => {
     const { name, dataUrl, description } = input;
     if (!dataUrl.startsWith("https")) {
@@ -74,7 +76,7 @@ const AddBot: React.FC<Props> = (
     }
     return {
       user_id: user?.auth?.uid || "",
-      model_id: replaceWhitespaceWithUnderscore(name),
+      model_id: replaceWhitespace(name),
       data_url: dataUrl,
       description: description,
     }
@@ -134,7 +136,7 @@ const AddBot: React.FC<Props> = (
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if ( user?.plan?.name && Number(user?.plan?.totalBotsIncluded) > 0 && /^[a-z]+$/.test(input.name)) {
+    if ( user?.plan?.name && Number(user?.plan?.totalBotsIncluded) > 0 && /^[a-z]+$/.test(replaceWhitespace(input.name))) {
       await createBot();
     } else if (!/^[a-z]+$/.test(input.name)) {
       setInputError("The name of the Bot can only contain alphabetic characters from a-z")
