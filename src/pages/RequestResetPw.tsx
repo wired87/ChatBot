@@ -1,4 +1,4 @@
-import React, {memo, useCallback, useState} from "react";
+import React, {memo, useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import Lottie from 'react-lottie';
 
@@ -62,6 +62,10 @@ const RequestReset: React.FC = () => {
       }
     }
   };
+
+  useEffect(() => {
+    console.log("Email:", email);
+  }, [email]);
 
   const loadingContent = useCallback( () => {
     if ( !loading ) {
