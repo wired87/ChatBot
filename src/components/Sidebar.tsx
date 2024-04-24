@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-//
+
 import { Disclosure } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
@@ -33,7 +33,7 @@ export default function Sidebar(props: any) {
       current: false,
 
       children: [
-        { name: "Reset-password", onClick: () => nav("/reset-request") },
+        { name: "Reset-password", onClick: () => nav("/request-reset") },
         //{ name: "reset email", href: "#" },
         { name: "Delete plan", onClick: updateDeletePlanModal },
         { name: "Delete Account", onClick: updateDeleteAccountModal },
