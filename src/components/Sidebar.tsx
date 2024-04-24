@@ -8,8 +8,6 @@ import { useNavigate } from "react-router-dom";
 import Unsub from "./modal/Unsub";
 import DelAccountModal from "./modal/DelAccount";
 
-const teams: any = [];
-
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
