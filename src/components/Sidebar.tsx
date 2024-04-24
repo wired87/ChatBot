@@ -33,7 +33,7 @@ export default function Sidebar(props: any) {
       current: false,
 
       children: [
-        { name: "Reset-password", onClick: () => nav("/request-reset") },
+        { name: "Reset-password", onClick: () => nav("/reset-request") },
         //{ name: "reset email", href: "#" },
         { name: "Delete plan", onClick: updateDeletePlanModal },
         { name: "Delete Account", onClick: updateDeleteAccountModal },
