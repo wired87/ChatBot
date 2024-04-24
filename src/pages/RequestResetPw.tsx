@@ -20,8 +20,9 @@ interface LottieOptions {
   }
 }
 
-
-const resetUrl: string = "https://wired66.pythonanywhere.com/auth/reset-request/";
+const BASE_URL: string = process.env.REACT_APP_BASE_EDNPOINT!;
+const REQUEST_PW_RESET_URL: string = process.env.REACT_APP_RESET_PW_REQUEST_ENDP!;
+const resetUrl: string = `${BASE_URL + REQUEST_PW_RESET_URL}`;
 
 const RequestReset: React.FC = () => {
   const [email, setEmail] = useState<Email>({
@@ -33,6 +34,7 @@ const RequestReset: React.FC = () => {
 
   const handleResetClick = async () => {
     setLoading(true);
+    console.log("email:", email);
     try {
       const res = await axios.post(resetUrl, email);
       console.log("Auth Response:", res);
@@ -87,18 +89,17 @@ const RequestReset: React.FC = () => {
     if ( success ) {
       return(
         <>
-          <Lottie options={defaultOptions(successLottie)} height={400} width={400} />
-          <h4>We have sent an E-mail to you. Please follow these steps.</h4>
-          <h5>You can close this window now</h5>
+          <Lottie options={defaultOptions(successLottie)} height={300} width={300} />
+          <h4 className={"text-black"} >We have sent an E-mail to you. Please follow these steps.</h4>
+          <h5 className={"text-black"} >You can close this window now</h5>
         </>
       )
     }else if ( error ) {
       return(
         <>
-          <Lottie options={defaultOptions(errorLottie)} height={400} width={400} />
-          <h4>Something unexpected occurred! Please try again.</h4>
+          <Lottie options={defaultOptions(errorLottie)} height={300} width={300} />
+          <h4 className={"text-black"} >Something unexpected occurred! Please try again.</h4>
         </>
-
       )
     }
     return(
