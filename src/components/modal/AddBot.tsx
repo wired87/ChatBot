@@ -134,9 +134,9 @@ const AddBot: React.FC<Props> = (
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if ( user?.plan?.name && Number(user?.plan?.totalBotsIncluded) > 0 && /^[a-z]+$/.test(input)) {
+    if ( user?.plan?.name && Number(user?.plan?.totalBotsIncluded) > 0 && /^[a-z]+$/.test(input.name)) {
       await createBot();
-    } else if (!/^[a-z]+$/.test(input)) {
+    } else if (!/^[a-z]+$/.test(input.name)) {
       setInputError("The name of the Bot can only contain alphabetic characters from a-z")
     } else {
       setInputError("You dont have enough available Bots currently. Please upgrade your plan. ")
