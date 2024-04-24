@@ -1,4 +1,4 @@
-import React, {memo, useCallback, useState} from "react";
+import React, {memo, useState} from "react";
 import axios from "axios";
 import Lottie from 'react-lottie';
 
@@ -13,8 +13,6 @@ interface Creds {
   password: string;
   passwordTwo: string;
 }
-
-
 
 interface SenderObject {
   uidb64: string;
@@ -46,8 +44,8 @@ const ResetPw: React.FC = () => {
 
   const handleResetClick = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
     if ( uid && token && checkCreds() ) {
+      setLoading(true);
       const senderObject:SenderObject = {
         uidb64: uid,
         token: token,
