@@ -39,7 +39,6 @@ const BaseModal: React.FC<BaseModalTypes> = (
               <Dialog.Panel
                 className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5
                             text-left shadow-xl transition-all w-full max-w-3xl" >
-
                 {
                   children
                 }

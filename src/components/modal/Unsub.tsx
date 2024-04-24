@@ -2,14 +2,11 @@ import React, {Fragment, memo,  useState} from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import axios from "axios";
 
-import errorLottie from "../../assets/annimations/errorLottie.json";
-import Lottie from "react-lottie";
-
 import {UserInterface} from "../../interfaces/userInterface";
-import {defaultOptions} from "../../functions/lottie";
 import LoadingIndicator from "../LoadingIndicator";
 import {useSelector} from "react-redux";
 import {Button} from "@mui/material";
+import ModalError from "./content/ModalError";
 
 
 interface Props {
@@ -64,14 +61,11 @@ const Unsub: React.FC<Props> = (
   const Content = () => {
     if ( e ){
       return(
-        <div className={"flex flex-col justify-center items-center w-full"}>
-          <Lottie options={defaultOptions(errorLottie)} height={100} width={100} />
-          <h4>{e}</h4>
-          <div className={"flex justify-between items-center flex-row w-full px-5 py-3"}>
-            <Button onClick={updateOpen}>Close</Button>
-            <Button onClick={onSend}>Retry!</Button>
-          </div>
-        </div>
+        <ModalError
+          onSend={onSend}
+          updateOpen={updateOpen}
+          errorMessage={e}
+        />
       )
     } else if ( loading ) {
       return(
