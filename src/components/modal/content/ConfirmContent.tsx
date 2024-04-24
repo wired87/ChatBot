@@ -45,7 +45,7 @@ const ConfirmContent: React.FC<ConfirmProps> = (
           }
         </h5>
         <div className={"flex justify-between items-center flex-row w-full px-5 py-3"}>
-          <Button onClick={updateOpen}>Close</Button>
+          <Button autoFocus={false} onClick={updateOpen}>Close</Button>
           <Button onClick={onConfirm}>Confirm!</Button>
         </div>
       </div>

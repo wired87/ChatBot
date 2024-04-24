@@ -88,7 +88,7 @@ const Modal: React.FC<BotInfoModal> = (
                   <div className="flex absolute top-3 right-3 items-center mt-4 gap-3">
 
 
-                    <RiDeleteBin6Line color={"red"} onClick={updateDeleteOpen} />
+                    <RiDeleteBin6Line className={"cursor-pointer "} color={"red"} onClick={updateDeleteOpen} />
 
 
                   </div>
