@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
             <b className="self-stretch relative leading-[120%]">Legal</b>
             <div className="self-stretch flex flex-col items-start justify-start gap-[16px]">
               <button
-                onClick={() =>window.open("https://www.freeprivacypolicy.com/live/55d074b9-8cc4-4e80-8709-45effd7c8e49", "_blank")}
+                onClick={() => window.open("https://www.freeprivacypolicy.com/live/55d074b9-8cc4-4e80-8709-45effd7c8e49", "_blank")}
                 className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-sm leading-[150%]
                 font-body-regular-paragraph-small text-black-75-300 text-left inline-block">
                 Privacy Policy

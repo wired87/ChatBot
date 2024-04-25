@@ -95,16 +95,16 @@ const RequestReset: React.FC = () => {
   const Content = () => {
     if ( success ) {
       return(
-        <>
-          <Lottie options={defaultOptions(successLottie)} height={300} width={300} />
+        <div  className={"flex flex-col justify-center items-center "}>
+          <Lottie options={defaultOptions(successLottie)} height={200} width={200} />
           <h4 className={"text-black"} >We have sent an E-mail to you. Please follow these steps.</h4>
           <h5 className={"text-black"} >You can close this window now</h5>
-        </>
+        </div>
       )
     }else if ( error ) {
       return(
         <>
-          <Lottie options={defaultOptions(errorLottie)} height={300} width={300} />
+          <Lottie options={defaultOptions(errorLottie)} height={200} width={200} />
           <h4 className={"text-black"} >Something unexpected occurred! Please try again.</h4>
         </>
       )

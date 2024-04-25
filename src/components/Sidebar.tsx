@@ -12,6 +12,8 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
+const BASE_URL: string = process.env.REACT_APP_BASE_EDNPOINT!;
+const resetRequestNavUrl: string = `${BASE_URL}/request-reset`
 
 export default function Sidebar(props: any) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -33,7 +35,7 @@ export default function Sidebar(props: any) {
       current: false,
 
       children: [
-        { name: "Reset-password", onClick: () => nav("/request-reset") },
+        { name: "Reset-password", onClick: () => window.open(resetRequestNavUrl, "_blank") },
         //{ name: "reset email", href: "#" },
         { name: "Delete plan", onClick: updateDeletePlanModal },
         { name: "Delete Account", onClick: updateDeleteAccountModal },
