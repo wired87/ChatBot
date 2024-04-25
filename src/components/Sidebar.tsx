@@ -109,7 +109,7 @@ export default function Sidebar(props: any) {
                   {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white  pb-4">
                     <div className="flex h-16 px-10   shrink-0 items-center">
-                      <div onClick={() => nav("/")} className="cursor-pointer relative leading-[120%] font-black">BotWorld</div>
+                      <a onClick={() => nav("/")} className="decoration-0 cursor-pointer relative leading-[120%] font-black">BotWorld</a>
                     </div>
                     <nav className="flex flex-1  items-start flex-col">
                       <ul

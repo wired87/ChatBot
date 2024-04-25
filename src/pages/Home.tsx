@@ -56,7 +56,7 @@ const Home: FunctionComponent = () => {
                   <span style={{marginRight: 10}}>
                     Optimize the user experience with force of Generative AI integration
                   </span>
-                  <RiOpenaiFill size={30} color={"green"}/>
+                  <RiOpenaiFill size={30} color={"white"}/>
                 </span>
               </li>
               <li className="mb-0">
