@@ -7,8 +7,9 @@ import Reviews from "../components/home/Reviews";
 import FAQ from "../components/home/FAQ";
 import { RiOpenaiFill } from "react-icons/ri";
 import {MainContext} from "../Context";
-import {prism} from "react-syntax-highlighter/dist/esm/styles/prism";
+import {coy, prism} from "react-syntax-highlighter/dist/esm/styles/prism";
 import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
+import {funky, okaidia} from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const Home: FunctionComponent = () => {
 
@@ -54,9 +55,7 @@ const Home: FunctionComponent = () => {
                 </span>
               </span>
             </p>
-            <SyntaxHighlighter language="javascript" style={prism}>
-              {getScriptTag()}
-            </SyntaxHighlighter>
+
             <ul className="m-0 font-inherit pl-[21px]">
               <li className="mb-0 ">
                 <span className="leading-[30px] flex flex-row items-center">

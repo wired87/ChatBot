@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 
-import DemoPage from "./pages/DemoPage";
 import Pricing from "./pages/payment/Pricing";
 import MainContextProvider from "./hooks/useMainContext";
 import Navbar from "./components/Navbar";
