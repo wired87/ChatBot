@@ -4,7 +4,6 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Disclosure } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
-import { useNavigate } from "react-router-dom";
 import Unsub from "./modal/Unsub";
 import DelAccountModal from "./modal/DelAccount";
 
@@ -12,8 +11,7 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
-const BASE_URL: string = process.env.REACT_APP_BASE_EDNPOINT!;
-const resetRequestNavUrl: string = `${BASE_URL}/request-reset`
+const resetRequestNavUrl: string = `https://www.botworld.cloud/request-reset`
 
 export default function Sidebar(props: any) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -22,7 +20,6 @@ export default function Sidebar(props: any) {
 
   const [deleteAccountModal, setDeleteAccountModal] = useState<boolean>(false);
 
-  const nav = useNavigate();
 
   const updateDeletePlanModal = () => setDeletePlanModal(!deletePlanModal);
 
