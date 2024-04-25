@@ -162,8 +162,8 @@ const BotsTable: React.FC<BotsTable> = (
             Bots
           </h1>
         </div>
-        <div className="flex flex-row max-w-[150px]">
-          <div className={"flex flex-col justify-center items-center"}>
+        <div className="flex flex-row">
+          <div className={"flex flex-col justify-center items-center max-w-[100px]"}>
             <button
               onClick={handleAddClick}
               className="px-5 py-2 cursor-pointer flex items-center gap-2  bg-indigo-600 rounded-md text-white" >
@@ -189,11 +189,10 @@ const BotsTable: React.FC<BotsTable> = (
           </div>
           <button
             onClick={handleDeleteAll}
-            className="px-5 py-2 cursor-pointer mt-3 flex items-center gap-2  bg-red-600 rounded-md text-white" >
+            className="max-w-[100px] max-h-[40px] mx-2 px-5 py-2 cursor-pointer mt-3 flex items-center gap-2  bg-red-600 rounded-md text-white" >
             {
               getTrashSvg()
             }
-
             Delete all
           </button>
         </div>
