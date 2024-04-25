@@ -15,7 +15,10 @@ interface Props {
   open: boolean
 }
 
-const postUrl: string = "https://wired66.pythonanywhere.com/payment/unsub/";
+const BASE_URL: string = process.env.REACT_APP_BASE_EDNPOINT!;
+const UNSUB_URL:string = process.env.REACT_APP_UNSUB_ENDP!;
+
+const unsubUrl: string = `${BASE_URL + UNSUB_URL}`;
 
 const Unsub: React.FC<Props> = (
   {
@@ -34,7 +37,7 @@ const Unsub: React.FC<Props> = (
     setLoading(true);
     try {
       const res = await axios.post(
-        postUrl,
+        unsubUrl,
         {
           user_id: user?.auth?.uid,
         }

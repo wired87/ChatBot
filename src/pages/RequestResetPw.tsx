@@ -36,7 +36,9 @@ const RequestReset: React.FC = () => {
     setLoading(true);
     console.log("email:", email);
     try {
-      const res = await axios.post(resetUrl, email);
+      const res = await axios.post(resetUrl, {
+        "email": email.email
+      });
       console.log("Auth Response:", res);
       if (res.data?.status_code === 200) {
         console.log("DATA:", res.data)
@@ -129,7 +131,9 @@ const RequestReset: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold
+            leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2
+            focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Send Email
           </button>
