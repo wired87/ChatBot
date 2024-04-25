@@ -113,7 +113,7 @@ const Dashboard = () => {
     )
   }, [user, loading]);
 
-  const planCard = ( plan:PlanInterface ) => {
+  const planCard = (  ) => {
     if ( user?.plan ) {
       return(
         <div className="px-6 justify-between flex flex-row items-center shadow-sm bg-gradient-to-r from-cyan-500 to-blue-500
@@ -152,7 +152,7 @@ const Dashboard = () => {
     <Sidebar>
       <div className=" grid grid-cols-2 max-w-7xl mx-auto   gap-4 w-full mb-12 bg-white">
         {
-          planCard({})
+          planCard()
         }
       </div>
       <div className="px-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
