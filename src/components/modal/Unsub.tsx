@@ -35,12 +35,15 @@ const Unsub: React.FC<Props> = (
 
   const onSend = async () => {
     setLoading(true);
+    setE("");
+    const sendObject= {
+      "user_id": user?.auth?.uid,
+    }
+    console.log("SEDNING OBJECT:", sendObject)
     try {
       const res = await axios.post(
         unsubUrl,
-        {
-          user_id: user?.auth?.uid,
-        }
+        sendObject
       );
       if (res.data?.status_code === 200) {
         window.location.reload();
@@ -48,7 +51,6 @@ const Unsub: React.FC<Props> = (
         console.log("Invalid request...")
         setE(res.data.message)
       }
-
     } catch ( e:unknown ) {
       if ( e instanceof Error ) {
         console.log("Something unexpected occurred:", e);

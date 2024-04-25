@@ -95,7 +95,7 @@ const RequestReset: React.FC = () => {
   const Content = () => {
     if ( success ) {
       return(
-        <div  className={"flex flex-col justify-center items-center "}>
+        <div  className={"flex flex-col justify-center items-center"} >
           <Lottie options={defaultOptions(successLottie)} height={200} width={200} />
           <h4 className={"text-black"} >We have sent an E-mail to you. Please follow these steps.</h4>
           <h5 className={"text-black"} >You can close this window now</h5>
@@ -103,10 +103,10 @@ const RequestReset: React.FC = () => {
       )
     }else if ( error ) {
       return(
-        <>
+        <div  className={"flex flex-col justify-center items-center"}>
           <Lottie options={defaultOptions(errorLottie)} height={200} width={200} />
           <h4 className={"text-black"} >Something unexpected occurred! Please try again.</h4>
-        </>
+        </div>
       )
     }
     return(
@@ -122,7 +122,7 @@ const RequestReset: React.FC = () => {
             className="block text-sm font-medium leading-6 text-gray-900" >
             Email address from your linked account
           </label>
-          <div className="mt-2">
+          <div className="mt-2 flex flex-col justify-center items-center">
             {
               loadingContent()
             }
@@ -156,8 +156,6 @@ const RequestReset: React.FC = () => {
         </div>
       </div>
     </div>
-
-
   )
 }
 

@@ -127,7 +127,8 @@ const BotsTable: React.FC<BotsTable> = (
           <LoadingIndicator loading={true}/>
         </div>
       )
-    }return(
+    }
+    return(
       <div className="divide-y min-h-[200px] divide-gray-200 w-full h-full bg-white flex justify-center items-center ">
         <h3>Nothing here currently...</h3>
       </div>

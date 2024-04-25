@@ -105,11 +105,11 @@ const Dashboard = () => {
   };
 
   const botTableContent = useCallback(() => {
-    console.log("uid:111", uid);
+    console.log("uid:", uid);
     return(
       <BotsTable bots={user?.bots || []} user={user} loading={loading} />
     )
-  }, [user]);
+  }, [user, loading]);
 
   const planCard = ( plan:PlanInterface ) => {
     if ( user?.plan ) {
