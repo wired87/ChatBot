@@ -3,6 +3,8 @@ import { Dialog, Transition } from "@headlessui/react";
 import {BotData} from "../interfaces/userInterface";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import ConfirmBotDeleteModal from "./modal/content/CDeleteB";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface BotInfoModal {
   open: boolean;
@@ -94,13 +96,12 @@ const Modal: React.FC<BotInfoModal> = (
                   </div>
 
                   <div className="h-80 p-4 rounded-md  bg-gray-800 mt-4">
-                    <pre>
 
-                      {
-                        getScripttag()
-                      }
+                      <SyntaxHighlighter language="javascript" style={dark}>
+                        {getScripttag()}
+                      </SyntaxHighlighter>
 
-                    </pre>
+
                     <pre>
                       // Keep it safe
                     </pre>
