@@ -6,6 +6,7 @@ import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
 import Unsub from "./modal/Unsub";
 import DelAccountModal from "./modal/DelAccount";
+import {useNavigate} from "react-router-dom";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
@@ -20,6 +21,7 @@ export default function Sidebar(props: any) {
 
   const [deleteAccountModal, setDeleteAccountModal] = useState<boolean>(false);
 
+  const nav = useNavigate();
 
   const updateDeletePlanModal = () => setDeletePlanModal(!deletePlanModal);
 
@@ -107,11 +109,7 @@ export default function Sidebar(props: any) {
                   {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white  pb-4">
                     <div className="flex h-16 px-10   shrink-0 items-center">
-                      <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                        alt="Your Company"
-                      />
+                      <div onClick={() => nav("/")} className="cursor-pointer relative leading-[120%] font-black">BotWorld</div>
                     </div>
                     <nav className="flex flex-1  items-start flex-col">
                       <ul

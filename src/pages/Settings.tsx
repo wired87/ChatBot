@@ -76,7 +76,6 @@ export default function Settings() {
                     Email address
                   </dt>
                   <dd className="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
-                    <div className="text-gray-900">tom.cook@example.com</div>
                     <button
                       type="button"
                       className="font-semibold text-indigo-600 hover:text-indigo-500"
