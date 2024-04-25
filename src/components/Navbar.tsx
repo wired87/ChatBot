@@ -15,10 +15,6 @@ const buttonValueArray: NavbarHook[] = [
     screen: "/",
   },
   {
-    title: "Demo",
-    screen: "/demo",
-  },
-  {
     title: "Platforms",
     screen: "/supported-platforms",
   },
@@ -97,6 +93,7 @@ const Navbar: React.FC = (
           <div className="flex flex-row items-center justify-start">
             <div className="relative [cursor:pointer] leading-[120%] font-black" onClick={() => navigate("/")}>BotWorld</div>
           </div>
+
           <div className="flex flex-row items-start justify-center py-3 px-0 gap-[40px] md:hidden">
             {
               buttonLine()

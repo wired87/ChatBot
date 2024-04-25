@@ -28,8 +28,11 @@ import ResetPw from "./pages/ResetPw";
 import {Provider} from 'react-redux';
 import {persistor, store} from "./functions/redux/app/store/configureStore";
 import { PersistGate } from 'redux-persist/integration/react';
-import Settings from "./pages/Settings";
 
+/*
+sheduled task repair
+setup for basic 1 refresh / m and premium 2 / m
+ */
 
 function App() {
   const action = useNavigationType();
@@ -104,7 +107,6 @@ function App() {
                 <Route path="/reset-password/:uid/:token/" element={<ResetPw />} />
                 <Route path="/request-reset" element={<RequestReset />} />
 
-                <Route path="/demo" element={<DemoPage />} />
 
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/payment-success" element={<StatusPayment success={true} /> } />
@@ -128,3 +130,7 @@ function App() {
   );
 }
 export default App;
+
+
+//
+//<Route path="/demo" element={<DemoPage />} />
