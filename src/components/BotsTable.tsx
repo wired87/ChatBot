@@ -4,6 +4,7 @@ import {BotData, UserInterface} from "../interfaces/userInterface";
 import AddBot from "./modal/AddBot";
 import LoadingIndicator from "./LoadingIndicator";
 import DeleteAll from "./modal/content/DeleteAll";
+import {Button} from "@mui/material";
 
 interface BotsTable {
   bots: object[];
@@ -163,8 +164,8 @@ const BotsTable: React.FC<BotsTable> = (
           </h1>
         </div>
         <div className="flex flex-row">
-          <div className={"flex flex-col justify-center items-center max-w-[100px]"}>
-            <button
+          <div className={"flex flex-col justify-center items-center"}>
+            <Button
               onClick={handleAddClick}
               className="px-5 py-2 cursor-pointer flex items-center gap-2  bg-indigo-600 rounded-md text-white" >
               <svg
@@ -182,19 +183,19 @@ const BotsTable: React.FC<BotsTable> = (
                 />
               </svg>
               Add new Bot
-            </button>
+            </Button>
             {
               filedErrorText()
             }
           </div>
-          <button
+          <Button
             onClick={handleDeleteAll}
-            className="max-w-[100px] max-h-[40px] mx-2 px-5 py-2 cursor-pointer mt-3 flex items-center gap-2  bg-red-600 rounded-md text-white" >
+            className=" mx-2 px-5 py-2 cursor-pointerflex items-center gap-2  bg-red-600 rounded-md text-white" >
             {
               getTrashSvg()
             }
             Delete all
-          </button>
+          </Button>
         </div>
       </div>
 
