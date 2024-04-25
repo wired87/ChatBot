@@ -113,7 +113,7 @@ const RequestReset: React.FC = () => {
       <form
         onSubmit={handleResetClick}
         className="space-y-6"
-        action="#"
+        action=""
         method="POST"
       >
         <div>
