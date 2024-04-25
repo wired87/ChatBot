@@ -87,7 +87,6 @@ function App() {
   }, [pathname]);
 
 
-
   return (
     <Provider store={store} >
       <PersistGate loading={null} persistor={persistor}>

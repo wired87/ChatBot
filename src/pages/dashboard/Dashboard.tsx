@@ -120,11 +120,11 @@ const Dashboard = () => {
          py-4 rounded-lg text-gray-800">
           <div >
             <div className="text-5xl font-semibold text-white text-bold">
-              Basic {plan.name}
+              {user?.plan.name}
             </div>
-            <div className="text-2xl text-white">Type: { plan.type }</div>
-            <div className="text-2xl text-white">Chats remaining: { plan.chatsLeft }</div>
-            <div className="text-2xl text-white">Total Bots: { plan.totalBotsIncluded }</div>
+            <div className="text-2xl text-white">Type: { user?.plan.type }</div>
+            <div className="text-2xl text-white">Chats remaining: { user?.plan.chatsLeft }</div>
+            <div className="text-2xl text-white">Total Bots: { user?.plan.totalBotsIncluded }</div>
           </div>
           <div >
             <Lottie options={defaultOptions(sub)} height={100} width={100} />
