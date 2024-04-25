@@ -1,16 +1,12 @@
 import React, {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar";
-import { useUser } from "../../hooks/useUser";
+import {useUser} from "../../hooks/useUser";
 
-import {
-  BotData,
-  PlanInterface,
-  UserInterface,
-} from "../../interfaces/userInterface";
+import {UserInterface,} from "../../interfaces/userInterface";
 
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
 import {authActions} from "../../functions/redux/app/slices/authSlice";
 import sub from "../../assets/annimations/sub.json";
 import Lottie from "react-lottie";
@@ -77,14 +73,10 @@ const Dashboard = () => {
         const r = res.data.userData;
         console.log("User data:", r);
 
-        const botData: BotData[] | undefined | null = r.bots;
-        if ( botData ) {
-          localUser.bots = botData
-        }
-        const plan: PlanInterface | undefined | null = r.plan;
-        if ( plan ) {
-          localUser.plan = plan
-        }
+        localUser.bots = r.bots
+
+        localUser.plan = r.plan
+
 
         console.log("Received user data:", localUser);
         updateUser(localUser);
