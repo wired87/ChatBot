@@ -44,7 +44,7 @@ const DelAccountModal: React.FC<Props> = (
       );
       if (res.data?.status_code === 200) {
         localStorage.clear();
-        sessionStorage.clear();
+        sessionStorage.removeItem("user");
         window.location.reload();
       } else {
         console.log("Invalid request...")
