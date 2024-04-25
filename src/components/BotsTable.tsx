@@ -74,7 +74,7 @@ const BotsTable: React.FC<BotsTable> = (
     }
   }
   const tableContent = () => {
-    if ( user ) {
+    if ( user?.bots ) {
       return(
         <tbody className="divide-y divide-gray-200 bg-white">
         {bots.map((bot: BotData) => (
