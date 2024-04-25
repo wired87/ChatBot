@@ -8,7 +8,6 @@ export interface BotData {
 
 export interface PlanInterface {
   name?: string; // Basic, . . .
-  type?: string; // annual ,...
   chatsLeft?: string;
   totalBotsIncluded?:string;
   status?: string;
