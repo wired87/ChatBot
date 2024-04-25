@@ -183,6 +183,24 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
     return undefined
   }
 
+  const purchaseButton = () => {
+    if ( !(item.title === "Custom") ) {
+      return(
+        <button
+          onClick={handlePurchaseSubmit}
+          disabled={buttonDisabled || loading}
+          style={disablesButtonStyle()}
+          className="[border:none] p-0 bg-gray-100 self-stretch rounded-[5.58px] h-[45px] flex flex-row items-center justify-center">
+          <div className="self-stretch flex-1 relative text-mini-9 leading-[22.31px] font-medium font-work-sans text-operator-message-text text-center flex items-center justify-center">
+            {
+              getPurchaseButtonText()
+            }
+          </div>
+          <LoadingIndicator loading={loading} />
+        </button>
+      )
+    }
+  }
 
 
 
@@ -201,20 +219,11 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
         }
       </>
       <div className="self-stretch relative text-lg-6 leading-[22.31px] font-medium text-dimgray-100 text-center">
-
+        {
+          purchaseButton()
+        }
       </div>
-      <button
-        onClick={handlePurchaseSubmit}
-        disabled={buttonDisabled || loading}
-        style={disablesButtonStyle()}
-        className="[border:none] p-0 bg-gray-100 self-stretch rounded-[5.58px] h-[45px] flex flex-row items-center justify-center">
-        <div className="self-stretch flex-1 relative text-mini-9 leading-[22.31px] font-medium font-work-sans text-operator-message-text text-center flex items-center justify-center">
-          {
-            getPurchaseButtonText()
-          }
-        </div>
-        <LoadingIndicator loading={loading} />
-      </button>
+
       {
         listElements ?
           listElements() :
