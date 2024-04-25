@@ -121,10 +121,14 @@ const Unsub: React.FC<Props> = (
       </>
     )
   }
+  const onCloseProcess = () => {
+    setE("");
+    updateOpen()
+  }
 
   return (
     <Transition.Root show={open} as={Fragment} >
-      <Dialog as="div" className="relative z-50" onClose={updateOpen}>
+      <Dialog as="div" className="relative z-50" onClose={onCloseProcess}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
