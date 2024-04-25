@@ -10,6 +10,7 @@ import {useNavigate} from "react-router-dom";
 import {UserInterface} from "../../interfaces/userInterface";
 import {defaultOptions} from "../../functions/lottie";
 import LoadingIndicator from "../LoadingIndicator";
+import {Button} from "@mui/material";
 
 
 interface Input {
@@ -156,10 +157,11 @@ const AddBot: React.FC<Props> = (
       )
     } else if ( success.length > 0 ) {
       return(
-        <div className={"flex flex-col justify-center items-center w-full"}>
+        <div className={"flex flex-col justify-center gap-3 items-center w-full"}>
           <Lottie options={defaultOptions(successBotCreate)} height={200} width={200} />
-          <h4>{success}</h4>
-          <button onClick={() => window.location.reload()}>close</button>
+          <h4>That worked! Your current Bot staus is: {success}</h4>
+          <h4>TWe will inform you about every status update!</h4>
+          <Button className={"my-3"} onClick={() => window.location.reload()}>close</Button>
         </div>
       )
     } else if ( loading ) {
