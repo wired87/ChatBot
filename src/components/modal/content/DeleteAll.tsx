@@ -82,10 +82,13 @@ const DeleteAll: React.FC<ConfirmModalProps> = (
     )
   }
 
-
+  const process = () => {
+    setE("");
+    updateOpen();
+  }
   return(
     <BaseModal
-      onClose={updateOpen}
+      onClose={process}
       open={open}
       children={
         Content()
