@@ -162,48 +162,39 @@ const BotsTable: React.FC<BotsTable> = (
             Bots
           </h1>
         </div>
-        <div className="flex flex-col max-w-[150px]">
-          <button
-            onClick={handleAddClick}
-            className="px-5 py-2 cursor-pointer flex items-center gap-2  bg-indigo-600 rounded-md text-white" >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 4.5v15m7.5-7.5h-15"
-              />
-            </svg>
-            Add new Bot
-          </button>
-          {
-            filedErrorText()
-          }
-
+        <div className="flex flex-row max-w-[150px]">
+          <div className={"flex flex-col justify-center items-center"}>
+            <button
+              onClick={handleAddClick}
+              className="px-5 py-2 cursor-pointer flex items-center gap-2  bg-indigo-600 rounded-md text-white" >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 4.5v15m7.5-7.5h-15"
+                />
+              </svg>
+              Add new Bot
+            </button>
+            {
+              filedErrorText()
+            }
+          </div>
           <button
             onClick={handleDeleteAll}
-            className="px-5 py-2 cursor-pointer flex items-center gap-2  bg-indigo-600 rounded-md text-white" >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 4.5v15m7.5-7.5h-15"
-              />
-            </svg>
-            Add new Bot
+            className="px-5 py-2 cursor-pointer flex items-center gap-2  bg-red-600 rounded-md text-white" >
+            {
+              getTrashSvg()
+            }
+
+            Delete all
           </button>
         </div>
       </div>
@@ -291,3 +282,35 @@ const BotsTable: React.FC<BotsTable> = (
   );
 }
 export default memo(BotsTable);
+
+
+
+const getTrashSvg = () => {
+  return(
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      className="w-5 h-5"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M19 9l-14 0"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M5 9l0 11a2 2 0 002 2h10a2 2 0 002-2l0-11"
+        fill="currentColor"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M17 9V7a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"
+      />
+    </svg>
+  )
+}
