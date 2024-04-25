@@ -62,7 +62,7 @@ const BotsTable: React.FC<BotsTable> = (
     if (userFieldsExist()) {
       updateAdd();
     } else {
-      setFieldError("You have no active plan currently...");
+      setFieldError("You have no active plan currently or have reached the max amount of Bots...");
     }
   }
 
@@ -149,7 +149,7 @@ const BotsTable: React.FC<BotsTable> = (
             Bots
           </h1>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col max-w-[200px]">
           <button
             onClick={handleAddClick}
             className="px-5 py-2 cursor-pointer flex items-center gap-2  bg-indigo-600 rounded-md text-white" >
