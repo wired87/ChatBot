@@ -114,8 +114,7 @@ const RequestReset: React.FC = () => {
         onSubmit={handleResetClick}
         className="space-y-6"
         action=""
-        method="POST"
-      >
+        method="POST">
         <div>
           <label
             htmlFor="email"
