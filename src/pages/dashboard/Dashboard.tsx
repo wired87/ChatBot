@@ -47,7 +47,7 @@ const Dashboard = () => {
       if (localUser && localUser.auth && localUser.auth.uid) {
         await getDashboard(localUser);
       } else {
-        //navigate("/login"); todo
+        navigate("/login");
       }
     } catch (e: unknown) {
       if (e instanceof Error) {

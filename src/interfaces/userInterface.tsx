@@ -11,7 +11,8 @@ export interface PlanInterface {
   type?: string; // annual ,...
   chatsLeft?: string;
   totalBotsIncluded?:string;
-
+  status?: string;
+  daysLeft?: string;
 }
 
 export interface Auth {
@@ -19,8 +20,6 @@ export interface Auth {
   refresh?: string;
   uid?: string;
 }
-
-
 
 
 export interface PaymentInterface {

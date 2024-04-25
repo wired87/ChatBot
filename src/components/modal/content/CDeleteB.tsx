@@ -39,6 +39,7 @@ const ConfirmBotDeleteModal: React.FC<ConfirmModalProps> = (
         }
       );
       if (res.data?.status_code === 200) {
+        updateOpen();
         window.location.reload();
       } else {
         console.log("Invalid request...")

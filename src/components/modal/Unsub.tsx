@@ -78,6 +78,27 @@ const Unsub: React.FC<Props> = (
           <LoadingIndicator loading={loading} />
         </div>
       )
+    } else if ( user?.plan?.status === "DISCONTINUED" ) {
+      return(
+        <>
+          <div className="mt-3 text-left sm:mt-5">
+            <Dialog.Title
+              as="h3"
+              className="text-3xl font-semibold leading-6 text-gray-900" >
+              Already happened!
+            </Dialog.Title>
+          </div>
+          <div className={"flex flex-col w-full h-full min-h-[100px]"}>
+            <h5>
+              We have discontinued your plan. You have { user?.plan?.daysLeft } days left to use your Bots.
+              After that duration they will be disabled.
+            </h5>
+            <div className={"flex justify-between items-center flex-row w-full px-5 py-3"}>
+              <Button onClick={updateOpen}>Close</Button>
+            </div>
+          </div>
+        </>
+      )
     }
     return(
       <>
