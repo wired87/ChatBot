@@ -1,10 +1,10 @@
-import {FunctionComponent, useState, ReactNode, useEffect, useCallback} from "react";
+import {FunctionComponent, useState, ReactNode, useCallback} from "react";
 import "antd/dist/antd.min.css";
 
 import {PriceSwitch} from "../../components/Switch";
 import PriceContainer from "../../components/pricing/PriceContainer";
-import {useUser} from "../../hooks/useUser";
 import {UserInterface} from "../../interfaces/userInterface";
+import {useSelector} from "react-redux";
 
 // TODO BACKEND = IF 0 DAYS -> KILL ALL CHATS LEFT
 
@@ -53,25 +53,19 @@ const priceData: PriceDataInterface[] = [
 const Pricing: FunctionComponent = () => {
 
   const [annual, setAnnual] = useState<boolean>(false);
-  const [localUser, setLocalUser] = useState<UserInterface | null>(null);
-  const { checkUserAvailability } = useUser()
 
   const updatePriceType = () => {
     setAnnual(!annual);
   }
 
-  useEffect(() => {
-    const user = checkUserAvailability();
-    if ( user?.auth?.uid ) {
-      setLocalUser(user);
-    }
-  }, []);
+  const user: UserInterface | null | undefined = useSelector((state: any) => state.userSlice.user);
+
 
   const priceContainer = useCallback((): ReactNode => {
     return priceData.map((item: PriceDataInterface) => (
-        <PriceContainer item={item} annual={annual} user={localUser || null} />
+        <PriceContainer item={item} annual={annual} user={user || null} />
     ))
-  }, [localUser])
+  }, [user])
 
 
   return (
