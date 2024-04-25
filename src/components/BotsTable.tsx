@@ -189,7 +189,7 @@ const BotsTable: React.FC<BotsTable> = (
           </div>
           <button
             onClick={handleDeleteAll}
-            className="px-5 py-2 cursor-pointer flex items-center gap-2  bg-red-600 rounded-md text-white" >
+            className="px-5 py-2 cursor-pointer mt-3 flex items-center gap-2  bg-red-600 rounded-md text-white" >
             {
               getTrashSvg()
             }
