@@ -78,6 +78,21 @@ const BotsTable: React.FC<BotsTable> = (
   }
 
 
+  const deleteButton = () => {
+    if ( user?.bots ) {
+      return(
+        <Button
+          onClick={handleDeleteAll}
+          className=" mx-2 px-5 py-2 cursor-pointerflex items-center gap-2  bg-black-75-300-600 rounded-md text-white" >
+          {
+            getTrashSvg()
+          }
+          Delete all
+        </Button>
+      )
+    }
+  }
+
 
   const filedErrorText = () => {
     if ( fieldError.length > 0 ) {
@@ -188,14 +203,9 @@ const BotsTable: React.FC<BotsTable> = (
               filedErrorText()
             }
           </div>
-          <Button
-            onClick={handleDeleteAll}
-            className=" mx-2 px-5 py-2 cursor-pointerflex items-center gap-2  bg-grey-600 rounded-md text-white" >
-            {
-              getTrashSvg()
-            }
-            Delete all
-          </Button>
+          {
+            deleteButton()
+          }
         </div>
       </div>
 
