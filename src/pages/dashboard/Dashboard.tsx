@@ -156,6 +156,7 @@ const Dashboard = () => {
           planCard()
         }
       </div>
+
       <div className="px-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
         {
           botTableContent()

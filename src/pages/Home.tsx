@@ -1,4 +1,4 @@
-import {FunctionComponent, useContext} from "react";
+import React, {FunctionComponent, useContext} from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -7,6 +7,8 @@ import Reviews from "../components/home/Reviews";
 import FAQ from "../components/home/FAQ";
 import { RiOpenaiFill } from "react-icons/ri";
 import {MainContext} from "../Context";
+import {prism} from "react-syntax-highlighter/dist/esm/styles/prism";
+import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
 
 const Home: FunctionComponent = () => {
 
@@ -20,7 +22,9 @@ const Home: FunctionComponent = () => {
     }
     return "/login"
   }
-
+  const getScriptTag = (): string => {
+    return `<script src="https://ur-to-bot/code/babel" content="${user?.auth?.uid}"></script>`;
+  }
   return (
     <div className="w-full relative bg-reply-bg overflow-hidden flex flex-col items-start justify-start text-center text-15xl text-black font-h5">
       <section className="self-stretch flex flex-row items-center justify-center py-[150px] px-0 bg-[url('/public/hero-section6@3x.png')] bg-cover bg-no-repeat bg-[top] text-left text-base text-reply-bg font-h5">
@@ -50,6 +54,9 @@ const Home: FunctionComponent = () => {
                 </span>
               </span>
             </p>
+            <SyntaxHighlighter language="javascript" style={prism}>
+              {getScriptTag()}
+            </SyntaxHighlighter>
             <ul className="m-0 font-inherit pl-[21px]">
               <li className="mb-0 ">
                 <span className="leading-[30px] flex flex-row items-center">
