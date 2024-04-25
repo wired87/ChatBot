@@ -32,7 +32,8 @@ const RequestReset: React.FC = () => {
   const [success, setSuccess] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
-  const handleResetClick = async () => {
+  const handleResetClick = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setLoading(true);
     console.log("email:", email);
     try {
