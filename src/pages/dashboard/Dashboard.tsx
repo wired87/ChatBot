@@ -42,9 +42,11 @@ const Dashboard = () => {
 
   const setUserData = async (): Promise<void> => {
     setLoading(true);
+
     try {
       const localUser = checkUserAvailability();
-      if (localUser && localUser.auth && localUser.auth.uid) {
+      const uid = localUser?.auth?.uid
+      if ( localUser && localUser.auth && uid && uid.length > 0 ) {
         await getDashboard(localUser);
       } else {
         navigate("/login");
