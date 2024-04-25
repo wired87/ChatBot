@@ -123,7 +123,6 @@ const Dashboard = () => {
             <div className="text-5xl font-semibold text-white text-bold">
               {user?.plan.name}
             </div>
-            <div className="text-2xl text-white">Type: { user?.plan.type }</div>
             <div className="text-2xl text-white">Chats remaining: { user?.plan.chatsLeft }</div>
             <div className="text-2xl text-white">Total Bots: { user?.plan.totalBotsIncluded }</div>
             <div className="text-2xl text-white">Subscription status: { user?.plan?.status }</div>
