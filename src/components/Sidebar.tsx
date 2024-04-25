@@ -45,7 +45,6 @@ export default function Sidebar(props: any) {
     {
       name: "Settings",
       current: false,
-
       children: [
         { name: "Reset-password", onClick: () => window.open(resetRequestNavUrl, "_blank") },
         //{ name: "reset email", href: "#" },

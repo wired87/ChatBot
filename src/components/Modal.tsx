@@ -95,17 +95,13 @@ const Modal: React.FC<BotInfoModal> = (
 
                   </div>
 
-                  <div className="h-80 p-4 rounded-md  bg-gray-800 mt-4">
 
-                      <SyntaxHighlighter language="javascript" style={dark}>
-                        {getScripttag()}
-                      </SyntaxHighlighter>
+                  <SyntaxHighlighter language="javascript" style={dark}>
+                    {getScripttag()}
+                  </SyntaxHighlighter>
 
 
-                    <pre>
-                      // Keep it safe
-                    </pre>
-                  </div>
+
                 </Dialog.Panel>
               </Transition.Child>
             </div>
