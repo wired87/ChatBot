@@ -23,9 +23,10 @@ const Modal: React.FC<BotInfoModal> = (
   const [deleteOpen, setDeleteOpen] = useState<boolean>(false);
   const updateDeleteOpen = () => setDeleteOpen(!deleteOpen);
 
-  const getScripttag = (): string => {
-    return "<script src='https://ur-to-bot/code/babel' content={bot.name}></script>"
+  const getScriptTag = (): string => {
+    return `<script src="https://ur-to-bot/code/babel" content="${bot.name}"></script>`;
   }
+
 
   return (
     <>
@@ -97,9 +98,8 @@ const Modal: React.FC<BotInfoModal> = (
 
 
                   <SyntaxHighlighter language="javascript" style={dark}>
-                    {getScripttag()}
+                    {getScriptTag()}
                   </SyntaxHighlighter>
-
 
 
                 </Dialog.Panel>
