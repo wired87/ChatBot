@@ -203,7 +203,6 @@ const BotsTable: React.FC<BotsTable> = (
               filedErrorText()
             }
           </div>
-
         </div>
       </div>
 

@@ -24,7 +24,7 @@ const Modal: React.FC<BotInfoModal> = (
   const updateDeleteOpen = () => setDeleteOpen(!deleteOpen);
 
   const getScriptTag = (): string => {
-    return `<script src="https://ur-to-bot/code/babel" content="${bot.name}"></script>`;
+    return `<script async data-id="${bot.name}" src="https://build-6o948etdj-angelus123s-projects.vercel.app/static/js/main.2f6cadb6.js"></script>`;
   }
 
 
@@ -45,8 +45,7 @@ const Modal: React.FC<BotInfoModal> = (
             enterTo="opacity-100"
             leave="ease-in duration-200"
             leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
+            leaveTo="opacity-0" >
             <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
           </Transition.Child>
 
@@ -95,11 +94,13 @@ const Modal: React.FC<BotInfoModal> = (
 
 
                   </div>
+                  <div className={"flex flex-col justify-center items-center w-full"}>
+                    <SyntaxHighlighter language="javascript" style={okaidia}>
+                      {getScriptTag()}
+                    </SyntaxHighlighter>
+                    <a href="/supported-platforms">Explore our integration guides!</a>
+                  </div>
 
-
-                  <SyntaxHighlighter language="javascript" style={okaidia}>
-                    {getScriptTag()}
-                  </SyntaxHighlighter>
 
 
                 </Dialog.Panel>
