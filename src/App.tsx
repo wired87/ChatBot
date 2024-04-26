@@ -27,6 +27,7 @@ import ResetPw from "./pages/ResetPw";
 import {Provider} from 'react-redux';
 import {persistor, store} from "./functions/redux/app/store/configureStore";
 import { PersistGate } from 'redux-persist/integration/react';
+import PrivateDemo from "./components/private_demo/main";
 
 /*
 sheduled task repair
@@ -100,6 +101,7 @@ function App() {
                 <Route path="/" element={<Home />} />
 
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/private-demo/:bot" element={<PrivateDemo />} />
 
                 <Route path="/register" element={<Auth login={false}/>} />
                 <Route path="/login" element={<Auth login={true} />} />

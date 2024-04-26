@@ -5,6 +5,8 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import ConfirmBotDeleteModal from "./modal/content/CDeleteB";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {okaidia} from "react-syntax-highlighter/dist/cjs/styles/prism";
+import {Button} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
 interface BotInfoModal {
   open: boolean;
@@ -22,11 +24,26 @@ const Modal: React.FC<BotInfoModal> = (
 
   const [deleteOpen, setDeleteOpen] = useState<boolean>(false);
   const updateDeleteOpen = () => setDeleteOpen(!deleteOpen);
+  
+  const nav = useNavigate();
 
   const getScriptTag = (): string => {
     return `<script async data-id="${bot.name}" src="https://build-6o948etdj-angelus123s-projects.vercel.app/static/js/main.2f6cadb6.js"></script>`;
   }
 
+
+  const demoLinkComp = (status: string) => {
+    if ( status === "ACTIVE") {
+      return(
+        <Button
+          onClick={() => nav("/")}
+        >
+          Demo
+        </Button>
+      )
+    }
+    return <></>
+  }
 
   return (
     <>
@@ -63,15 +80,15 @@ const Modal: React.FC<BotInfoModal> = (
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl sm:p-6">
                   <h1 className="text-gray-900 text-2xl font-semibold">
                     {bot.name}{" "}
-                    <small className="text-xs text-gray-700 bg-gray-100 px-2 py-1 ml-1 rounded-sm">
+                    <small className="text-xs mx-3 text-gray-700 bg-gray-100 px-2 py-1 ml-1 rounded-sm">
                       {
-                        bot.status
+                        demoLinkComp(bot.status || "")
                       }
                     </small>
                   </h1>
                   <p className="text-xs mt-1 text-gray-500">
                     <input
-                      className="bg-slate-200 rounded-md text-xs  px-5 py-2 border-l"
+                      className="bg-slate-200 rounded-md text-xs min-w-[250px] px-5 py-2 border-l"
                       type="text"
                       value={bot.dataUrl}
                       name=""

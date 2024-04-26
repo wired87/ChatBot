@@ -4,7 +4,6 @@ import {BotData, UserInterface} from "../interfaces/userInterface";
 import AddBot from "./modal/AddBot";
 import LoadingIndicator from "./LoadingIndicator";
 import DeleteAll from "./modal/content/DeleteAll";
-import {Button} from "@mui/material";
 
 interface BotsTable {
   bots: object[];
@@ -41,7 +40,6 @@ const BotsTable: React.FC<BotsTable> = (
       } else if (status === "INACTIVE") {
         return "text-yellow-700 px-2 inline-flex py-1 rounded-md font-semibold bg-red-100";
       }
-      return ""
     }
     return ""
   }
@@ -67,29 +65,6 @@ const BotsTable: React.FC<BotsTable> = (
       updateAdd();
     } else {
       setFieldError("You have no active plan currently or have reached the max amount of Bots...");
-    }
-  }
-
-
-  const handleDeleteAll = () => {
-    if ( user?.bots ) {
-      updateDeleteAll()
-    }
-  }
-
-
-  const deleteButton = () => {
-    if ( user?.bots ) {
-      return(
-        <Button
-          onClick={handleDeleteAll}
-          className=" mx-2 px-5 py-2 cursor-pointerflex items-center gap-2  bg-black-75-300-600 rounded-md text-white" >
-          {
-            getTrashSvg()
-          }
-          Delete all
-        </Button>
-      )
     }
   }
 
@@ -289,35 +264,3 @@ const BotsTable: React.FC<BotsTable> = (
   );
 }
 export default memo(BotsTable);
-
-
-
-const getTrashSvg = () => {
-  return(
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
-      stroke="currentColor"
-      className="w-5 h-5"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M19 9l-14 0"
-      />
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M5 9l0 11a2 2 0 002 2h10a2 2 0 002-2l0-11"
-        fill="currentColor"
-      />
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M17 9V7a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"
-      />
-    </svg>
-  )
-}
