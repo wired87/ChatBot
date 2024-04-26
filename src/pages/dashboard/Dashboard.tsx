@@ -103,9 +103,9 @@ const Dashboard = () => {
   const botTableContent = useCallback(() => {
     console.log("uid:", uid);
     return(
-      <BotsTable bots={user?.bots || []} user={user} loading={loading} />
+      <BotsTable bots={user?.bots || []} user={user} loading={loading} error={e}/>
     )
-  }, [user, loading]);
+  }, [user, loading, e]);
 
   const planCard = (  ) => {
     if ( user?.plan ) {

@@ -4,18 +4,21 @@ import {BotData, UserInterface} from "../interfaces/userInterface";
 import AddBot from "./modal/AddBot";
 import LoadingIndicator from "./LoadingIndicator";
 import DeleteAll from "./modal/content/DeleteAll";
-
+import {IconButton} from "@mui/material";
+import { IoMdRefresh } from "react-icons/io";
 interface BotsTable {
   bots: object[];
   user?: UserInterface | null;
   loading: boolean;
+  error?: string;
 }
 
 const BotsTable: React.FC<BotsTable> = (
   {
     bots,
     user,
-    loading
+    loading,
+    error
   }
 ): any => {
 
@@ -128,6 +131,15 @@ const BotsTable: React.FC<BotsTable> = (
       return (
         <div className="px-4 flex justify-center items-center max-w-7xl mx-auto sm:px-6 lg:px-8">
           <LoadingIndicator loading={true}/>
+        </div>
+      )
+    } else if ( error ) {
+      return(
+        <div className="divide-y min-h-[200px] flex-col divide-gray-200 w-full h-full bg-white flex justify-center items-center ">
+          <h3>Something went wrong...</h3>
+          <IconButton onClick={() => window.location.reload()}>
+            <IoMdRefresh />
+          </IconButton>
         </div>
       )
     }
