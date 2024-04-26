@@ -202,7 +202,7 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
         }
       </>
       <div className="self-stretch relative text-lg-6 leading-[22.31px] font-medium text-dimgray-100 text-center">
-        {!(item.title === "Custom") && (<button
+        <button
           onClick={handlePurchaseSubmit}
           disabled={buttonDisabled || loading}
           style={disablesButtonStyle()}
@@ -214,7 +214,7 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
           </div>
           <LoadingIndicator loading={loading} />
         </button>
-        )}
+
       </div>
 
       {
