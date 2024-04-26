@@ -67,7 +67,7 @@ const Pricing: FunctionComponent = () => {
     return priceData.map((item: PriceDataInterface) => (
         <PriceContainer item={item} annual={annual} user={user || null} />
     ))
-  }, [user])
+  }, [user, annual])
 
 
   return (
