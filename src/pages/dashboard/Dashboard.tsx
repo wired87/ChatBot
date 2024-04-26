@@ -143,7 +143,7 @@ const Dashboard = () => {
 
   return (
     <Sidebar>
-      <div className=" grid grid-cols-2 max-w-7xl mx-auto   gap-4 w-full mb-12 bg-white">
+      <div className=" grid grid-cols-2 max-w-7xl mx-auto gap-4 w-full mb-12 bg-white">
         {
           planCard()
         }

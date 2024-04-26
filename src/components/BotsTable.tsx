@@ -203,9 +203,7 @@ const BotsTable: React.FC<BotsTable> = (
               filedErrorText()
             }
           </div>
-          {
-            deleteButton()
-          }
+
         </div>
       </div>
 
