@@ -24,7 +24,7 @@ const Modal: React.FC<BotInfoModal> = (
 
   const [deleteOpen, setDeleteOpen] = useState<boolean>(false);
   const updateDeleteOpen = () => setDeleteOpen(!deleteOpen);
-  
+
   const nav = useNavigate();
 
   const getScriptTag = (): string => {
@@ -32,11 +32,11 @@ const Modal: React.FC<BotInfoModal> = (
   }
 
 
-  const demoLinkComp = (status: string) => {
+  const demoLinkComp = (status: string, botName: string) => {
     if ( status === "ACTIVE") {
       return(
         <Button
-          onClick={() => nav("/")}
+          onClick={() => nav(`/private-demo/${botName}`)}
         >
           Demo
         </Button>
@@ -82,7 +82,7 @@ const Modal: React.FC<BotInfoModal> = (
                     {bot.name}{" "}
                     <small className="text-xs mx-3 text-gray-700 bg-gray-100 px-2 py-1 ml-1 rounded-sm">
                       {
-                        demoLinkComp(bot.status || "")
+                        demoLinkComp(bot.status || "", bot.name || "")
                       }
                     </small>
                   </h1>

@@ -13,6 +13,7 @@ import Lottie from "react-lottie";
 import {defaultOptions} from "../../functions/lottie";
 import {Button} from "@mui/material";
 import BotsTable from "../../components/BotsTable";
+import LoadingIndicator from "../../components/LoadingIndicator";
 
 const Dashboard = () => {
 
@@ -123,6 +124,10 @@ const Dashboard = () => {
             <Lottie options={defaultOptions(sub)} height={100} width={100} />
           </div>
         </div>
+      )
+    } else if ( loading ) {
+      return(
+        <LoadingIndicator loading={loading}/>
       )
     }
     return( // Get plan ad cards
