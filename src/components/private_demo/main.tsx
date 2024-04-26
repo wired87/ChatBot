@@ -15,6 +15,7 @@ const PrivateDemo: React.FC = () => {
       console.log("Configure script...");
       script.src = "https://build-6o948etdj-angelus123s-projects.vercel.app/static/js/main.2f6cadb6.js";
       script.async = true;
+      script.defer = true;
       script.type = "text/javascript";
       script.setAttribute('data-id', bot || "");
       script.onload = () => console.log("Script loaded successfully.");
@@ -28,7 +29,6 @@ const PrivateDemo: React.FC = () => {
         console.log("Appending sacript failed...")
       }
 
-
       return () => {
         console.log("Remove script...");
         document.body.removeChild(script);
@@ -41,12 +41,17 @@ const PrivateDemo: React.FC = () => {
 
   return(
     <div>
-      <Helmet>
-        <script src="https://build-6o948etdj-angelus123s-projects.vercel.app/static/js/main.2f6cadb6.js"></script>
-      </Helmet>
     </div>
   );
 }
 
 
 export default memo(PrivateDemo);
+
+
+
+/*
+    <Helmet>
+        <script src="https://build-6o948etdj-angelus123s-projects.vercel.app/static/js/main.2f6cadb6.js"></script>
+      </Helmet>
+ */
