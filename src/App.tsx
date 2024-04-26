@@ -106,7 +106,6 @@ function App() {
                 <Route path="/reset-password/:uid/:token/" element={<ResetPw />} />
                 <Route path="/request-reset" element={<RequestReset />} />
 
-
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/payment-success" element={<StatusPayment success={true} /> } />
                 <Route path="/payment-failed" element={<StatusPayment success={false} /> } />
@@ -131,5 +130,3 @@ function App() {
 export default App;
 
 
-//
-//<Route path="/demo" element={<DemoPage />} />

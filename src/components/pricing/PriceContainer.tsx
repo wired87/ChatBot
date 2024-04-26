@@ -53,7 +53,6 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
 
   const responseProcess = async() => {
     try {
-
       const response = await getUrl()
       if (response && response.checkout_session_url) {
         window.open(response.checkout_session_url, '_blank');
@@ -161,18 +160,21 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
   }
 
   const handlePurchaseSubmit = () => {
-    updateLoading(true);
-    const uid: string | undefined | null = user?.auth?.uid;
-    if ( uid && uid?.length > 0 ) {
-      updatePurchaseObject(
-        uid,
-        annual? "annual" : "monthly",
-        item.title
-      )
+    if (!(item.title === "Custom")) {
+      updateLoading(true);
+      const uid: string | undefined | null = user?.auth?.uid;
+      if ( uid && uid?.length > 0 ) {
+        updatePurchaseObject(
+          uid,
+          annual? "annual" : "monthly",
+          item.title
+        )
+      } else {
+        navigate("/login")
+      }
     } else {
-      navigate("/login")
+      window.open("https://mail.google.com/mail/?view=cm&fs=1&to=info@botworld.cloud&su=Customer%20request&body=Hi%20BotWorld%20Team,\n", "_blank")
     }
-
   }
 
 
