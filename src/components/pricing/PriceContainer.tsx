@@ -6,6 +6,7 @@ import axios from "axios";
 import {PricingSenderObject} from "../../interfaces/PricingInterface";
 import {useNavigate} from "react-router-dom";
 import {UserInterface} from "../../interfaces/userInterface";
+import InfoComponent from "../InfoComponent";
 
 interface PriceContainerInterface {
   item: PriceDataInterface;
@@ -127,18 +128,33 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
   }
 
 
+  const infoTextContainer = ( item: string, infotext: string ) => {
+    if ( item.includes("Chats")) {
+      return(
+        <InfoComponent text={infotext} />
+      )
+    }
+    return <></>
+  }
+
   const listElements = (): ReactNode[] | ReactNode => {
     const array = item.pros;
     if (array && !(item?.title === "Custom")) {
-      return array.map((item: string) => (
-        <div key={item} className="self-stretch flex flex-row items-center justify-center gap-[13px]">
+      return array.map((textItem: string) => (
+        <div key={textItem} className="self-stretch flex flex-row items-center justify-center gap-[13px]">
           <img
             className="w-[20px] relative h-[20px] caret-emerald-600 font-bold"
             alt=""
             src="/group-1189.svg"
           />
           <div style={{fontSize: 16}} className="flex-1 relative">
-            {item}
+            {
+              textItem
+            }
+
+            {
+              infoTextContainer(textItem, item.infoTextMonthlyChats || "")
+            }
           </div>
         </div>
       ));

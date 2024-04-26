@@ -180,7 +180,7 @@ const BotsTable: React.FC<BotsTable> = (
         </div>
         <div className="flex flex-row">
           <div className={"flex flex-col justify-center items-center"}>
-            <Button
+            <button
               onClick={handleAddClick}
               className="px-5 py-2 cursor-pointer flex items-center gap-2  bg-indigo-600 rounded-md text-white" >
               <svg
@@ -198,7 +198,7 @@ const BotsTable: React.FC<BotsTable> = (
                 />
               </svg>
               Add new Bot
-            </Button>
+            </button>
             {
               filedErrorText()
             }

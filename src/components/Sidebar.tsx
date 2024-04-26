@@ -130,7 +130,7 @@ export default function Sidebar(props: any) {
                       >
                         {navigation.map((item: any) => (
                           <li
-                            className="list-none  mt-auto flex items-center gap-2"
+                            className="list-none cursor-pointer mt-auto flex items-center gap-2"
                             key={item.name}
                           >
                             <Disclosure as="div">

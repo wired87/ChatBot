@@ -14,6 +14,7 @@ export interface PriceDataInterface {
   monthlyPrice?: string;
   annualPrice?: string;
   helpText?: string;
+  infoTextMonthlyChats?: string;
 }
 
 const priceData: PriceDataInterface[] = [
@@ -21,8 +22,9 @@ const priceData: PriceDataInterface[] = [
     title: "Starter",
     pros: [
       "1 Bot",
-      "500 monthly Chats*",
+      "500 monthly Chats",
     ],
+    infoTextMonthlyChats: "1 Chat begins at the first received response over a period of 30 minutes till 20 messages.",
     monthlyPrice: "9€",
     annualPrice: "99€"
   },
@@ -30,10 +32,11 @@ const priceData: PriceDataInterface[] = [
     title: "Basic",
     pros: [
       "2 Bot's",
-      "2000 monthly Chats*",
+      "2000 monthly Chats",
       "1 data renewal / month"
 
     ],
+    infoTextMonthlyChats: "1 Chat begins at the first received response over a period of 30 minutes till 20 messages.",
     monthlyPrice: "26€",
     annualPrice: "270€"
   },
@@ -44,6 +47,7 @@ const priceData: PriceDataInterface[] = [
       "5000 monthly Chats*",
       "2 data renewal / month"
     ],
+    infoTextMonthlyChats: "1 Chat begins at the first received response over a period of 30 minutes till 20 messages.",
     monthlyPrice: "54€",
     annualPrice: "549€"
   },
@@ -104,7 +108,6 @@ const Pricing: FunctionComponent = () => {
               priceContainer()
             }
           </div>
-          <p style={{marginTop: 50, opacity: .5, color: "rgb(0,0,0)", fontSize: 16}}>* = 1 Chat begins at the first recieved response over a period of 30 minutes till 20 messages.</p>
         </div>
       </div>
     </>
