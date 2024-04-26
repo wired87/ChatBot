@@ -7,7 +7,7 @@ import Reviews from "../components/home/Reviews";
 import FAQ from "../components/home/FAQ";
 import { RiOpenaiFill } from "react-icons/ri";
 import {MainContext} from "../Context";
-
+import { RiMenu2Fill } from "react-icons/ri";
 
 const Home: FunctionComponent = () => {
 

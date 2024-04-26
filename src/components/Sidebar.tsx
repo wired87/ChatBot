@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
 import { Disclosure } from "@headlessui/react";
@@ -10,6 +10,7 @@ import {useNavigate} from "react-router-dom";
 import sessionStorage from "redux-persist/es/storage/session";
 import {useDispatch} from "react-redux";
 import {authActions} from "../functions/redux/app/slices/authSlice";
+import {RiMenu2Fill} from "react-icons/ri";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
@@ -32,7 +33,6 @@ export default function Sidebar(props: any) {
 
   const updateDeleteAccountModal = () => setDeleteAccountModal(!deleteAccountModal);
 
-
   const logoutProcess = () => {
     localStorage.clear();
     sessionStorage.removeItem("user");
@@ -46,10 +46,10 @@ export default function Sidebar(props: any) {
       name: "Settings",
       current: false,
       children: [
-        { name: "Reset-password", onClick: () => window.open(resetRequestNavUrl, "_blank") },
+        {name: "Reset-password", onClick: () => window.open(resetRequestNavUrl, "_blank")},
         //{ name: "reset email", href: "#" },
-        { name: "Delete plan", onClick: updateDeletePlanModal },
-        { name: "Delete Account", onClick: updateDeleteAccountModal },
+        {name: "Delete plan", onClick: updateDeletePlanModal},
+        {name: "Delete Account", onClick: updateDeleteAccountModal},
       ],
     },
   ];
@@ -57,7 +57,7 @@ export default function Sidebar(props: any) {
 
   return (
     <>
-      <Unsub open={deletePlanModal} updateOpen={updateDeletePlanModal} />
+      <Unsub open={deletePlanModal} updateOpen={updateDeletePlanModal}/>
       <DelAccountModal open={deleteAccountModal} updateOpen={updateDeleteAccountModal}/>
       <div>
         <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -71,7 +71,7 @@ export default function Sidebar(props: any) {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="fixed inset-0 bg-gray-900/80" />
+              <div className="fixed inset-0 bg-gray-900/80"/>
             </Transition.Child>
 
             <div className="fixed inset-0 flex">
@@ -97,7 +97,7 @@ export default function Sidebar(props: any) {
                     <div className="absolute left-full top-0 flex w-16 justify-center pt-5">
                       <button
                         type="button"
-                        className="-m-2.5 p-2.5"
+                        className="-m-2.5 p-2.5 "
                         onClick={() => setSidebarOpen(false)}
                       >
                         <span className="sr-only">Close sidebar</span>
@@ -121,7 +121,8 @@ export default function Sidebar(props: any) {
                   {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white  pb-4">
                     <div className="flex h-16 px-10   shrink-0 items-center">
-                      <a onClick={() => nav("/")} className="decoration-0 cursor-pointer relative leading-[120%] font-black">BotWorld</a>
+                      <a onClick={() => nav("/")}
+                         className="decoration-0 cursor-pointer relative leading-[120%] font-black">BotWorld</a>
                     </div>
                     <nav className="flex flex-1  items-start flex-col">
                       <ul
@@ -134,7 +135,7 @@ export default function Sidebar(props: any) {
                             key={item.name}
                           >
                             <Disclosure as="div">
-                              {({ open }) => (
+                              {({open}) => (
                                 <>
                                   <Disclosure.Button
                                     className={classNames(
@@ -222,31 +223,19 @@ export default function Sidebar(props: any) {
         </Transition.Root>
 
         <div className=" ">
-          <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+          <div
+            className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
             <button
               type="button"
-              className="-m-2.5 p-2.5 text-gray-700 "
+              className="-m-2.5 px-4 py-2.5 text-white bg-black"
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-5 h-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
-                />
-              </svg>
+              <RiMenu2Fill size={30}/>
             </button>
 
             {/* Separator */}
-            <div className="h-6 w-px bg-gray-400 " aria-hidden="true" />
+            <div className="h-6 w-px bg-gray-400 " aria-hidden="true"/>
           </div>
 
           <main className="py-10">
@@ -257,3 +246,6 @@ export default function Sidebar(props: any) {
     </>
   );
 }
+
+
+
