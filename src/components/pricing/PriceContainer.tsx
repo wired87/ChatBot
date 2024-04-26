@@ -12,8 +12,9 @@ interface PriceContainerInterface {
   annual: boolean;
   user: UserInterface | null;
 }
-
-const checkEndpoint: string = "https://wired66.pythonanywhere.com/payment/checkout/"
+const BASE_URL: string = process.env.REACT_APP_BASE_EDNPOINT!;
+const CHECKOUT_ENP: string = process.env.REACT_APP_CHECKOUT_ENP!;
+const checkEndpoint: string = `${BASE_URL + CHECKOUT_ENP}`;
 
 const PriceContainer: React.FC<PriceContainerInterface> = (
   {
@@ -190,8 +191,11 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
 
 
   return(
-    <div style={loadingContainerStyles()} className="flex-1 rounded-[9.29px] [background:linear-gradient(144.59deg,_#edc4ff,_#c1f7ff)] h-[500px] flex flex-col items-center justify-start p-[30px] box-border gap-[26px] min-w-[390px] max-w-[420px]">
-      <div className="w-[159px] rounded-[27.88px] bg-gray-100 h-[45px] flex flex-row items-center justify-center text-center text-base-7 text-gray-700">
+    <div style={loadingContainerStyles()} className="flex-1 rounded-[9.29px]
+    [background:linear-gradient(144.59deg,_#edc4ff,_#c1f7ff)] h-[500px]
+    flex flex-col items-center justify-start p-[30px] box-border gap-[26px] min-w-[390px] max-w-[420px]    ">
+      <div className="w-[159px] rounded-[27.88px] bg-gray-100 h-[45px] flex flex-row items-center
+      justify-center text-center text-base-7 text-gray-700">
         <div className="flex-1 relative uppercase font-medium">
           {
             item.title
@@ -203,20 +207,26 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
           priceSection()
         }
       </>
-      <div className="self-stretch relative text-lg-6 leading-[22.31px] font-medium text-dimgray-100 text-center">
+      <div className="self-stretch relative text-lg-6 leading-[22.31px] w-full font-medium
+      text-dimgray-100 text-center flex items-center justify-center">
         <button
           onClick={handlePurchaseSubmit}
           disabled={buttonDisabled || loading}
           style={disablesButtonStyle()}
-          className="[border:none] p-0 bg-gray-100 self-stretch rounded-[5.58px] h-[45px] flex flex-row items-center justify-center">
-          <div className="self-stretch flex-1 relative text-mini-9 leading-[22.31px] font-medium font-work-sans text-operator-message-text text-center flex items-center justify-center">
+          className="[border:none] p-0 bg-gray-100 self-stretch rounded-[5.58px] h-[45px] flex
+          flex-row items-center justify-center min-w-[340px]
+
+          cursor-pointer
+          ">
+          <div className="self-stretch flex-1 relative text-mini-9 w-full leading-[22.31px] font-medium font-work-sans
+           text-operator-message-text text-center flex items-center justify-center
+           ">
             {
               getPurchaseButtonText()
             }
           </div>
           <LoadingIndicator loading={loading} />
         </button>
-
       </div>
 
       {
