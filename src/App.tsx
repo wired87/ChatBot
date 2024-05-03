@@ -32,6 +32,10 @@ import PrivateDemo from "./components/private_demo/main";
 /*
 sheduled task repair
 setup for basic 1 refresh / m and premium 2 / m
+
+
+ <script data-bot-id="EkHijDnTwC-sattt" defer="defer" type="text/javascript" async src="https://storage.googleapis.com/client_bot_code_bundle/bundle.js"></script>
+    "></script>
  */
 
 function App() {
@@ -40,8 +44,6 @@ function App() {
   const location = useLocation();
 
   const pathname = location.pathname;
-
-
 
 
 
