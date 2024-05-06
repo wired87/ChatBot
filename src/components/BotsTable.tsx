@@ -41,7 +41,9 @@ const BotsTable: React.FC<BotsTable> = (
       } else if (status === "IN_PROGRESS") {
         return "text-yellow-700 px-2 inline-flex py-1 rounded-md font-semibold bg-yellow-100";
       } else if (status === "INACTIVE") {
-        return "text-yellow-700 px-2 inline-flex py-1 rounded-md font-semibold bg-red-100";
+        return "text-orange-700 px-2 inline-flex py-1 rounded-md font-semibold bg-red-100";
+      }else if (status === "FAILED") {
+        return "text-red-700 px-2 inline-flex py-1 rounded-md font-semibold bg-red-100";
       }
     }
     return ""

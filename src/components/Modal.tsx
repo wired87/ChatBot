@@ -1,4 +1,4 @@
-import React, {Fragment, memo, useState} from "react";
+import React, {Fragment, memo} from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import {BotData} from "../interfaces/userInterface";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -7,7 +7,10 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {okaidia} from "react-syntax-highlighter/dist/cjs/styles/prism";
 import {Button} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-
+import RetryCreateBotBtn from "./buttons/RetryCreateBotBtn";
+import {useDeleteOpen} from "../hooks/useDeleteOpen";
+import {useRetry} from "../hooks/useRetry";
+import { IoMdRefresh } from "react-icons/io";
 interface BotInfoModal {
   open: boolean;
   updateOpen: () => void;
@@ -22,15 +25,15 @@ const Modal: React.FC<BotInfoModal> = (
   }
 ) => {
 
-  const [deleteOpen, setDeleteOpen] = useState<boolean>(false);
-  const updateDeleteOpen = () => setDeleteOpen(!deleteOpen);
+  const {deleteOpen, updateDeleteOpen} = useDeleteOpen();
+
+  const {retryOpen, updateRetryOpen} = useRetry();
 
   const nav = useNavigate();
 
   const getScriptTag = (): string => {
-    return `<script async data-id="${bot.name}" src="https://build-6o948etdj-angelus123s-projects.vercel.app/static/js/main.2f6cadb6.js"></script>`;
+    return `<script async data-id="${bot.name}" type="text/javascript" src="https://storage.googleapis.com/client_bot_code_bundle/client_bundle999666.js"></script>`;
   }
-
 
   const demoLinkComp = (status: string, botName: string) => {
     if ( status === "ACTIVE") {
@@ -45,6 +48,15 @@ const Modal: React.FC<BotInfoModal> = (
     return <></>
   }
 
+  const retryCrateBotBtn = () => {
+    if ( bot.status === "FAILED" || bot.status === "IN_PROGRESS" ) {
+      return(
+        <IoMdRefresh className={"cursor-pointer "} color={"black"} onClick={updateRetryOpen} />
+      )
+    }
+  }
+
+
   return (
     <>
       <ConfirmBotDeleteModal
@@ -52,6 +64,11 @@ const Modal: React.FC<BotInfoModal> = (
         open={deleteOpen}
         botId={bot.name || ""}
       />
+
+      <RetryCreateBotBtn
+        bot={bot}
+        updateOpen={updateRetryOpen}
+        open={retryOpen} />
 
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={updateOpen}>
@@ -108,6 +125,11 @@ const Modal: React.FC<BotInfoModal> = (
 
 
                     <RiDeleteBin6Line className={"cursor-pointer "} color={"red"} onClick={updateDeleteOpen} />
+
+
+                    {
+                      retryCrateBotBtn()
+                    }
 
 
                   </div>

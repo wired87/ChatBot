@@ -134,3 +134,5 @@ function App() {
 export default App;
 
 
+// source virtualenvwrapper.sh && workon prod_venv && /home/wired66/.virtualenvs/prod_venv/bin/python3.10.5 /home/wired66/chat_bot_webite/chat_bot_webite/tasks/check_data_refresh.py
+

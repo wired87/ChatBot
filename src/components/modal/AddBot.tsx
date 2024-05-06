@@ -70,7 +70,7 @@ const AddBot: React.FC<Props> = (
 
   const getSenderObject = (): PostObject | string => {
     const { name, dataUrl, description } = input;
-    if (!dataUrl.startsWith("https")) {
+    if (!dataUrl.trim().startsWith("https")) {
       return "The given URL is not secure.";
     } else if ( dataUrl.length === 0 || description.length === 0 || name.length === 0 ) {
       return "All fields are required...";
@@ -78,7 +78,7 @@ const AddBot: React.FC<Props> = (
     return {
       user_id: user?.auth?.uid || "",
       model_id: replaceWhitespace(name),
-      data_url: dataUrl,
+      data_url: dataUrl.trim(),
       description: description,
     }
   }
