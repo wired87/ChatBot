@@ -1,4 +1,4 @@
-import React, {memo, useEffect, useState} from "react";
+import React, {memo, useCallback, useEffect, useState} from "react";
 import Modal from "./Modal";
 import {BotData, UserInterface} from "../interfaces/userInterface";
 import AddBot from "./modal/AddBot";
@@ -6,8 +6,9 @@ import LoadingIndicator from "./LoadingIndicator";
 import DeleteAll from "./modal/content/DeleteAll";
 import {IconButton} from "@mui/material";
 import { IoMdRefresh } from "react-icons/io";
+
 interface BotsTable {
-  bots: object[];
+  bots?: BotData[] | null;
   user?: UserInterface | null;
   loading: boolean;
   error?: string;
@@ -31,7 +32,7 @@ const BotsTable: React.FC<BotsTable> = (
   const updateAdd = () => setAdd(!add);
   const updateDeleteAll = () => setDeleteAll(!deleteAll);
 
-  const [selected, setSelected] = useState<BotData>({});
+  const [selected, setSelected] = useState< BotData | undefined >(undefined);
   const [fieldError, setFieldError] = useState<string>("");
 
   const statusMessageClass = (status: string | undefined): string => {
@@ -49,6 +50,9 @@ const BotsTable: React.FC<BotsTable> = (
     return ""
   }
 
+  useEffect(() => {
+    console.log("SELECTED BOT:", selected)
+  }, [selected]);
 
   const userFieldsExist = () => {
     return user?.plan?.name && Number(user?.plan?.totalBotsIncluded) > 0
@@ -81,8 +85,9 @@ const BotsTable: React.FC<BotsTable> = (
       )
     }
   }
+
   const tableContent = () => {
-    if ( user?.bots ) {
+    if ( bots ) {
       return(
         <tbody className="divide-y divide-gray-200 bg-white">
         {bots.map((bot: BotData) => (
@@ -107,7 +112,7 @@ const BotsTable: React.FC<BotsTable> = (
                 className="cursor-pointer"
                 onClick={() => {
                   setSelected(bot);
-                  setOpen(!open);
+                  updateOpen();
                 }} >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -152,15 +157,20 @@ const BotsTable: React.FC<BotsTable> = (
     )
   }
 
+  const botModal = useCallback(() => {
+    return <Modal open={open} updateOpen={updateOpen} bot={selected}/>
+  }, [selected, open, updateOpen]);
 
   return (
     <div className="px-4 min-w-7xl max-w-8xl mx-auto sm:px-6 lg:px-8">
       <AddBot user={user} open={add} updateOpen={updateAdd} />
+
       <DeleteAll userId={user?.auth?.uid || ""} open={deleteAll} updateOpen={updateDeleteAll} />
-      <Modal open={open}
-             updateOpen={updateOpen}
-             bot={selected}
-      />
+
+      {
+        botModal()
+      }
+
       <div className="flex justify-between md:flex-row main_ flex-col  ">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-gray-900">

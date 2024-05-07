@@ -17,7 +17,7 @@ const BUNDLE_PATH: string = "https://storage.googleapis.com/client_bot_code_bund
 interface BotInfoModal {
   open: boolean;
   updateOpen: () => void;
-  bot: BotData;
+  bot?: BotData;
 }
 
 const Modal: React.FC<BotInfoModal> = (
