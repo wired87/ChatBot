@@ -8,9 +8,11 @@ import {okaidia} from "react-syntax-highlighter/dist/cjs/styles/prism";
 import {Button} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import RetryCreateBotBtn from "./buttons/RetryCreateBotBtn";
-import {useDeleteOpen} from "../hooks/useDeleteOpen";
+import {useDeleteOpen, useOpen} from "../hooks/useOpen";
 import {useRetry} from "../hooks/useRetry";
 import { IoMdRefresh } from "react-icons/io";
+import RetryCreateBotModal from "./buttons/RetryCreateBotBtn";
+import EditModal from "./modal/EditModal";
 
 const BUNDLE_PATH: string = "https://storage.googleapis.com/client_bot_code_bundle/client_bundle999666.js";
 
@@ -30,6 +32,8 @@ const Modal: React.FC<BotInfoModal> = (
 
   const {deleteOpen, updateDeleteOpen} = useDeleteOpen();
 
+  const {open, updateOpen} = useOpen();
+
   const {retryOpen, updateRetryOpen} = useRetry();
 
   const nav = useNavigate();
@@ -41,11 +45,19 @@ const Modal: React.FC<BotInfoModal> = (
   const demoLinkComp = (status: string, botName: string) => {
     if ( status === "ACTIVE") {
       return(
-        <Button
-          onClick={() => nav(`/private-demo/${botName}`)}
-        >
-          Demo
-        </Button>
+        <>
+          <Button
+            onClick={() => nav(`/private-demo/${botName}`)}
+          >
+            Demo
+          </Button>
+          <Button
+            onClick={updateOpen()}
+          >
+            Edit
+          </Button>
+        </>
+
       )
     }
     return <></>
@@ -68,10 +80,15 @@ const Modal: React.FC<BotInfoModal> = (
         botId={bot.name || ""}
       />
 
-      <RetryCreateBotBtn
+      <RetryCreateBotModal
         bot={bot}
         updateOpen={updateRetryOpen}
         open={retryOpen} />
+
+      <EditModal
+        bot={bot}
+        updateOpen={updateOpen}
+        open={open} />
 
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={updateOpen}>

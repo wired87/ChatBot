@@ -18,7 +18,7 @@ const REACT_APP_RETRY_BOT_DEPLOYMENT: string = process.env.REACT_APP_RETRY_BOT_D
 const retryUrl: string = `${BASE_URL + REACT_APP_RETRY_BOT_DEPLOYMENT}`;
 
 
-const RetryCreateBotModal: React.FC<ModalErrorProps> = (
+const EditModal: React.FC<ModalErrorProps> = (
   {
     bot,
     updateOpen,
@@ -55,9 +55,9 @@ const RetryCreateBotModal: React.FC<ModalErrorProps> = (
       }
     } finally {
       setLoading(false);
-
     }
   }
+
   const Content = useCallback((): ReactNode => {
     if ( loading ) {
       return(
@@ -100,4 +100,4 @@ const RetryCreateBotModal: React.FC<ModalErrorProps> = (
   )
 }
 
-export default memo(RetryCreateBotModal);
+export default memo(EditModal);

@@ -7,3 +7,13 @@ export function useDeleteOpen() {
 
   return {deleteOpen, setDeleteOpen, updateDeleteOpen};
 }
+
+
+export function useOpen() {
+  const [open, setOpen] = useState<boolean>(false);
+  const updateOpen = () => setOpen(!open);
+
+  return {open, setOpen, updateOpen};
+}
+
+

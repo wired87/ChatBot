@@ -11,6 +11,7 @@ import {UserInterface} from "../../interfaces/userInterface";
 import {defaultOptions} from "../../functions/lottie";
 import LoadingIndicator from "../LoadingIndicator";
 import {Button} from "@mui/material";
+import InfoComponent from "../InfoComponent";
 
 
 interface Input {
@@ -33,6 +34,7 @@ interface PostObject {
 }
 
 const postUrl: string = "https://wired66.pythonanywhere.com/bot/create/";
+const PRIMARY_TEXT_EXPLANATION: string = "The primary color will be used for user messages and the Bot's name in the Chat window heading";
 
 const AddBot: React.FC<Props> = (
   {
@@ -231,6 +233,45 @@ const AddBot: React.FC<Props> = (
               maxLength={20}
               required
             />
+          </div>
+
+          <h4 style={{opacity: .8}}>Design</h4>
+          <div className="mt-2 w-full">
+
+            <label
+              className="block text-md text-gray-600"
+              htmlFor="name">
+              Primary color
+            </label>
+            <input
+              type="text"
+              name="description"
+              onChange={updateInput("description")}
+              className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full outline-0"
+              placeholder="Primary Color of the Bot ( default is black )"
+              id="name"
+              maxLength={20}
+            />
+            <InfoComponent text={PRIMARY_TEXT_EXPLANATION} />
+          </div>
+
+          <div className="mt-2 w-full">
+
+            <label
+              className="block text-md text-gray-600"
+              htmlFor="name">
+              Primary text color
+            </label>
+            <input
+              type="text"
+              name="description"
+              onChange={updateInput("description")}
+              className="px-3 py-2 rounded-md text-gray-700  bg-slate-100 w-full outline-0"
+              placeholder=" ( default is black )"
+              id="name"
+              maxLength={20}
+            />
+            <InfoComponent text={PRIMARY_TEXT_EXPLANATION} />
           </div>
         </div>
 
