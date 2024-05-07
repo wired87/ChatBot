@@ -49,7 +49,7 @@ const Modal: React.FC<BotInfoModal> = (
   }
 
   const retryCrateBotBtn = () => {
-    if ( bot.status === "FAILED" || bot.status === "IN_PROGRESS" ) {
+    if ( bot.status === "FAILED" || bot.status === "INACTIVE" ) {
       return(
         <IoMdRefresh className={"cursor-pointer "} color={"black"} onClick={updateRetryOpen} />
       )
