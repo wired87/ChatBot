@@ -154,7 +154,7 @@ const BotsTable: React.FC<BotsTable> = (
 
 
   return (
-    <div className="px-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div className="px-4 min-w-7xl max-w-8xl mx-auto sm:px-6 lg:px-8">
       <AddBot user={user} open={add} updateOpen={updateAdd} />
       <DeleteAll userId={user?.auth?.uid || ""} open={deleteAll} updateOpen={updateDeleteAll} />
       <Modal open={open}

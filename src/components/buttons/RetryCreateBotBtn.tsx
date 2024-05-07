@@ -1,4 +1,4 @@
-import React, {memo, ReactNode, useState} from "react";
+import React, {memo, ReactNode, useCallback, useState} from "react";
 import {BotData} from "../../interfaces/userInterface";
 import LoadingIndicator from "../LoadingIndicator";
 import ModalError from "../modal/content/ModalError";
@@ -15,7 +15,7 @@ interface ModalErrorProps {
 
 const BASE_URL: string = process.env.REACT_APP_BASE_EDNPOINT!;
 const REACT_APP_RETRY_BOT_DEPLOYMENT: string = process.env.REACT_APP_RETRY_BOT_DEPLOYMENT!;
-const deleteAllBotsUrl: string = `${BASE_URL + REACT_APP_RETRY_BOT_DEPLOYMENT}`;
+const retryUrl: string = `${BASE_URL + REACT_APP_RETRY_BOT_DEPLOYMENT}`;
 
 
 const RetryCreateBotBtn: React.FC<ModalErrorProps> = (
@@ -32,9 +32,10 @@ const RetryCreateBotBtn: React.FC<ModalErrorProps> = (
 
   const onSend = async () => {
     setLoading(true);
+    console.log("SENDING RETRY BOT NAME:", bot.name);
     try {
       const res = await axios.post(
-        deleteAllBotsUrl,
+        retryUrl,
         {
           bot_name: bot.name
         }
@@ -43,7 +44,7 @@ const RetryCreateBotBtn: React.FC<ModalErrorProps> = (
         updateOpen();
         window.location.reload();
       } else {
-        console.log("Invalid request...")
+        console.log("Invalid request: ", res.data.message);
         setE(res.data.message)
       }
 
@@ -54,16 +55,17 @@ const RetryCreateBotBtn: React.FC<ModalErrorProps> = (
       }
     } finally {
       setLoading(false);
+
     }
   }
-  const Content = (): ReactNode => {
+  const Content = useCallback((): ReactNode => {
     if ( loading ) {
       return(
         <div className={"flex w-full h-full justify-center items-center pt-5 pb-8"}>
           <LoadingIndicator loading={loading} />
         </div>
       )
-    } else if ( e ) {
+    } else if ( e.trim().length > 0 ) {
       return(
         <ModalError
           onSend={onSend}
@@ -80,7 +82,7 @@ const RetryCreateBotBtn: React.FC<ModalErrorProps> = (
         onConfirm={onSend}
       />
     )
-  }
+  }, [e, loading]);
 
   const process = () => {
     setE("");

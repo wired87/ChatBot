@@ -11,6 +11,9 @@ import RetryCreateBotBtn from "./buttons/RetryCreateBotBtn";
 import {useDeleteOpen} from "../hooks/useDeleteOpen";
 import {useRetry} from "../hooks/useRetry";
 import { IoMdRefresh } from "react-icons/io";
+
+const BUNDLE_PATH: string = "https://storage.googleapis.com/client_bot_code_bundle/client_bundle999666.js";
+
 interface BotInfoModal {
   open: boolean;
   updateOpen: () => void;
@@ -32,7 +35,7 @@ const Modal: React.FC<BotInfoModal> = (
   const nav = useNavigate();
 
   const getScriptTag = (): string => {
-    return `<script async data-id="${bot.name}" type="text/javascript" src="https://storage.googleapis.com/client_bot_code_bundle/client_bundle999666.js"></script>`;
+    return `<script async data-id="${bot.name}" type="text/javascript" src=${BUNDLE_PATH}></script>`;
   }
 
   const demoLinkComp = (status: string, botName: string) => {
