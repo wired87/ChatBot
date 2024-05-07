@@ -7,8 +7,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {okaidia} from "react-syntax-highlighter/dist/cjs/styles/prism";
 import {Button} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-import RetryCreateBotBtn from "./buttons/RetryCreateBotBtn";
-import {useDeleteOpen, useOpen} from "../hooks/useOpen";
+import {useDeleteOpen} from "../hooks/useOpen";
 import {useRetry} from "../hooks/useRetry";
 import { IoMdRefresh } from "react-icons/io";
 import RetryCreateBotModal from "./buttons/RetryCreateBotBtn";
@@ -32,7 +31,7 @@ const Modal: React.FC<BotInfoModal> = (
 
   const {deleteOpen, updateDeleteOpen} = useDeleteOpen();
 
-  const {open, updateOpen} = useOpen();
+  //const {open, updateOpen} = useOpen();
 
   const {retryOpen, updateRetryOpen} = useRetry();
 
@@ -50,11 +49,6 @@ const Modal: React.FC<BotInfoModal> = (
             onClick={() => nav(`/private-demo/${botName}`)}
           >
             Demo
-          </Button>
-          <Button
-            onClick={updateOpen()}
-          >
-            Edit
           </Button>
         </>
 
