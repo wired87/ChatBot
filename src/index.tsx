@@ -13,7 +13,7 @@ import {
 import "./global.css";
 import "./index.css";
 
-const muiTheme = createTheme({ palette: { mode: "light" } });
+const muiTheme = createTheme({ palette: { mode: "dark" } });
 
 const container = document.getElementById("root");
 const root = createRoot(container!);

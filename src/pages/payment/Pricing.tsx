@@ -23,8 +23,9 @@ const priceData: PriceDataInterface[] = [
     pros: [
       "1 Bot",
       "500 monthly Chats",
+      "max. 1000 pages/bot",
+      "Full Customizable"
     ],
-    infoTextMonthlyChats: "1 Chat begins at the first received response over a period of 30 minutes till 20 messages.",
     monthlyPrice: "9€",
     annualPrice: "99€"
   },
@@ -33,10 +34,11 @@ const priceData: PriceDataInterface[] = [
     pros: [
       "2 Bot's",
       "2000 monthly Chats",
-      "1 data renewal / month"
+      "max. 1000 pages/bot",
+      "1 data renewal / month",
+      "Full Customizable",
 
     ],
-    infoTextMonthlyChats: "1 Chat begins at the first received response over a period of 30 minutes till 20 messages.",
     monthlyPrice: "26€",
     annualPrice: "270€"
   },
@@ -44,10 +46,12 @@ const priceData: PriceDataInterface[] = [
     title: "Premium",
     pros: [
       "5 Bot's",
-      "5000 monthly Chats*",
-      "2 data renewal / month"
+      "5000 monthly Chats",
+      "max. 1000 pages/bot",
+      "2 data renewal / month",
+      "Full Customizable",
+      'Remove "Powered by" branding '
     ],
-    infoTextMonthlyChats: "1 Chat begins at the first received response over a period of 30 minutes till 20 messages.",
     monthlyPrice: "54€",
     annualPrice: "549€"
   },

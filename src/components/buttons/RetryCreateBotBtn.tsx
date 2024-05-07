@@ -85,8 +85,8 @@ const RetryCreateBotBtn: React.FC<ModalErrorProps> = (
   }, [e, loading]);
 
   const process = () => {
-    setE("");
     updateOpen();
+    setE("");
   }
 
   return(

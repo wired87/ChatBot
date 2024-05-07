@@ -17,6 +17,12 @@ const BASE_URL: string = process.env.REACT_APP_BASE_EDNPOINT!;
 const CHECKOUT_ENP: string = process.env.REACT_APP_CHECKOUT_ENP!;
 const checkEndpoint: string = `${BASE_URL + CHECKOUT_ENP}`;
 
+
+const MONTHLY_CHAT_EXPL: string = "1 Chat begins at the first received response over a period of 30 minutes till 20 messages."
+const MAX_PAGES_EXPL: string = "The max amount of pages a single Bot can analyze."
+const POWERED_BY_EXPL: string = 'Remove the "Powered by BotWorld.cloud" branding from the Chatbot'
+
+
 const PriceContainer: React.FC<PriceContainerInterface> = (
   {
     item,
@@ -128,11 +134,13 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
   }
 
 
-  const infoTextContainer = ( item: string, infotext: string ) => {
-    if ( item.includes("Chats")) {
-      return(
-        <InfoComponent text={infotext} />
-      )
+  const infoTextContainer = ( item: string ) => {
+    if ( item.includes("Chats") ) {
+      return <InfoComponent text={MONTHLY_CHAT_EXPL} />
+    } else if ( item.includes("pages/bot") ) {
+      return <InfoComponent text={MAX_PAGES_EXPL} />
+    } else if ( item.includes("Powered by") ) {
+      return <InfoComponent text={POWERED_BY_EXPL} />
     }
     return <></>
   }
@@ -153,7 +161,7 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
             }
 
             {
-              infoTextContainer(textItem, item.infoTextMonthlyChats || "")
+              infoTextContainer(textItem)
             }
           </div>
         </div>
@@ -208,7 +216,7 @@ const PriceContainer: React.FC<PriceContainerInterface> = (
 
   return(
     <div style={loadingContainerStyles()} className="flex-1 rounded-[9.29px]
-    [background:linear-gradient(144.59deg,_#edc4ff,_#c1f7ff)] h-[500px]
+    [background:linear-gradient(144.59deg,_#edc4ff,_#c1f7ff)] h-[550px]
     flex flex-col items-center justify-start p-[30px] box-border gap-[26px] min-w-[390px] max-w-[420px]    ">
       <div className="w-[159px] rounded-[27.88px] bg-gray-100 h-[45px] flex flex-row items-center
       justify-center text-center text-base-7 text-gray-700">
