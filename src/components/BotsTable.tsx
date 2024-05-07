@@ -1,11 +1,11 @@
 import React, {memo, useCallback, useEffect, useState} from "react";
 import Modal from "./Modal";
 import {BotData, UserInterface} from "../interfaces/userInterface";
-import AddBot from "./modal/AddBot";
 import LoadingIndicator from "./LoadingIndicator";
 import DeleteAll from "./modal/content/DeleteAll";
 import {IconButton} from "@mui/material";
 import { IoMdRefresh } from "react-icons/io";
+import AddBot from "./modal/AddBot";
 
 interface BotsTable {
   bots?: BotData[] | null;
@@ -163,9 +163,12 @@ const BotsTable: React.FC<BotsTable> = (
     }
   }, [selected, open, updateOpen]);
 
+
+
   return (
     <div className="px-4 min-w-7xl max-w-8xl mx-auto sm:px-6 lg:px-8">
-      <AddBot user={user} open={add} updateOpen={updateAdd} />
+
+      <AddBot updateOpen={updateAdd} open={add} user={user} />
 
       <DeleteAll userId={user?.auth?.uid || ""} open={deleteAll} updateOpen={updateDeleteAll} />
 
