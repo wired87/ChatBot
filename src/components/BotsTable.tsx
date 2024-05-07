@@ -158,7 +158,9 @@ const BotsTable: React.FC<BotsTable> = (
   }
 
   const botModal = useCallback(() => {
-    return <Modal open={open} updateOpen={updateOpen} bot={selected}/>
+    if ( selected ) {
+      return <Modal open={open} updateOpen={updateOpen} bot={selected}/>
+    }
   }, [selected, open, updateOpen]);
 
   return (
